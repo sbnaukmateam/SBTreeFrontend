@@ -1,30 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Route, Switch} from 'react-router-dom'
-import {Provider} from 'react-redux';
-import {ConnectedRouter} from 'connected-react-router'
-import {AppContainer} from 'react-hot-loader';
-import {syncHistoryWithStore} from 'react-router-redux'
-import configStore, {history} from 'index';
-import App from 'containers/App';
+import { Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 
-const store = configStore();
+import { store, history } from './store';
+import { MyContainer, NotFound } from './containers';
 
-app.run();
-
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App.js";
+import './css/app.css';
 
 ReactDOM.render(
-  <AppContainer>
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <Switch>
-          <Route path='/' exact component={<Component/>}/>
-        </Switch>
-      </ConnectedRouter>
-    </Provider>
-  </AppContainer>,
-  document.getElementById("root"),
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <Switch>
+        <Route path="/" exact component={MyContainer} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root'),
 );

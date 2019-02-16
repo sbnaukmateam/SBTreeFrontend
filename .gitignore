@@ -1,10 +1,5 @@
-.tmp
-.sass-cache
-.publish
-coverage/
-build/
-dist/
-node_modules/
-reports/
-webpack.stats.json
+dist
+node_modules
 package-lock.json
+.env
+stats.json

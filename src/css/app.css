@@ -1,0 +1,12 @@
+* {
+    color: red;
+}
+
+#root {
+  text-align: center;
+  margin: 50px;
+}
+
+button {
+  margin: 10px;
+}
