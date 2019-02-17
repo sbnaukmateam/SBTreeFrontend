@@ -1,4 +1,4 @@
-import { Projects } from './Mock';
+import { Projects } from './mock';
 import { request } from './request';
 
 const ping = () => request('/ping/v1/ping');
