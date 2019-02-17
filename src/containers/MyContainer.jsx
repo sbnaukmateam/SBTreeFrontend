@@ -24,10 +24,10 @@ class MyContainer extends PureComponent {
     return (
       <div>
         <button onClick={actions.ping.pingRequest} type="button">
-          PING SERVER
+                    PING SERVER
         </button>
         <button onClick={actions.ping.pingReset} type="button">
-          RESET
+                    RESET
         </button>
         <MyComponent>
           {message}
@@ -42,7 +42,7 @@ MyContainer.propTypes = {
   loading: PropTypes.bool.isRequired,
   initial: PropTypes.bool.isRequired,
   actions: PropTypes.object.isRequired,
-  error: PropTypes.object,
+  error: PropTypes.string,
 };
 
 MyContainer.defaultProps = {
