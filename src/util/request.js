@@ -19,10 +19,16 @@ const addBearerAuth = options => ({
 
 const prepareJSON = async (response) => {
   const { status, statusText } = response;
-  const body = await response.json();
-  const { result, error, token } = body;
+  let body;
+  let parsingError;
+  try {
+    body = await response.json();
+  } catch (err) {
+    parsingError = err.toString();
+  }
+  const { result, error, token } = body || {};
   return {
-    status, statusText, result, error, token,
+    status, statusText, result, error, token, parsingError,
   };
 };
 
@@ -36,9 +42,13 @@ const handleAuth = ({ status, token }) => {
   }
 };
 
-const handleErrors = ({ status, statusText, error }) => {
-  if (status >= 400 || error) {
-    throw new Error(error || statusText || status);
+const handleErrors = ({
+  status, statusText, error, parsingError,
+}) => {
+  const statusError = status >= 400 && (statusText || status);
+  const errorMessage = error || statusError || parsingError;
+  if (errorMessage) {
+    throw new Error(errorMessage);
   }
 };
 
