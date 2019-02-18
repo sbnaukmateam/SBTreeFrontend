@@ -22,7 +22,7 @@ class Project extends PureComponent {
 Project.propTypes = {
   img: PropTypes.string.isRequired,
   fbLink: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   available: PropTypes.bool.isRequired,
 };
 // const mapDispatchToProps = dispatch => ({
