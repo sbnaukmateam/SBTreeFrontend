@@ -23,12 +23,8 @@ class MyContainer extends PureComponent {
     });
     return (
       <div>
-        <button onClick={actions.ping.pingRequest} type="button">
-          PING SERVER
-        </button>
-        <button onClick={actions.ping.pingReset} type="button">
-          RESET
-        </button>
+        <button onClick={actions.ping.pingRequest} type="button">PING SERVER</button>
+        <button onClick={actions.ping.pingReset} type="button">RESET</button>
         <MyComponent>
           {message}
         </MyComponent>
