@@ -4,3 +4,6 @@ node_js:
 
 script:
   - npm run lint
+
+notifications:
+  slack: sbteam-workspace:vN5MU2uVkGH03b8jtz6JzCJ0
