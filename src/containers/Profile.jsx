@@ -22,7 +22,9 @@ class Profile extends PureComponent {
   }
 
   setPassword() {
-    this.props.actions.editProfile.changePassword({ new: this.state.password.new1 });
+    const { actions } = this.props;
+    const { password } = this.state;
+    actions.editProfile.changePassword({ new: password.new1 });
     this.setState({
       password: {
         new1: '',
@@ -31,12 +33,15 @@ class Profile extends PureComponent {
     });
   }
 
-  handleOpenEditor() {
-    const open = this.state.editorOpen;
-    this.setState({
-      editorOpen: !open,
-    });
-  }
+  equalPsw = () => {
+    const { password: { new1, new2 } } = this.state;
+    return new1 === new2;
+  };
+
+  validPsw = () => {
+    const { password: { new1 } } = this.state;
+    return this.equalPsw() && new1.length > 5;
+  };
 
   closeEditor() {
     this.setState({
@@ -44,9 +49,12 @@ class Profile extends PureComponent {
     });
   }
 
-  equalPsw = () => this.state.password.new1 === this.state.password.new2;
-
-  validPsw = () => this.equalPsw() && this.state.password.new1.length > 5;
+  handleOpenEditor() {
+    const { editorOpen: { open } } = this.state;
+    this.setState({
+      editorOpen: !open,
+    });
+  }
 
   changeInfo() {
     const { actions, me } = this.props;
@@ -59,13 +67,16 @@ class Profile extends PureComponent {
   }
 
   render() {
-    const { me, patron } = this.props;
+    const {
+      me, patron, passwordChanged, infoChanged,
+    } = this.props;
+    const { editorOpen, password: { new1, new2 } } = this.state;
     const editorClasses = classnames({
-      hide: !this.state.editorOpen,
+      hide: !editorOpen,
     });
-    let changePasswordMsg = formatData(this.props.passwordChanged);
+    let changePasswordMsg = formatData(passwordChanged);
     if (typeof changePasswordMsg === 'object') changePasswordMsg = changePasswordMsg.status;
-    let changeInfoMsg = formatData(this.props.infoChanged);
+    let changeInfoMsg = formatData(infoChanged);
     if (typeof changeInfoMsg === 'object') changeInfoMsg = changeInfoMsg.status;
     return (
       <div style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -110,11 +121,11 @@ class Profile extends PureComponent {
             </div>
           ))}
           {me.interests.map(x => <p key={x}>{x}</p>)}
-          <button onClick={this.handleOpenEditor.bind(this)}>Редагувати</button>
+          <button type="button" onClick={this.handleOpenEditor.bind(this)}>Редагувати</button>
         </div>
         <form style={{ display: 'flex', flexDirection: 'column' }}>
-          <input type="password" placeholder="Новий пароль" value={this.state.password.new1} onChange={this.handlePassword.bind(this, 'new1')} />
-          <input type="password" placeholder="Повторіть пароль" value={this.state.password.new2} onChange={this.handlePassword.bind(this, 'new2')} />
+          <input type="password" placeholder="Новий пароль" value={new1} onChange={this.handlePassword.bind(this, 'new1')} />
+          <input type="password" placeholder="Повторіть пароль" value={new2} onChange={this.handlePassword.bind(this, 'new2')} />
           <button type="button" disabled={!this.validPsw() && 'disabled'} onClick={this.setPassword.bind(this)}>
       Змінити пароль
           </button>
@@ -131,8 +142,8 @@ class Profile extends PureComponent {
             backgroundColor: 'gray',
           }}>
           <input type="text" placeholder="Need to be written" />
-          <button onClick={this.changeInfo.bind(this)}>Зберегти зміни</button>
-          <button onClick={this.closeEditor.bind(this)}>Close</button>
+          <button type="button" onClick={this.changeInfo.bind(this)}>Зберегти зміни</button>
+          <button type="button" onClick={this.closeEditor.bind(this)}>Close</button>
           <p>{changeInfoMsg}</p>
         </div>
       </div>
@@ -141,11 +152,14 @@ class Profile extends PureComponent {
 }
 Profile.propTypes = {
   me: PropTypes.object.isRequired,
+  patron: PropTypes.object,
   actions: PropTypes.object.isRequired,
   passwordChanged: PropTypes.object.isRequired,
   infoChanged: PropTypes.object.isRequired,
 };
-
+Profile.defaultProps = {
+  patron: null,
+};
 const mapStateToProps = (state, ownProps) => ({
   me: selectorProfileById(state, ownProps.id),
   patron: selectorPatron(state, ownProps.id),
