@@ -31,10 +31,6 @@ class Profile extends PureComponent {
     });
   }
 
-  changeInfo() {
-    this.props.actions.editProfile.changeInfo(this.props.me);
-  }
-
   handleOpenEditor() {
     const open = this.state.editorOpen;
     this.setState({
@@ -51,6 +47,11 @@ class Profile extends PureComponent {
   equalPsw = () => this.state.password.new1 === this.state.password.new2;
 
   validPsw = () => this.equalPsw() && this.state.password.new1.length > 5;
+
+  changeInfo() {
+    const { actions, me } = this.props;
+    actions.editProfile.changeInfo(me);
+  }
 
   handlePassword(str, event) {
     const { password } = this.state;
