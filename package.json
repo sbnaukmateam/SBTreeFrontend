@@ -12,7 +12,7 @@
     "start": "node server",
     "stats": "webpack --config config/webpack.config.js  --json > stats.json",
     "stats:serve": "webpack-bundle-analyzer stats.json ./dist -p 8088",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js --ext .jsx .",
     "no-unstaged": "git diff --exit-code --name-only --quiet"
   },
   "precommit": [
