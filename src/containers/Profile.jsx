@@ -85,17 +85,17 @@ class Profile extends PureComponent {
           <p>{me.nickName}</p>
           <div style={{ border: '1px solid red' }}>
             {me.degree.map(x => (
-              <>
+              <React.Fragment>
                 <p><b>Освіта</b></p>
                 <p>{x.year}</p>
                 <p>{x.faculty}</p>
                 <p>{x.speciality}</p>
                 <p>{x.program}</p>
-              </>
+              </React.Fragment>
             ))}
           </div>
           <p>
-          Патрон:
+            Патрон:
             {' '}
             {patron.name}
             {' '}
@@ -126,7 +126,7 @@ class Profile extends PureComponent {
           <input type="password" placeholder="Новий пароль" value={newPass} onChange={this.handlePassword.bind(this, 'newPass')} />
           <input type="password" placeholder="Повторіть пароль" value={newPassConf} onChange={this.handlePassword.bind(this, 'newPassConf')} />
           <button type="button" disabled={!this.validPsw() && 'disabled'} onClick={this.setPassword.bind(this)}>
-      Змінити пароль
+            Змінити пароль
           </button>
           {!this.equalPsw() && <p>Паролі не співпадають</p>}
           {!this.validPsw() && <p>Не менше 6 символів</p>}
