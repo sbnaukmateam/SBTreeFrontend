@@ -18,7 +18,7 @@ module.exports = {
     modules: isProd,
     children: isProd,
   },
-  devServer: { port },
+  devServer: { port, historyApiFallback: true },
   module: {
     rules: [
       {

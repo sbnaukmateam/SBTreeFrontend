@@ -7,9 +7,10 @@
   "license": "MIT",
   "main": "server.js",
   "scripts": {
+    "start": "npm run dev",
     "build": "rimraf ./dist && webpack --config config/webpack.config.js --mode production",
     "dev": "webpack-dev-server --config config/webpack.config.js  --open --mode development",
-    "start": "node server",
+    "prod": "node server",
     "stats": "webpack --config config/webpack.config.js  --json > stats.json",
     "stats:serve": "webpack-bundle-analyzer stats.json ./dist -p 8088",
     "lint": "eslint --ext .js --ext .jsx .",
