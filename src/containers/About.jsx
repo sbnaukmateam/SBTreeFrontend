@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 
 class About extends PureComponent {
   render() {
@@ -14,4 +15,6 @@ class About extends PureComponent {
   }
 }
 
-export { About };
+const AboutWrapped = connect()(About);
+
+export { AboutWrapped as About };

@@ -23,6 +23,9 @@ class Navbar extends PureComponent {
         <Link to="/projects">
               PROJECTS
         </Link>
+        <Link to="/profile">
+          PROFILE
+        </Link>
       </div>
     );
   }
