@@ -36,12 +36,12 @@ export const Members = [{
   surname: 'Іванов',
   nickName: 'Васив',
   avatar: 'http://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png',
-  degree: {
+  degree: [{
     year: '2010',
     faculty: 'ФІ',
     speciality: "Комп'ютерні науки",
     program: 'БП',
-  },
+  }],
   patron: 2,
   birth: '25.08.1990',
   phones: ['0991234567'],
@@ -56,12 +56,12 @@ export const Members = [{
   surname: 'Сидоров',
   nickName: 'Васив',
   avatar: 'url',
-  degree: {
+  degree: [{
     year: '2010',
     faculty: 'ФІ',
     speciality: "Комп'ютерні науки",
     program: 'БП',
-  },
+  }],
   patron: -1,
   birth: '25.08.1990',
   phones: ['0991234567'],

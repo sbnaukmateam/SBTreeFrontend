@@ -13,34 +13,30 @@ class Profile extends PureComponent {
   constructor() {
     super();
     this.state = {
-      password: {
-        new1: '',
-        new2: '',
-      },
+      newPass: '',
+      NewPassConf: '',
       editorOpen: false,
     };
   }
 
   setPassword() {
     const { actions } = this.props;
-    const { password } = this.state;
-    actions.editProfile.changePassword({ new: password.new1 });
+    const { newPass } = this.state;
+    actions.editProfile.changePassword({ new: newPass });
     this.setState({
-      password: {
-        new1: '',
-        new2: '',
-      },
+      newPass: '',
+      NewPassConf: '',
     });
   }
 
   equalPsw = () => {
-    const { password: { new1, new2 } } = this.state;
-    return new1 === new2;
+    const { newPass, NewPassConf } = this.state;
+    return newPass === NewPassConf;
   };
 
   validPsw = () => {
-    const { password: { new1 } } = this.state;
-    return this.equalPsw() && new1.length > 5;
+    const { newPass } = this.state;
+    return this.equalPsw() && newPass.length > 5;
   };
 
   closeEditor() {
@@ -62,15 +58,14 @@ class Profile extends PureComponent {
   }
 
   handlePassword(str, event) {
-    const { password } = this.state;
-    this.setState({ password: { ...password, [str]: event.target.value } });
+    this.setState({ [str]: event.target.value });
   }
 
   render() {
     const {
       me, patron, passwordChanged, infoChanged,
     } = this.props;
-    const { editorOpen, password: { new1, new2 } } = this.state;
+    const { editorOpen, newPass, NewPassConf } = this.state;
     const editorClasses = classnames({
       hide: !editorOpen,
     });
@@ -124,8 +119,8 @@ class Profile extends PureComponent {
           <button type="button" onClick={this.handleOpenEditor.bind(this)}>Редагувати</button>
         </div>
         <form style={{ display: 'flex', flexDirection: 'column' }}>
-          <input type="password" placeholder="Новий пароль" value={new1} onChange={this.handlePassword.bind(this, 'new1')} />
-          <input type="password" placeholder="Повторіть пароль" value={new2} onChange={this.handlePassword.bind(this, 'new2')} />
+          <input type="password" placeholder="Новий пароль" value={newPass} onChange={this.handlePassword.bind(this, 'newPass')} />
+          <input type="password" placeholder="Повторіть пароль" value={NewPassConf} onChange={this.handlePassword.bind(this, 'newPassConf')} />
           <button type="button" disabled={!this.validPsw() && 'disabled'} onClick={this.setPassword.bind(this)}>
       Змінити пароль
           </button>

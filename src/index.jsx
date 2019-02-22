@@ -11,6 +11,7 @@ import {
 
 import './css/app.css';
 
+// TODO remove mock
 const MyProfile = props => (<Profile id={1} {...props} />);
 
 ReactDOM.render(
