@@ -13,3 +13,135 @@ button {
 .hide{
     display: none;
 }
+.admin-menu, .admin-menu a, .admin-footer {
+  background-color: #003470;
+  color: white;
+}
+.admin-menu{
+  height: 70px;
+}
+.text-mid-blue{
+  color:#317199;
+}
+.bg-light-blue{
+  background-color:#85deff;
+}
+.bg-mid-blue{
+  background-color:#317199;
+}
+.bg-radius-mid{
+  border-radius: 20px;
+}
+.text-light-blue{
+  color:#85deff;
+}
+
+.admin-menu a, .admin-menu_profile {
+  font-size: calc(0.7vw + 10px);
+}
+.center{
+  text-align: center;
+  vertical-align: center;
+}
+.accounts-admin_list {
+  background-color: #85deff;
+}
+.accounts-admin_list_row{
+  padding:10px 10px;
+}
+
+.accounts-admin_list_cart {
+  background-color: white;
+  height: 170px;
+  border:4px solid #85deff;
+}
+
+.accounts-admin_control {
+  background-color: #85deff;
+}
+
+.border-top-blue {
+  border-bottom: 3px solid #003470;
+}
+.border-bottom-blue {
+  border-bottom: 2px solid #003470;
+}
+.font-weight-mid{
+  font-weight: 400;
+}
+
+.accounts-admin_list_cart_plus-info{
+  font-size:calc(0.4vw + 9px);
+}
+.accounts-admin_list_cart{
+  border-radius:10px;
+}
+.accounts-admin_list_cart_icon{
+  position: absolute;
+  left: 16px;
+}
+.accounts-admin_list_cart_text{
+  margin-left: 130px
+}
+.accounts-admin_control_classes-btn {
+  background-color: #85deff;
+  font-size: calc(0.7vw + 5px);
+}
+
+.admin-menu_sign-img {
+  float: right;
+  height: 20px;
+  width: 20px;
+}
+
+.admin-menu_logo-img {
+  height: 45px;
+  width: 45px;
+}
+
+.admin-menu_user-icon {
+  background-color: #85deff;
+  border-radius: 50%;
+}
+
+.admin-menu_user-icon-box {
+  font-size: 40px;
+}
+.accounts-admin_control_search-icon-box{
+  font-size: 20px;
+}
+.accounts-admin_control_search-input::placeholder{
+  color:#317199;
+  text-align: center;
+  font-size:calc(1vw + 6px);
+
+}
+.accounts-admin_control_filter-select{
+  height: calc(0.8em + 0.8rem + 2px);
+  text-align: center;
+  text-align-last:center;
+}
+.soc-network-icon-box{
+  font-size:20px;
+}
+.accounts-admin_list_cart_person-img{
+  width:130px;
+  height:130px;
+}
+.accounts-admin_list_cart_small-icon{
+  bottom:0;
+  left:0;
+  width:45px;
+  height:45px;
+}
+
+@media screen and (min-width: 1400px ){
+  .col-xxl-10{
+      -ms-flex: 0 0 83.333333%;
+      flex: 0 0 83.333333%;
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: 83.3333%;
+      max-width: 83.333333%;
+  }
+}
