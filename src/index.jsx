@@ -19,7 +19,8 @@ const MyProfile = props => (<Profile id={1} {...props} />);
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Layout>
+      {/* TODO remove mock */}
+      <Layout id={1}>
         <Switch>
           <Route path="/" exact component={MyContainer} />
           <Route path="/about" component={About} />

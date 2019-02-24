@@ -6,6 +6,7 @@ class Cart extends PureComponent {
     const {
       img, name, comment, faculty, year,
     } = this.props;
+    const linkIcons = ['tg', 'fb', 'tel', 'mail'];
     return (
       <div className="col-md-6 col-lg-4 col-sm-12 accounts-admin_list_cart p-3">
         <div className="accounts-admin_list_cart_icon">
@@ -29,10 +30,7 @@ class Cart extends PureComponent {
               </p>
             </div>
             <div>
-              <i className="fab m-1 mt-2 mb-0 fa-telegram-plane " />
-              <i className="fab m-1 mt-2 mb-0 fa-facebook-f " />
-              <i className="fas m-1 mt-2 mb-0 fa-phone " />
-              <i className="fas m-1 mt-2 mb-0 fa-envelope " />
+              {linkIcons.map(x => <img key={x} src={`/images/${x}-icon.png`} className="m-1 mb-0 fab" />)}
             </div>
           </div>
         </div>
