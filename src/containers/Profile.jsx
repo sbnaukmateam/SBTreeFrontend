@@ -86,7 +86,7 @@ class Profile extends PureComponent {
           <p>{me.nickName}</p>
           <div style={{ border: '1px solid red' }}>
             <p><b>Освіта</b></p>
-            {me.degree.map(x => (
+            {me.degrees.map(x => (
               <div key={x.year}>
                 <p>{x.year}</p>
                 <p>{x.faculty}</p>
@@ -102,11 +102,11 @@ class Profile extends PureComponent {
             {' '}
             {patron.surname}
           </p>
-          <p>{me.birth}</p>
+          <p>{me.birthday}</p>
           {me.phones.map(x => <p key={x}>{x}</p>)}
           {me.profiles.map(x => <a key={x} href={`//${x}`}>{x}</a>)}
           {me.emails.map(x => <p key={x}>{x}</p>)}
-          {me.position.map(x => (
+          {me.positions.map(x => (
             <div style={{ display: 'flex' }} key={x}>
               {x.years.map((y, i) => (
                 <p key={y}>
