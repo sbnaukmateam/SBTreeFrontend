@@ -5,15 +5,16 @@ import { Cart } from '../components';
 import {
   selectorMembers,
 } from '../selectors';
+import { Layout } from '.';
 
 class AdminSearch extends PureComponent {
   render() {
     const { contacts } = this.props;
     return (
-      <div>
+      <Layout>
         <section className="accounts-admin">
-          <div className="row justify-content-center">
-            <div className="col-12 col-xxl-10">
+          <div className="row justify-content-center m-0">
+            <div className="col-12 col-lg-10">
               <div className="row">
                 <div className="col-3 accounts-admin_control pb-3">
                   <div className="row d-flex justify-content-center text-center">
@@ -158,7 +159,7 @@ class AdminSearch extends PureComponent {
             </div>
           </div>
         </section>
-      </div>
+      </Layout>
     );
   }
 }

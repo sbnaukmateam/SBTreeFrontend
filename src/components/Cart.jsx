@@ -8,7 +8,7 @@ class Cart extends PureComponent {
     } = this.props;
     const linkIcons = ['tg', 'fb', 'tel', 'mail'];
     return (
-      <div className="col-md-6 col-lg-4 col-sm-12 accounts-admin_list_cart p-3">
+      <div className="col-md-6 col-sm-12 accounts-admin_list_cart p-3">
         <div className="accounts-admin_list_cart_icon">
           <img
             className="accounts-admin_list_cart_person-img rounded-circle position-relative "
