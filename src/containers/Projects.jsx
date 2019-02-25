@@ -1,22 +1,16 @@
 /* eslint-disable no-console */
 import React, { PureComponent } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { projectsActions } from '../actions';
 import { selectorProjects } from '../selectors';
 import { Project } from '../components';
+import { Layout } from '.';
 
 class Projects extends PureComponent {
-  componentDidMount() {
-    const { actions: { projects } } = this.props;
-    projects.fetchProjects();
-  }
-
   render() {
     const { projects } = this.props;
     return (
-      <div>
+      <Layout>
         { projects && projects.map(x => <div key={x.id}><Project {...x} /></div>)}
         <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -25,12 +19,11 @@ class Projects extends PureComponent {
           fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
           deserunt mollit anim id est laborum.
         </div>
-      </div>
+      </Layout>
     );
   }
 }
 Projects.propTypes = {
-  actions: PropTypes.object.isRequired,
   projects: PropTypes.array,
 };
 Projects.defaultProps = {
@@ -41,12 +34,6 @@ const mapStateToProps = state => ({
 });
 
 
-const mapDispatchToProps = dispatch => ({
-  actions: {
-    projects: bindActionCreators(projectsActions, dispatch),
-  },
-});
-
-const ProjectsWrapped = connect(mapStateToProps, mapDispatchToProps)(Projects);
+const ProjectsWrapped = connect(mapStateToProps)(Projects);
 
 export { ProjectsWrapped as Projects };

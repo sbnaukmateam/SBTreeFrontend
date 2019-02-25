@@ -2,23 +2,33 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { StickyContainer, Sticky } from 'react-sticky';
 import { Navbar, Footer } from '../components';
-import { membersActions } from '../actions';
+import { membersActions, projectsActions } from '../actions';
 
 class Layout extends PureComponent {
   componentWillMount() {
-    const { actions: { members } } = this.props;
+    const { actions: { members, projects } } = this.props;
     members.fetchMembers();
+    projects.fetchProjects();
   }
 
   render() {
-    const { children, id } = this.props;
+    const { children, transparent } = this.props;
     return (
-      <div>
-        <Navbar id={id} />
+      <StickyContainer>
+        <Sticky>
+          {({
+            style,
+          }) => (
+            <Navbar transparent={transparent} style={style}>
+              {/* ... */}
+            </Navbar>
+          )}
+        </Sticky>
         {children}
         <Footer />
-      </div>
+      </StickyContainer>
     );
   }
 }
@@ -27,20 +37,20 @@ class Layout extends PureComponent {
 Layout.propTypes = {
   children: PropTypes.any,
   actions: PropTypes.object.isRequired,
-  id: PropTypes.number,
+  transparent: PropTypes.bool,
 };
 
 Layout.defaultProps = {
   children: null,
-  id: null,
+  transparent: null,
 };
 
 const mapDispatchToProps = dispatch => ({
   actions: {
     members: bindActionCreators(membersActions, dispatch),
+    projects: bindActionCreators(projectsActions, dispatch),
   },
 });
-
 const LayoutWrapper = connect(null, mapDispatchToProps)(Layout);
 
 export { LayoutWrapper as Layout };

@@ -8,6 +8,7 @@ import {
 } from '../selectors';
 import { profileActions } from '../actions';
 import { formatData } from '../util';
+import { Layout } from '.';
 
 class Profile extends PureComponent {
   constructor() {
@@ -75,78 +76,80 @@ class Profile extends PureComponent {
     if (typeof changeInfoMsg === 'object') changeInfoMsg = changeInfoMsg.status;
     if (!me) return (<div />);
     return (
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <img src={`${me.avatar}`} style={{ width: '200px', height: '200px' }} />
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <p>
-            {me.name}
-            {' '}
-            {me.surname}
-          </p>
-          <p>{me.nickName}</p>
-          <div style={{ border: '1px solid red' }}>
-            <p><b>Освіта</b></p>
-            {me.degree.map(x => (
-              <div key={x.year}>
-                <p>{x.year}</p>
-                <p>{x.faculty}</p>
-                <p>{x.speciality}</p>
-                <p>{x.program}</p>
+      <Layout>
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+          <img src={`${me.avatar}`} style={{ width: '200px', height: '200px' }} />
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <p>
+              {me.name}
+              {' '}
+              {me.surname}
+            </p>
+            <p>{me.nickName}</p>
+            <div style={{ border: '1px solid red' }}>
+              <p><b>Освіта</b></p>
+              {me.degree.map(x => (
+                <div key={x.year}>
+                  <p>{x.year}</p>
+                  <p>{x.faculty}</p>
+                  <p>{x.speciality}</p>
+                  <p>{x.program}</p>
+                </div>
+              ))}
+            </div>
+            <p>
+            Патрон:
+              {' '}
+              {patron.name}
+              {' '}
+              {patron.surname}
+            </p>
+            <p>{me.birth}</p>
+            {me.phones.map(x => <p key={x}>{x}</p>)}
+            {me.profiles.map(x => <a key={x} href={`//${x}`}>{x}</a>)}
+            {me.emails.map(x => <p key={x}>{x}</p>)}
+            {me.position.map(x => (
+              <div style={{ display: 'flex' }} key={x}>
+                {x.years.map((y, i) => (
+                  <p key={y}>
+                    {y}
+                    {i !== x.years.length - 1 && ', '}
+                  </p>
+                ))}
+                <p>
+                  {'- '}
+                  {x.name}
+                </p>
               </div>
             ))}
+            {me.interests.map(x => <p key={x}>{x}</p>)}
+            <button type="button" onClick={this.handleOpenEditor.bind(this)}>Редагувати</button>
           </div>
-          <p>
-            Патрон:
-            {' '}
-            {patron.name}
-            {' '}
-            {patron.surname}
-          </p>
-          <p>{me.birth}</p>
-          {me.phones.map(x => <p key={x}>{x}</p>)}
-          {me.profiles.map(x => <a key={x} href={`//${x}`}>{x}</a>)}
-          {me.emails.map(x => <p key={x}>{x}</p>)}
-          {me.position.map(x => (
-            <div style={{ display: 'flex' }} key={x}>
-              {x.years.map((y, i) => (
-                <p key={y}>
-                  {y}
-                  {i !== x.years.length - 1 && ', '}
-                </p>
-              ))}
-              <p>
-                {'- '}
-                {x.name}
-              </p>
-            </div>
-          ))}
-          {me.interests.map(x => <p key={x}>{x}</p>)}
-          <button type="button" onClick={this.handleOpenEditor.bind(this)}>Редагувати</button>
-        </div>
-        <form style={{ display: 'flex', flexDirection: 'column' }}>
-          <input type="password" placeholder="Новий пароль" value={newPass} onChange={this.handlePassword.bind(this, 'newPass')} />
-          <input type="password" placeholder="Повторіть пароль" value={newPassConf} onChange={this.handlePassword.bind(this, 'newPassConf')} />
-          <button type="button" disabled={!this.validPsw() && 'disabled'} onClick={this.setPassword.bind(this)}>
+          <form style={{ display: 'flex', flexDirection: 'column' }}>
+            <input type="password" placeholder="Новий пароль" value={newPass} onChange={this.handlePassword.bind(this, 'newPass')} />
+            <input type="password" placeholder="Повторіть пароль" value={newPassConf} onChange={this.handlePassword.bind(this, 'newPassConf')} />
+            <button type="button" disabled={!this.validPsw() && 'disabled'} onClick={this.setPassword.bind(this)}>
             Змінити пароль
-          </button>
-          {!this.equalPsw() && <p>Паролі не співпадають</p>}
-          {!this.validPsw() && <p>Не менше 6 символів</p>}
-          <p>{changePasswordMsg}</p>
-        </form>
-        <div id="editForm" className={editorClasses}
-          style={{
-            position: 'fixed',
-            left: 'calc(50% - 200px)',
-            width: '400px',
-            height: '400px',
-            backgroundColor: 'gray',
-          }}>
-          <input type="text" placeholder="Need to be written" />
-          <button type="button" onClick={this.changeInfo.bind(this)}>Зберегти зміни</button>
-          <button type="button" onClick={this.closeEditor.bind(this)}>Close</button>
-          <p>{changeInfoMsg}</p>
+            </button>
+            {!this.equalPsw() && <p>Паролі не співпадають</p>}
+            {!this.validPsw() && <p>Не менше 6 символів</p>}
+            <p>{changePasswordMsg}</p>
+          </form>
+          <div id="editForm" className={editorClasses}
+            style={{
+              position: 'fixed',
+              left: 'calc(50% - 200px)',
+              width: '400px',
+              height: '400px',
+              backgroundColor: 'gray',
+            }}>
+            <input type="text" placeholder="Need to be written" />
+            <button type="button" onClick={this.changeInfo.bind(this)}>Зберегти зміни</button>
+            <button type="button" onClick={this.closeEditor.bind(this)}>Close</button>
+            <p>{changeInfoMsg}</p>
+          </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }
