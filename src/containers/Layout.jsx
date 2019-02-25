@@ -12,10 +12,10 @@ class Layout extends PureComponent {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, id } = this.props;
     return (
-      <div className="container">
-        <Navbar />
+      <div>
+        <Navbar id={id} />
         {children}
         <Footer />
       </div>
@@ -27,10 +27,12 @@ class Layout extends PureComponent {
 Layout.propTypes = {
   children: PropTypes.any,
   actions: PropTypes.object.isRequired,
+  id: PropTypes.number,
 };
 
 Layout.defaultProps = {
   children: null,
+  id: null,
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -38,6 +40,7 @@ const mapDispatchToProps = dispatch => ({
     members: bindActionCreators(membersActions, dispatch),
   },
 });
+
 const LayoutWrapper = connect(null, mapDispatchToProps)(Layout);
 
 export { LayoutWrapper as Layout };

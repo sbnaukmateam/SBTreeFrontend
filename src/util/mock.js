@@ -54,8 +54,8 @@ export const Members = [{
   id: 2,
   name: 'Петро',
   surname: 'Сидоров',
-  nickName: 'Васив',
-  avatar: 'url',
+  nickName: 'Петрос',
+  avatar: 'https://img.joinfo.ua/i/2017/11/5a12977d34baf.jpg',
   degree: [{
     year: '2010',
     faculty: 'ФІ',

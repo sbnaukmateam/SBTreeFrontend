@@ -1,43 +1,57 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import '../css/layout.css';
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectorProfileAvatar, selectorProfileName } from '../selectors';
 // import { routsActions } from '../actions';
 
 class Navbar extends PureComponent {
   render() {
-    const rawDisplay = {
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'space-around',
-      marginBottom: '100px',
-    };
+    const { name, avatar } = this.props;
     return (
-      <div style={rawDisplay}>
-        <Link to="/about">
-              ABOUT
-        </Link>
-        <Link to="/">
-              MAIN
-        </Link>
-        <Link to="/projects">
-              PROJECTS
-        </Link>
-        <Link to="/profile">
-          PROFILE
-        </Link>
+      <div className="navbar">
+        <div className="col-12 col-xxl-10 navbar_box">
+          <img src="/images/logo.png" className="admin-menu_logo-img" />
+          <Link to="/">
+              Головна
+          </Link>
+          <Link to="/about">
+            Про нас
+          </Link>
+          <Link to="/">
+              Дерево
+          </Link>
+          <Link to="/projects">
+              Проекти
+          </Link>
+          <Link to="/contacts">
+              Контакти
+          </Link>
+          <Link to="/profile">
+            {name && name}
+          </Link>
+          {avatar && <img src={avatar} className="admin-menu_logo-img" />}
+        </div>
       </div>
     );
   }
 }
 Navbar.contextTypes = { router: PropTypes.object };
+Navbar.propTypes = {
+  name: PropTypes.string,
+  avatar: PropTypes.string,
+};
+Navbar.defaultProps = {
+  name: null,
+  avatar: null,
+};
+const mapStateToProps = (state, ownProps) => ({
+  name: selectorProfileName(state, ownProps.id),
+  avatar: selectorProfileAvatar(state, ownProps.id),
+});
 
-// const mapDispatchToProps = dispatch => ({
-//   actions: {
-//     // routs: bindActionCreators(routsActions, dispatch),
-//   },
-// });
+const NavbarWrapped = connect(mapStateToProps)(Navbar);
 
-// const NavbarWrapped = connect(null, mapDispatchToProps)(Navbar);
-
-export { Navbar };
+export { NavbarWrapped as Navbar };

@@ -1,10 +1,6 @@
 import React from 'react';
+import '../css/layout.css';
 
 export const Footer = () => (
-  <div style={{
-    width: '100%',
-    height: '60px',
-    backgroundColor: 'red',
-    marginTop: '100px',
-  }} />
+  <div className="footer" />
 );
