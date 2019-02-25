@@ -73,6 +73,7 @@ class Profile extends PureComponent {
     if (typeof changePasswordMsg === 'object') changePasswordMsg = changePasswordMsg.status;
     let changeInfoMsg = formatData(infoChanged);
     if (typeof changeInfoMsg === 'object') changeInfoMsg = changeInfoMsg.status;
+    if (!me) return (<div />);
     return (
       <div style={{ display: 'flex', justifyContent: 'space-around' }}>
         <img src={`${me.avatar}`} style={{ width: '200px', height: '200px' }} />
@@ -84,14 +85,14 @@ class Profile extends PureComponent {
           </p>
           <p>{me.nickName}</p>
           <div style={{ border: '1px solid red' }}>
+            <p><b>Освіта</b></p>
             {me.degree.map(x => (
-              <React.Fragment>
-                <p><b>Освіта</b></p>
+              <div key={x.year}>
                 <p>{x.year}</p>
                 <p>{x.faculty}</p>
                 <p>{x.speciality}</p>
                 <p>{x.program}</p>
-              </React.Fragment>
+              </div>
             ))}
           </div>
           <p>
@@ -150,7 +151,7 @@ class Profile extends PureComponent {
   }
 }
 Profile.propTypes = {
-  me: PropTypes.object.isRequired,
+  me: PropTypes.object,
   patron: PropTypes.object,
   actions: PropTypes.object.isRequired,
   passwordChanged: PropTypes.object.isRequired,
@@ -158,6 +159,7 @@ Profile.propTypes = {
 };
 Profile.defaultProps = {
   patron: null,
+  me: null,
 };
 const mapStateToProps = (state, ownProps) => ({
   me: selectorProfileById(state, ownProps.id),
