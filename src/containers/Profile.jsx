@@ -8,7 +8,7 @@ import {
 } from '../selectors';
 import { profileActions } from '../actions';
 import { formatData } from '../util';
-import { Layout } from '.';
+import { Layout } from './Layout';
 
 class Profile extends PureComponent {
   constructor() {
