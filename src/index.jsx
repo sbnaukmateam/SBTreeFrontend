@@ -6,7 +6,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { store, history } from './store';
 import {
-  MyContainer, NotFound, About, Projects, Profile, Admin,
+  MyContainer, NotFound, About, Projects, Profile2, Admin,
 } from './containers';
 
 import 'bootstrap';
@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/app.css';
 
 // TODO remove mock
-const MyProfile = props => (<Profile id={1} {...props} />);
+const MyProfile = props => (<Profile2 id={1} {...props} />);
 
 ReactDOM.render(
   <Provider store={store}>

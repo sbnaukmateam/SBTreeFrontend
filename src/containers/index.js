@@ -4,4 +4,5 @@ export * from './Layout';
 export * from './About';
 export * from './Projects';
 export * from './Profile';
+export * from './Profile2';
 export * from './Admin';
