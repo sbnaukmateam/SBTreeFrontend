@@ -325,7 +325,7 @@ button {
   background-color: #e1ecf3;
   display: flex;
   margin: 0 auto;
-  width: 80%;
+  max-width: 1400px;
 }
 .l-col{
   width: 70%;
@@ -361,6 +361,7 @@ button {
 }
 .card-info > div > img{
   max-width: 20%;
+  margin: 2px;
 }
 .card-info > p{
   margin: 0 0 5px;
@@ -468,10 +469,16 @@ button {
   max-width: calc(100% - 50px);
   justify-content: start;
   align-items: center;
+  text-align: start;
   font-size: calc(0.6vw + 5px);
+}
+.edit-info-point > button{
+  margin: 1px;
+  padding: 1px;
 }
 .edit-info-point img{
   height: 30px;
+  margin-right: 5px;
 }
 .edit-info-point a, .edit-info-point p{
   margin: 0 0 0 10px;
