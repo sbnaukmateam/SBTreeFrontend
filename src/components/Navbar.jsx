@@ -2,7 +2,10 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import { selectorProfileName } from '../selectors';
+import { modalActions } from '../actions';
+import { NavNoAuth } from '.';
 
 const NavAuth = () => (
   <div className="d-flex">
@@ -13,12 +16,8 @@ const NavAuth = () => (
     <button type="button">ВИХІД</button>
   </div>
 );
-const NavNoAuth = () => (
-  <div>
-    <button type="button">ВХІД</button>
-    <Link to="/">РЕЄСТРАЦІЯ</Link>
-  </div>
-);
+
+
 class Navbar extends PureComponent {
   constructor() {
     super();
@@ -44,7 +43,7 @@ class Navbar extends PureComponent {
 
   render() {
     const {
-      name, style, transparent,
+      name, style, transparent, actions: { modal },
     } = this.props;
     const { scroll } = this.state;
     const navStyle = `navbar${transparent && !scroll ? ' transparent' : ''}`;
@@ -59,31 +58,33 @@ class Navbar extends PureComponent {
           </div>
           <div className="col-6 d-flex justify-content-around">
             <Link to="/about">
-            ПРО НАС
+              ПРО НАС
             </Link>
             <Link to="/projects">
-            ПРОЕКТИ
+              ПРОЕКТИ
             </Link>
             <Link to="/contacts">
-            КОНТАКТИ
+              КОНТАКТИ
             </Link>
             <Link to="/">
               ДЕРЕВО
             </Link>
           </div>
           <div className="col-3 d-flex justify-content-center">
-            {name ? <NavAuth /> : <NavNoAuth />}
+            {name ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
           </div>
         </div>
       </div>
     );
   }
 }
+
 Navbar.contextTypes = { router: PropTypes.object };
 Navbar.propTypes = {
   name: PropTypes.string,
   style: PropTypes.object.isRequired,
   transparent: PropTypes.bool,
+  actions: PropTypes.object.isRequired,
 };
 Navbar.defaultProps = {
   name: null,
@@ -92,7 +93,12 @@ Navbar.defaultProps = {
 const mapStateToProps = (state, ownProps) => ({
   name: selectorProfileName(state, ownProps.id),
 });
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    modal: bindActionCreators(modalActions, dispatch),
+  },
+});
 
-const NavbarWrapped = connect(mapStateToProps)(Navbar);
+const NavbarWrapped = connect(mapStateToProps, mapDispatchToProps)(Navbar);
 
 export { NavbarWrapped as Navbar };

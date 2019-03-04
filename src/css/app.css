@@ -184,6 +184,10 @@ button {
   -o-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
+#sign-up-btn{
+  border:none;
+  margin: 0;
+}
 .profile-icon{
   height: 20px;
   /*margin-top: 15px;*/

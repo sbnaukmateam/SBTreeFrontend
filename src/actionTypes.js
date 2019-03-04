@@ -8,4 +8,11 @@ export default keyMirror({
   ...makeActionTypes('FETCH_MEMBERS'),
   ...makeActionTypes('CHANGE_PASSWORD'),
   ...makeActionTypes('CHANGE_INFORMATION'),
+  ...makeActionTypes('AUTH_VERIFY'),
+  ...makeActionTypes('AUTH_LOGIN'),
+  ...makeActionTypes('AUTH_SIGNUP'),
+  ...makeActionTypes('AUTH_LOGOUT'),
+  ...makeActionTypes('MODAL_LOGIN'),
+  ...makeActionTypes('MODAL_SIGNUP'),
+  ...makeActionTypes('MODAL_CLOSE'),
 });
