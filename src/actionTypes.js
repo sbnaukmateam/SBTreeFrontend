@@ -6,6 +6,7 @@ export default keyMirror({
   PING_RESET: 0,
   ...makeActionTypes('FETCH_PROJECTS'),
   ...makeActionTypes('FETCH_MEMBERS'),
+  ...makeActionTypes('NEDB_INIT'),
   ...makeActionTypes('CHANGE_PASSWORD'),
   ...makeActionTypes('CHANGE_INFORMATION'),
 });
