@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
-  ModalLogin, ModalSignup,
+  ModalLogin, ModalSignUp,
 } from '../components';
 import { authActions } from '../actions';
 import { selectorModalResult } from '../selectors';
@@ -20,7 +20,7 @@ class App extends PureComponent {
       <React.Fragment>
         {children}
         {openModal === 'login' && <ModalLogin />}
-        {openModal === 'signUp' && <ModalSignup />}
+        {openModal === 'signUp' && <ModalSignUp />}
       </React.Fragment>
     );
   }

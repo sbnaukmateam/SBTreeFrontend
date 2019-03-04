@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { ModalWrapper } from './ModalWrapper';
 
-class ModalSignup extends PureComponent {
+class ModalSignUp extends PureComponent {
   render() {
     // TODO remove <p> tag
     return (
@@ -12,4 +12,4 @@ class ModalSignup extends PureComponent {
   }
 }
 
-export { ModalSignup };
+export { ModalSignUp };
