@@ -6,12 +6,204 @@ class About extends PureComponent {
   render() {
     return (
       <Layout>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-          ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-          fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.
+        <div className="about-main-wrapper">
+          <section>
+            <div className="first-section flex-container1">
+              <div className="first-section-element flex-element heading-wrapper">
+                <h1 className="main-heading">
+СПУДЕЙСЬКЕ
+                  <br />
+БРАТСТВО
+                </h1>
+                <p className="about-sb">
+Спудейське братство ініціює, проводить, допомагає організовувати цікаві для
+                                    громади заходи, передусім – для студентства.
+                                    Спудейське братство поширює українські народні звичаї, стимулює студентство та
+                                    академічну спільноту до відродження традиційних свят. Наприклад, за два тижні до
+                                    Великодня братчики традиційно проводять майстер-класи із писанкарства; на свято
+                                    Масляної влаштовують фестиваль зі смачними млинцями та спаленням опудала
+                                    зими. Також варто згадати братський Вертеп, що широко відомий і поза межами
+                                    Могилянки: кожного року студенти пишуть новий сценарій-інтерпретацію на
+                                    відомий біблійний мотив та ходять з таким осучасненим вертепом до адміністрації
+                                    університету, випускників, політиків, та, власне, до всіх, хто запрошує. А у грудні
+                                    відбуваються традиційні «Андріївські вечорниці у Смолоскипі» з веселими забавами
+                                    та смачними варениками.
+                </p>
+              </div>
+              <div className=" flex-element logo-wrapper">
+                <img src="/images/SBLogo.jpg" width="200px;" />
+                <button type="button" href="#" id="join-button">
+ПРИЄДНАТИСЬ &nbsp;
+                  <i className="fas fa-angle-double-right" />
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <div className="second-section flex-container2">
+              <div className="second-section-element flex-element about-sb-2-wrapping">
+                <p className="about-sb-sec2">
+Також СБ кілька разів на рік проводить свої
+                                    «Посиденьки з гітарою» та «Літтусівку».
+                                    «Посиденьки» – це можливість для музикантів та
+                                    усіх поціновувачів української музики зібратись і
+                                    поспівати разом, можливо, навіть презентувати
+                                    власні музичні доробки у сімейній атмосфері Під
+                                    Wall-у. «Літтусівка» - це платформа для молодих
+                                    поетів та фанатів сучасної поезії, де вони можуть
+                                    поділитися своїми авторськими поривами та
+                                    почути відгуки на власну творчість.
+                                    Існує ще кілька братських акцій, що за ці роки
+                                    стали візитівкою Академії – «Чистий Сковорода»
+                                    на День академії, «Квітковий бал» та
+                                    «Сковорода-випускник».
+                                    Долучитися до Спудейського братства НаУКМА
+                                    може кожен могилянець: від студента до
+                                    Президента. Приєднуйтесь до нас – ми завжди
+                                    готові до співпраці!которые ваши руки мощные
+                                    творческие инструменты, обеспечивают
+                                    абсолютный которые контроль над текстом. их
+                                    которые ваши руки мощные творческие
+                                    инструменты, обеспечивают абсолютный
+                                    которые контроль над текстом. их помощью вы
+                                    можете применять к любым элементам тени,
+                                    эффекты с использованием которые
+                                    прозрачности. Они позволят вам создавать
+                                    элегантные таблицы. И не бойтесь
+                </p>
+              </div>
+              <div className="second-section-element flex-element photo-wrapping">
+                <img src="/images/photo.jpg" className="paravoz" />
+
+                <button type="button" href="#" id="read-more">
+ЧИТАТИ ДАЛІ &nbsp;
+                  <i className="fas fa-angle-double-right" />
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h1 id="org-structure">СТРУКТУРА ОРГАНІЗАЦІЇ</h1>
+            <div className="third-section flex-container3">
+
+              <div className="child">
+                <img className="circle-ava"
+                  src="https://bcdcog.com/wp-content/uploads/2016/05/profile-default-02.png" />
+                <h2 className="circle-heading">ПИСАР</h2>
+                <p className="under-heading">
+Спудейське братство ініціює,
+                                    проводить, допомагає організовувати
+                                    цікаві для громади заходи, передусім
+                                    – для студентства.
+                  <br />
+                                    . . . &nbsp;
+                  <i className="fas fa-angle-double-right" />
+                </p>
+              </div>
+              <div className="child">
+                <img className="circle-ava" src="https://bcdcog.com/wp-content/uploads/2016/05/profile-default-02.png" />
+                <h2 className="circle-heading">ГОЛОВА</h2>
+                <p className="under-heading">
+Спудейське братство ініціює,
+                                    проводить, допомагає організовувати
+                                    цікаві для громади заходи, передусім
+                                    – для студентства.
+                  <br />
+                                    . . . &nbsp;
+                  <i className="fas fa-angle-double-right" />
+                </p>
+              </div>
+              <div className="child">
+                <img className="circle-ava" src="https://bcdcog.com/wp-content/uploads/2016/05/profile-default-02.png" />
+                <h2 className="circle-heading">СКАРБНИК</h2>
+                <p className="under-heading">
+Спудейське братство ініціює,
+                                    проводить, допомагає організовувати
+                                    цікаві для громади заходи, передусім
+                                    – для студентства.
+                  <br />
+                                    . . . &nbsp;
+                  <i className="fas fa-angle-double-right" />
+                </p>
+              </div>
+              <div className="child">
+                <img className="circle-ava" src="https://bcdcog.com/wp-content/uploads/2016/05/profile-default-02.png" />
+                <h2 className="circle-heading">РАДНИК</h2>
+                <p className="under-heading">
+Спудейське братство ініціює,
+                                    проводить, допомагає організовувати
+                                    цікаві для громади заходи, передусім
+                                    – для студентства.
+                  <br />
+                                    . . . &nbsp;
+                  <i className="fas fa-angle-double-right" />
+                </p>
+              </div>
+              <div className="child">
+                <img className="circle-ava" src="https://bcdcog.com/wp-content/uploads/2016/05/profile-default-02.png" />
+                <h2 className="circle-heading">РАДНИК</h2>
+                <p className="under-heading">
+Спудейське братство ініціює,
+                                    проводить, допомагає організовувати
+                                    цікаві для громади заходи, передусім
+                                    – для студентства.
+                  <br />
+                                    . . . &nbsp;
+                  <i className="fas fa-angle-double-right" />
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h1 id="org-history">ІСТОРІЯ ЗАСНУВАННЯ</h1>
+            <p className="org-history-desc">
+Спудейське братство ініціює, проводить, допомагає організовувати цікаві для
+                            громади заходи, передусім – для студентства.
+                            Спудейське братство поширює українські народні звичаї, стимулює студентство та
+                            академічну спільноту до відродження традиційних свят. Наприклад, за два тижні до
+                            Великодня братчики традиційно проводять майстер-класи із писанкарства; на свято
+                            Масляної влаштовують фестиваль зі смачними млинцями та спаленням опудала
+                            зими. Також варто згадати братський Вертеп, що широко відомий і поза межами
+                            Могилянки: кожного року студенти пишуть новий сценарій-інтерпретацію на
+                            відомий біблійний мотив та ходять з таким осучасненим вертепом до адміністрації
+                            університету, випускників, політиків, та, власне, до всіх, хто запрошує. А у грудні
+                            відбуваються традиційні «Андріївські вечорниці у Смолоскипі» з веселими забавами
+                            та смачними варениками.
+            </p>
+            <button type="button" href="#" id="read-more2">
+ЧИТАТИ ДАЛІ &nbsp;
+              <i className="fas fa-angle-double-right" />
+            </button>
+          </section>
+
+          <section>
+            <h1 id="where-to-find">ДЕ НАС ЗНАЙТИ?</h1>
+            <div className="flex-container4">
+              <div className="flex-element fourth-sec-el section4-wrapper">
+                <img src="/images/map.jpg" id="map" />
+              </div>
+              <div className="flex-element fourth-sec-el">
+                <p className="address">
+Національний університет
+                                    «Києво-Могилянська академія»
+                                    ГО Спудейське Братсво НаУКМА
+                                    вул. Волоська 8/5, 4 корпус,
+                                    кумната 107
+                  <br />
+                  <img src="/images/facebook.png" id="facebook" />
+                  <img src="/images/insta.png"
+                    id="instagram" />
+                  <img src="/images/mail.png" id="email" />
+                  <img src="/images/web.png"
+                    id="web" />
+                </p>
+              </div>
+            </div>
+          </section>
+          <br />
         </div>
       </Layout>
     );
