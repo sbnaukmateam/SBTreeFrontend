@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { selectorProfileName } from '../selectors';
+import { selectorAuthResult } from '../selectors';
 import { modalActions } from '../actions';
 import { NavNoAuth } from '.';
 
@@ -43,7 +43,7 @@ class Navbar extends PureComponent {
 
   render() {
     const {
-      name, style, transparent, actions: { modal },
+      auth, style, transparent, actions: { modal },
     } = this.props;
     const { scroll } = this.state;
     const navStyle = `navbar${transparent && !scroll ? ' transparent' : ''}`;
@@ -71,7 +71,7 @@ class Navbar extends PureComponent {
             </Link>
           </div>
           <div className="col-3 d-flex justify-content-center">
-            {name ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
+            {auth ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
           </div>
         </div>
       </div>
@@ -81,17 +81,17 @@ class Navbar extends PureComponent {
 
 Navbar.contextTypes = { router: PropTypes.object };
 Navbar.propTypes = {
-  name: PropTypes.string,
+  auth: PropTypes.object,
   style: PropTypes.object.isRequired,
   transparent: PropTypes.bool,
   actions: PropTypes.object.isRequired,
 };
 Navbar.defaultProps = {
-  name: null,
+  auth: null,
   transparent: null,
 };
-const mapStateToProps = (state, ownProps) => ({
-  name: selectorProfileName(state, ownProps.id),
+const mapStateToProps = state => ({
+  auth: selectorAuthResult(state),
 });
 const mapDispatchToProps = dispatch => ({
   actions: {
