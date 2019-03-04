@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { selectorProfileName } from '../selectors';
 
 const NavAuth = () => (
   <div className="d-flex">
@@ -86,13 +84,16 @@ Navbar.propTypes = {
   transparent: PropTypes.bool,
 };
 Navbar.defaultProps = {
-  name: null,
+  name: 'Vasia Pupkin', // TODO set null after creating auth module
   transparent: null,
 };
+// TODO: restore logic after creating auth module
+/*
 const mapStateToProps = (state, ownProps) => ({
   name: selectorProfileName(state, ownProps.id),
 });
+*/
 
-const NavbarWrapped = connect(mapStateToProps)(Navbar);
+const NavbarWrapped = Navbar; // connect(mapStateToProps)(Navbar);
 
 export { NavbarWrapped as Navbar };
