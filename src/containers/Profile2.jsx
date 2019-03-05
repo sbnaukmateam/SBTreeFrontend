@@ -2,10 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
+
 import { profileActions, membersActions } from '../actions';
 
 import {
-  selectorProfileById, selectorPasswordChange, selectorPatron, selectorInfoChange,
+  selectorCurrentProfile, selectorPatron, selectorMessage,
 } from '../selectors';
 
 import { ProfileCard, ProfileSidebar, ProfileInfoColumn } from '../components';
@@ -21,15 +23,15 @@ class Profile extends PureComponent {
   }
 
   render() {
-    const { me } = this.props;
+    const { profile, patron, message } = this.props;
     const {
       phones, emails, profiles,
       positions, degrees,
-    } = me || {};
+    } = profile || {};
     const contacts = [
-      ...(phones || []).map(phone => ({ item: phone, type: 'phone' })),
-      ...(profiles || []).map(profile => ({ item: profile, type: detectProfileType(profile) })),
-      ...(emails || []).map(email => ({ item: email, type: 'email' })),
+      ...(phones || []).map(item => ({ item, type: 'phone' })),
+      ...(profiles || []).map(item => ({ item, type: detectProfileType(item) })),
+      ...(emails || []).map(item => ({ item, type: 'email' })),
     ];
     const formattedPositions = (positions || []).map(({ years, name }) => ({
       item: `${name} - ${years.join(', ')}`,
@@ -41,11 +43,12 @@ class Profile extends PureComponent {
     }));
     return (
       <Layout>
-        {me && (
+        <p>{message}</p>
+        {profile && (
           <section className="profile">
             <div>
               <div className="l-col">
-                <ProfileCard {...me} />
+                <ProfileCard {...profile} patron={patron} />
                 <div className="edit-info-wrapper">
                   <ProfileInfoColumn items={contacts} title="Контакти:" makeAnchors />
                   <ProfileInfoColumn items={formattedPositions} title="Посади в СБ:" />
@@ -62,22 +65,21 @@ class Profile extends PureComponent {
 }
 
 Profile.propTypes = {
-  me: PropTypes.object,
+  profile: PropTypes.object,
   patron: PropTypes.object,
+  message: PropTypes.string,
   actions: PropTypes.object.isRequired,
-  passwordChanged: PropTypes.object.isRequired,
-  infoChanged: PropTypes.object.isRequired,
 };
 Profile.defaultProps = {
   patron: null,
-  me: null,
+  profile: null,
+  message: null,
 };
-const mapStateToProps = (state, ownProps) => ({
-  me: selectorProfileById(state, ownProps.id),
-  patron: selectorPatron(state, ownProps.id),
-  passwordChanged: selectorPasswordChange(state),
-  infoChanged: selectorInfoChange(state),
-});
+
+const mapStateToProps = createSelector(
+  [selectorCurrentProfile, selectorPatron, selectorMessage],
+  (profile, patron, message) => ({ profile, patron, message }),
+);
 
 const mapDispatchToProps = dispatch => ({
   actions: {

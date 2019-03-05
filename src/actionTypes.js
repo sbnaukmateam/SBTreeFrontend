@@ -7,6 +7,9 @@ export default keyMirror({
   ...makeActionTypes('FETCH_PROJECTS'),
   ...makeActionTypes('FETCH_MEMBERS'),
   ...makeActionTypes('NEDB_INIT'),
+  ...makeActionTypes('NEDB_QUERY_MEMBERS'),
+  ...makeActionTypes('NEDB_GET_MEMBER'),
+  ...makeActionTypes('NEDB_UPDATE_MEMBER'),
   ...makeActionTypes('CHANGE_PASSWORD'),
   ...makeActionTypes('CHANGE_INFORMATION'),
 });

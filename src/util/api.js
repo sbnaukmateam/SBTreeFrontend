@@ -10,7 +10,7 @@ const changePasswordMock = (/* newPassword */) => {
   if (Math.random() < 0.5) throw new Error('NO CONNECTION');
   return { status: 'SUCCESS' };
 };
-const changeInfoMock = (/* data */) => {
+const changeInfoMock = (/* id, data */) => {
   if (Math.random() < 0.5) throw new Error('SOMETHING WENT WRONG');
   return { status: 'SUCCESS' };
 };
