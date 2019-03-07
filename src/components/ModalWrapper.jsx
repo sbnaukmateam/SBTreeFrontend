@@ -1,24 +1,31 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { selectorModalResult } from '../selectors';
+import { ModalContainer } from '.';
 
 class ModalWrapper extends PureComponent {
-  // TODO remove mock styling
   render() {
-    const { children } = this.props;
+    const { openModal } = this.props;
+    if (!openModal) return (<div />);
     return (
-      <div style={{
-        width: '500px', height: '500px', position: 'fixed', left: '400px', top: '400px', backgroundColor: 'red',
-      }}>
-        { children }
+      <div>
+        <div className="modal-wrapper-box" />
+        <ModalContainer modalKey={openModal} />
       </div>
     );
   }
 }
 ModalWrapper.propTypes = {
-  children: PropTypes.object.isRequired,
+  openModal: PropTypes.string,
 };
+ModalWrapper.defaultProps = {
+  openModal: null,
+};
+const mapStateToProps = state => ({
+  openModal: selectorModalResult(state),
+});
 
-const ModalWrapperWrapped = connect()(ModalWrapper);
+const ModalWrapperWrapped = connect(mapStateToProps)(ModalWrapper);
 
 export { ModalWrapperWrapped as ModalWrapper };

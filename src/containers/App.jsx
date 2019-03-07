@@ -2,11 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {
-  ModalLogin, ModalSignUp,
-} from '../components';
+import { ModalWrapper } from '../components';
 import { authActions } from '../actions';
-import { selectorModalResult } from '../selectors';
 
 class App extends PureComponent {
   componentWillMount() {
@@ -15,12 +12,11 @@ class App extends PureComponent {
   }
 
   render() {
-    const { children, openModal } = this.props;
+    const { children } = this.props;
     return (
       <React.Fragment>
         {children}
-        {openModal === 'login' && <ModalLogin />}
-        {openModal === 'signUp' && <ModalSignUp />}
+        <ModalWrapper />
       </React.Fragment>
     );
   }
@@ -29,13 +25,11 @@ class App extends PureComponent {
 
 App.propTypes = {
   children: PropTypes.any,
-  openModal: PropTypes.string,
   actions: PropTypes.object.isRequired,
 };
 
 App.defaultProps = {
   children: null,
-  openModal: null,
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -43,9 +37,7 @@ const mapDispatchToProps = dispatch => ({
     auth: bindActionCreators(authActions, dispatch),
   },
 });
-const mapStateToProps = state => ({
-  openModal: selectorModalResult(state),
-});
-const AppWrapper = connect(mapStateToProps, mapDispatchToProps)(App);
+
+const AppWrapper = connect(null, mapDispatchToProps)(App);
 
 export { AppWrapper as App };
