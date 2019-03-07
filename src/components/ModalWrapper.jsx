@@ -6,18 +6,22 @@ import { ModalContainer } from '.';
 
 class ModalWrapper extends PureComponent {
   render() {
-    const { openModal } = this.props;
-    if (!openModal) return (<div />);
+    const { openModal, modalKey, children } = this.props;
+    if (openModal !== modalKey) return (<div />);
     return (
       <div>
         <div className="modal-wrapper-box" />
-        <ModalContainer modalKey={openModal} />
+        <ModalContainer>
+          {children}
+        </ModalContainer>
       </div>
     );
   }
 }
 ModalWrapper.propTypes = {
   openModal: PropTypes.string,
+  modalKey: PropTypes.string.isRequired,
+  children: PropTypes.object.isRequired,
 };
 ModalWrapper.defaultProps = {
   openModal: null,

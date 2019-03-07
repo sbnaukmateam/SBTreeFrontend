@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import onClickOutside from 'react-onclickoutside';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ModalLogin, ModalSignUp } from '.';
 import { modalActions } from '../actions';
 
 class ModalContainer extends PureComponent {
@@ -14,20 +13,19 @@ class ModalContainer extends PureComponent {
 
   // TODO remove mock styling
   render() {
-    const { modalKey, actions: { modal } } = this.props;
+    const { actions: { modal }, children } = this.props;
     return (
       <div>
         <div className="modal-wrapper">
           <button type="button" className="btn-close" onClick={() => modal.closeModal()}>X</button>
-          {modalKey === 'login' && <ModalLogin />}
-          {modalKey === 'signup' && <ModalSignUp />}
+          {children}
         </div>
       </div>
     );
   }
 }
 ModalContainer.propTypes = {
-  modalKey: PropTypes.string.isRequired,
+  children: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
 };
 const mapDispatchToProps = dispatch => ({
