@@ -1,16 +1,16 @@
 import actionTypes from '../actionTypes';
 
-const openLoginModal = () => (dispatch) => {
-  const result = 'login';
-  dispatch({ type: actionTypes.MODAL_LOGIN, payload: result });
-};
 
-const openSignUpModal = () => (dispatch) => {
-  const result = 'signup';
-  dispatch({ type: actionTypes.MODAL_SIGNUP, payload: result });
-};
-const closeModal = () => (dispatch) => {
-  const result = '';
-  dispatch({ type: actionTypes.MODAL_CLOSE, payload: result });
-};
+const openLoginModal = () => ({
+  type: actionTypes.MODAL_LOGIN,
+  payload: 'login',
+});
+const openSignUpModal = () => ({
+  type: actionTypes.MODAL_SIGNUP,
+  payload: 'signup',
+});
+const closeModal = () => ({
+  type: actionTypes.MODAL_CLOSE,
+  payload: '',
+});
 export const modalActions = { openLoginModal, openSignUpModal, closeModal };

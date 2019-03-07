@@ -7,20 +7,18 @@ import { ModalLogin, ModalSignUp } from '.';
 import { modalActions } from '../actions';
 
 class ModalContainer extends PureComponent {
-  componentDidMount() {
+  handleClickOutside() {
     const { actions: { modal } } = this.props;
-    this.closeModal = modal.closeModal;
+    return modal.closeModal();
   }
-
-  handleClickOutside = () => this.closeModal();
 
   // TODO remove mock styling
   render() {
-    const { modalKey } = this.props;
+    const { modalKey, actions: { modal } } = this.props;
     return (
       <div>
         <div className="modal-wrapper">
-          <button type="button" className="btn-close" onClick={() => this.closeModal()}>X</button>
+          <button type="button" className="btn-close" onClick={() => modal.closeModal()}>X</button>
           {modalKey === 'login' && <ModalLogin />}
           {modalKey === 'signup' && <ModalSignUp />}
         </div>
