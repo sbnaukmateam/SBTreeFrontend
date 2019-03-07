@@ -3,6 +3,13 @@ import { request } from './request';
 
 const ping = () => request('/ping/v1/ping');
 
+const verify = () => request('/auth/v1/verify');
+
+const signIn = (login, password) => request('/auth/v1/login', 'POST', { login, password });
+
+const signUp = (login, password, name) => request('/auth/v1/signup', 'POST', { login, password, name });
+
+
 // TODO remove mock
 const getProjectsMock = () => Projects;
 const getMembersMock = () => Members;
@@ -16,5 +23,12 @@ const changeInfoMock = (/* data */) => {
 };
 // -----
 export const api = {
-  ping, getProjectsMock, getMembersMock, changePasswordMock, changeInfoMock,
+  ping,
+  getProjectsMock,
+  getMembersMock,
+  changePasswordMock,
+  changeInfoMock,
+  verify,
+  signIn,
+  signUp,
 };

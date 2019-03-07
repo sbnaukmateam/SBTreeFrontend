@@ -5,3 +5,4 @@ export * from './About';
 export * from './Projects';
 export * from './Profile';
 export * from './Admin';
+export * from './App';
