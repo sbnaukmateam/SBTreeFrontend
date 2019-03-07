@@ -6,14 +6,17 @@ const initialState = {
 };
 
 
-const modalSuccess = (state, { payload }) => ({
+const modalOpen = (state, { payload }) => ({
   ...state,
   open: payload,
 });
 
+const modalClose = (state, { payload }) => ({
+  ...state,
+  open: payload,
+});
 
 export const modal = handleActions({
-  [actionTypes.MODAL_LOGIN]: modalSuccess,
-  [actionTypes.MODAL_SIGNUP]: modalSuccess,
-  [actionTypes.MODAL_CLOSE]: modalSuccess,
+  [actionTypes.MODAL_OPEN]: modalOpen,
+  [actionTypes.MODAL_CLOSE]: modalClose,
 }, initialState);

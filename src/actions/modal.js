@@ -2,11 +2,11 @@ import actionTypes from '../actionTypes';
 
 
 const openLoginModal = () => ({
-  type: actionTypes.MODAL_LOGIN,
+  type: actionTypes.MODAL_OPEN,
   payload: 'login',
 });
 const openSignUpModal = () => ({
-  type: actionTypes.MODAL_SIGNUP,
+  type: actionTypes.MODAL_OPEN,
   payload: 'signup',
 });
 const closeModal = () => ({
