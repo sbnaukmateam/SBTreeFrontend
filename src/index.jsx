@@ -6,7 +6,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { store, history } from './store';
 import {
-  MyContainer, NotFound, About, Projects, Profile, Admin,
+  MyContainer, NotFound, About, Projects, Profile, Admin, App,
 } from './containers';
 
 import 'bootstrap';
@@ -19,14 +19,16 @@ const MyProfile = props => (<Profile id={1} {...props} />);
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Switch>
-        <Route path="/" exact component={MyContainer} />
-        <Route path="/about" component={About} />
-        <Route path="/projects" component={Projects} />
-        <Route path="/profile" render={MyProfile} />
-        <Route path="/contacts" component={Admin} />
-        <Route path="*" component={NotFound} />
-      </Switch>
+      <App>
+        <Switch>
+          <Route path="/" exact component={MyContainer} />
+          <Route path="/about" component={About} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/profile" render={MyProfile} />
+          <Route path="/contacts" component={Admin} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </App>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),

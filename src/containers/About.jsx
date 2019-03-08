@@ -183,7 +183,7 @@ class About extends PureComponent {
             <h1 id="where-to-find">ДЕ НАС ЗНАЙТИ?</h1>
             <div className="flex-container4">
               <div className="flex-element fourth-sec-el section4-wrapper">
-                <img src="/images/mapMock.jpg" id="map" />
+                <img src="/images/mapMock.png" id="map" />
               </div>
               <div className="flex-element fourth-sec-el">
                 <p className="address">
