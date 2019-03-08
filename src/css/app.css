@@ -314,7 +314,7 @@ button {
 .about-main-wrapper{
   margin: 0;
   padding: 0;
-  background-image: url("/images/background.png");
+  background-image: url("/images/main-bg.png");
   background-size:cover ;
 }
 p, h1{

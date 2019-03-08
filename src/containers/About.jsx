@@ -31,7 +31,7 @@ class About extends PureComponent {
                 </p>
               </div>
               <div className=" flex-element logo-wrapper">
-                <img src="/images/SBLogo.jpg" width="200px;" />
+                <img src="/images/logo-big.png" width="200px;" />
                 <button type="button" href="#" id="join-button">
 ПРИЄДНАТИСЬ &nbsp;
                   <i className="fas fa-angle-double-right" />
@@ -74,7 +74,7 @@ class About extends PureComponent {
                 </p>
               </div>
               <div className="second-section-element flex-element photo-wrapping">
-                <img src="/images/photo.jpg" className="paravoz" />
+                <img src="/images/train.jpg" className="paravoz" />
 
                 <button type="button" href="#" id="read-more">
 ЧИТАТИ ДАЛІ &nbsp;
@@ -183,7 +183,7 @@ class About extends PureComponent {
             <h1 id="where-to-find">ДЕ НАС ЗНАЙТИ?</h1>
             <div className="flex-container4">
               <div className="flex-element fourth-sec-el section4-wrapper">
-                <img src="/images/map.jpg" id="map" />
+                <img src="/images/mapMock.jpg" id="map" />
               </div>
               <div className="flex-element fourth-sec-el">
                 <p className="address">
@@ -193,11 +193,11 @@ class About extends PureComponent {
                                     вул. Волоська 8/5, 4 корпус,
                                     кумната 107
                   <br />
-                  <img src="/images/facebook.png" id="facebook" />
-                  <img src="/images/insta.png"
+                  <img src="/images/fb-blue.png" id="facebook" />
+                  <img src="/images/inst-blue.png"
                     id="instagram" />
-                  <img src="/images/mail.png" id="email" />
-                  <img src="/images/web.png"
+                  <img src="/images/mail-blue.png" id="email" />
+                  <img src="/images/web-blue.png"
                     id="web" />
                 </p>
               </div>
