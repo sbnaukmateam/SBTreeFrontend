@@ -1,3 +1,4 @@
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 
 p, h1{
   font-family: 'Lato', sans-serif;
@@ -376,6 +377,7 @@ button {
   margin-left: 10px;
   padding: 1vw 3vw 1vw 3vw;
   transition: 0.3s;
+  white-space: nowrap;
 }
 #join-button:hover{
   background-color:#28639b;
