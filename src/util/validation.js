@@ -4,8 +4,13 @@ const email = value => (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.te
   ? 'Не правильна адреса' : undefined);
 const oneNumber = value => (value && !/(?=.*[0-9])/i.test(value) ? 'Як мінімум 1 цифра' : undefined);
 const oneUpperChar = value => (value && !/(?=.*[A-Z])/i.test(value) ? 'Як мінімум 1 велика літера' : undefined);
-const passwordsMatch = passwrd => value => (value !== passwrd ? 'Паролі не співпадають' : undefined);
-
+const changePasswordValidate = (values) => {
+  const errors = {};
+  if (values.passwordConfirm && values.password && values.passwordConfirm !== values.password) {
+    errors.passwordConfirm = 'Passwords not match';
+  }
+  return errors;
+};
 export const validate = {
-  required, minLength, email, passwordsMatch, oneNumber, oneUpperChar,
+  required, minLength, email, oneNumber, oneUpperChar, changePasswordValidate,
 };

@@ -16,9 +16,8 @@ class ModalLogin extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { actions: { auth, modal }, username, password } = this.props;
+    const { actions: { auth }, username, password } = this.props;
     auth.signIn({ password, username });
-    modal.closeModal();
   }
 
   render() {

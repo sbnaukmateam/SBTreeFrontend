@@ -31,6 +31,7 @@ const signUp = data => async (dispatch) => {
     } = data;
     const result = await api.signUp(username, password, name, surname);
     dispatch({ type: actionTypes.AUTH_SIGNUP_SUCCESS, payload: result });
+    dispatch({ type: actionTypes.MODAL_CLOSE });
   } catch (err) {
     dispatch({ type: actionTypes.AUTH_SIGNUP_FAIL, payload: err.toString() });
   }

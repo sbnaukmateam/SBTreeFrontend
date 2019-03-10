@@ -8,6 +8,11 @@ import { authActions } from '../actions';
 import { validate } from '../util';
 import { FormField } from '.';
 
+const {
+  required, email, oneNumber, oneUpperChar, minLength, changePasswordValidate,
+} = validate;
+const minLength6 = minLength(6);
+
 class ModalSignUp extends PureComponent {
   constructor(props) {
     super(props);
@@ -17,21 +22,17 @@ class ModalSignUp extends PureComponent {
   handleSubmit(event) {
     event.preventDefault();
     const {
-      actions: { auth, modal }, username, password, name, surname,
+      actions: { auth }, username, password, name, surname,
     } = this.props;
     auth.signUp({
       password, username, name, surname,
     });
-    modal.closeModal();
   }
 
   render() {
     // TODO
     const {
-      required, email, /* passwordsMatch, oneNumber, oneUpperChar, minLength, */
-    } = validate;
-    const {
-      /* password , */ submitting, invalid, pristine,
+      submitting, invalid, pristine,
     } = this.props;
     return (
       <ModalWrapper modalKey="signup">
@@ -40,8 +41,8 @@ class ModalSignUp extends PureComponent {
           <Field component={FormField} className="input" label="Ім'я" autoComplete="off" type="text" name="firstname" validate={[required]} />
           <Field component={FormField} className="input" label="Прізвище" type="text" name="surname" validate={[required]} />
           <Field component={FormField} className="input" label="Email" type="email" name="email" validate={[required, email]} />
-          <Field component={FormField} className="input" label="Пароль" type="password" name="password" /* validate={[minLength(6), oneNumber, oneUpperChar]} */ />
-          <Field component={FormField} className="input" label="Повторіть пароль" type="password" name="password-valid" /* validate={passwordsMatch(password)} */ />
+          <Field component={FormField} className="input" label="Пароль" type="password" name="password" validate={[minLength6, oneNumber, oneUpperChar]} />
+          <Field component={FormField} className="input" label="Повторіть пароль" type="password" name="passwordConfirm" validate={required} />
           <button className="form-btn" type="submit" disabled={submitting || pristine || invalid}>РЕЄСТРАЦІЯ</button>
         </form>
       </ModalWrapper>
@@ -79,6 +80,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const WrappedModalLogin = connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'SignUpForm' })(ModalSignUp));
+const WrappedModalLogin = connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'SignUpForm', validate: changePasswordValidate })(ModalSignUp));
 
 export { WrappedModalLogin as ModalSignUp };
