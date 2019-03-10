@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import PropTypes from 'prop-types';
-import { ModalWrapper } from './ModalWrapper';
 import { authActions } from '../actions';
 import { validate } from '../util';
+import { modalWrapper } from '../hoc';
 import { FormField } from '.';
 
 const {
@@ -35,17 +35,15 @@ class ModalSignUp extends PureComponent {
       submitting, invalid, pristine,
     } = this.props;
     return (
-      <ModalWrapper modalKey="signup">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <span className="form-title">SB</span>
-          <Field component={FormField} className="input" label="Ім'я" autoComplete="off" type="text" name="firstname" validate={[required]} />
-          <Field component={FormField} className="input" label="Прізвище" type="text" name="surname" validate={[required]} />
-          <Field component={FormField} className="input" label="Email" type="email" name="email" validate={[required, email]} />
-          <Field component={FormField} className="input" label="Пароль" type="password" name="password" validate={[minLength6, oneNumber, oneUpperChar]} />
-          <Field component={FormField} className="input" label="Повторіть пароль" type="password" name="passwordConfirm" validate={required} />
-          <button className="form-btn" type="submit" disabled={submitting || pristine || invalid}>РЕЄСТРАЦІЯ</button>
-        </form>
-      </ModalWrapper>
+      <form className="form" onSubmit={this.handleSubmit}>
+        <span className="form-title">SB</span>
+        <Field component={FormField} className="input" label="Ім'я" autoComplete="off" type="text" name="firstname" validate={[required]} />
+        <Field component={FormField} className="input" label="Прізвище" type="text" name="surname" validate={[required]} />
+        <Field component={FormField} className="input" label="Email" type="email" name="email" validate={[required, email]} />
+        <Field component={FormField} className="input" label="Пароль" type="password" name="password" validate={[minLength6, oneNumber, oneUpperChar]} />
+        <Field component={FormField} className="input" label="Повторіть пароль" type="password" name="passwordConfirm" validate={required} />
+        <button className="form-btn" type="submit" disabled={submitting || pristine || invalid}>РЕЄСТРАЦІЯ</button>
+      </form>
     );
   }
 }
@@ -80,6 +78,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const WrappedModalLogin = connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'SignUpForm', validate: changePasswordValidate })(ModalSignUp));
+const WrappedModalLogin = modalWrapper('signup')(connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'SignUpForm', validate: changePasswordValidate })(ModalSignUp)));
 
 export { WrappedModalLogin as ModalSignUp };

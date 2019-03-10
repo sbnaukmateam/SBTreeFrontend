@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { selectorAuth } from '../selectors';
+import { selectorLoggedIn } from '../selectors';
 import { modalActions } from '../actions';
 import { NavNoAuth, NavAuth } from '.';
 
@@ -32,8 +32,9 @@ class Navbar extends PureComponent {
 
   render() {
     const {
-      auth, style, transparent, actions: { modal },
+      loggedIn, style, transparent, actions: { modal },
     } = this.props;
+    console.log(this.props);
     const { scroll } = this.state;
     const navStyle = `navbar${transparent && !scroll ? ' transparent' : ''}`;
     return (
@@ -60,7 +61,7 @@ class Navbar extends PureComponent {
             </Link>
           </div>
           <div className="col-3 d-flex justify-content-center">
-            {auth.result ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
+            {loggedIn ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
           </div>
         </div>
       </div>
@@ -70,17 +71,17 @@ class Navbar extends PureComponent {
 
 Navbar.contextTypes = { router: PropTypes.object };
 Navbar.propTypes = {
-  auth: PropTypes.object,
+  loggedIn: PropTypes.bool,
   style: PropTypes.object.isRequired,
   transparent: PropTypes.bool,
   actions: PropTypes.object.isRequired,
 };
 Navbar.defaultProps = {
-  auth: null,
+  loggedIn: false,
   transparent: null,
 };
 const mapStateToProps = state => ({
-  auth: selectorAuth(state),
+  loggedIn: selectorLoggedIn(state),
 });
 const mapDispatchToProps = dispatch => ({
   actions: {

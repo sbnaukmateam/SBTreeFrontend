@@ -1,5 +1,7 @@
+import { push } from 'connected-react-router';
 import actionTypes from '../actionTypes';
-import { api, setAuth } from '../util';
+import { api, setAuth, parseParams } from '../util';
+import { selectorRouterSearch } from '../selectors';
 
 const verifyUser = () => async (dispatch) => {
   dispatch({ type: actionTypes.AUTH_VERIFY_START });
@@ -11,13 +13,18 @@ const verifyUser = () => async (dispatch) => {
   }
 };
 
-const signIn = data => async (dispatch) => {
+const signIn = data => async (dispatch, getState) => {
+  const search = selectorRouterSearch(getState());
+  const { back: backUrl } = parseParams(search);
   dispatch({ type: actionTypes.AUTH_LOGIN_START });
   try {
     const { username, password } = data;
     const result = await api.signIn(username, password);
     dispatch({ type: actionTypes.AUTH_LOGIN_SUCCESS, payload: result });
     dispatch({ type: actionTypes.MODAL_CLOSE });
+    if (backUrl) {
+      dispatch(push(backUrl));
+    }
   } catch (err) {
     dispatch({ type: actionTypes.AUTH_LOGIN_FAIL, payload: err.toString() });
   }

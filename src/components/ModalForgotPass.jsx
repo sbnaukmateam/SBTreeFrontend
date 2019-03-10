@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import PropTypes from 'prop-types';
-import { ModalWrapper } from './ModalWrapper';
+import { modalWrapper } from '../hoc';
 import { authActions } from '../actions';
 
 class ModalForgotPass extends PureComponent {
@@ -20,13 +20,11 @@ class ModalForgotPass extends PureComponent {
 
   render() {
     return (
-      <ModalWrapper modalKey="forgotPass">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <span className="form-title">SB</span>
-          <Field component="input" className="input" placeholder="Email" type="email" name="email" />
-          <button className="form-btn" type="submit">ВІДПРАВИТИ</button>
-        </form>
-      </ModalWrapper>
+      <form className="form" onSubmit={this.handleSubmit}>
+        <span className="form-title">SB</span>
+        <Field component="input" className="input" placeholder="Email" type="email" name="email" />
+        <button className="form-btn" type="submit">ВІДПРАВИТИ</button>
+      </form>
     );
   }
 }
@@ -52,6 +50,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const WrappedModalLogin = connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'ResetPassForm' })(ModalForgotPass));
+const WrappedModalLogin = modalWrapper('forgotPass')(connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'ResetPassForm' })(ModalForgotPass)));
 
 export { WrappedModalLogin as ModalForgotPass };

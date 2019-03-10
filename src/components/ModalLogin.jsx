@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import PropTypes from 'prop-types';
-import { ModalWrapper } from './ModalWrapper';
 import { authActions, modalActions } from '../actions';
 import { validate } from '../util';
+import { modalWrapper } from '../hoc';
 import { FormField } from '.';
 
 class ModalLogin extends PureComponent {
@@ -26,18 +26,16 @@ class ModalLogin extends PureComponent {
     } = this.props;
     const { email, required } = validate;
     return (
-      <ModalWrapper modalKey="login">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <span className="form-title">SB</span>
-          <Field component={FormField} className="input" label="Пошта" autoComplete="off" type="email" name="username" validate={[email, required]} />
-          <Field component={FormField} className="input" label="Пароль" type="password" name="password" validate={[required]} />
-          <button className="form-btn" type="submit" disabled={submitting || pristine || invalid}>УВІЙТИ</button>
-          <div className="reg-reset">
-            <button type="button" className="forgot-pass-link" onClick={() => modal.openForgotPassModal()}>Забули пароль?</button>
-            <button type="button" className="signup-link" onClick={() => modal.openSignUpModal()}>Реєстрація</button>
-          </div>
-        </form>
-      </ModalWrapper>
+      <form className="form" onSubmit={this.handleSubmit}>
+        <span className="form-title">SB</span>
+        <Field component={FormField} className="input" label="Пошта" autoComplete="off" type="email" name="username" validate={[email, required]} />
+        <Field component={FormField} className="input" label="Пароль" type="password" name="password" validate={[required]} />
+        <button className="form-btn" type="submit" disabled={submitting || pristine || invalid}>УВІЙТИ</button>
+        <div className="reg-reset">
+          <button type="button" className="forgot-pass-link" onClick={() => modal.openForgotPassModal()}>Забули пароль?</button>
+          <button type="button" className="signup-link" onClick={() => modal.openSignUpModal()}>Реєстрація</button>
+        </div>
+      </form>
     );
   }
 }
@@ -67,6 +65,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const WrappedModalLogin = connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'LoginForm' })(ModalLogin));
+const WrappedModalLogin = modalWrapper('login')(connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'LoginForm' })(ModalLogin)));
 
 export { WrappedModalLogin as ModalLogin };
