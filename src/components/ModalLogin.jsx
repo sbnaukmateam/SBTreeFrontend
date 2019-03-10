@@ -1,10 +1,12 @@
-/* eslint-disable */
 import React, { PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
+import PropTypes from 'prop-types';
 import { ModalWrapper } from './ModalWrapper';
-import { authActions } from '../actions';
+import { authActions, modalActions } from '../actions';
+import { validate } from '../util';
+import { FormField } from '.';
 
 class ModalLogin extends PureComponent {
   constructor(props) {
@@ -14,43 +16,44 @@ class ModalLogin extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { actions: { auth }, username, password } = this.props;
+    const { actions: { auth, modal }, username, password } = this.props;
     auth.signIn({ password, username });
+    modal.closeModal();
   }
 
   render() {
-    // TODO remove <p> tag
+    const {
+      actions: { modal }, submitting, pristine, invalid,
+    } = this.props;
+    const { email, required } = validate;
     return (
       <ModalWrapper modalKey="login">
-        <div className="wrap-login">
-          <form className="login-form" onSubmit={this.handleSubmit}>
-            <span className="login-form-title">SB</span>
-            <span className="login-form-title" />
-            <div className="wrap-input">
-              <Field component="input" className="input" placeholder="Логін" autoComplete="off" type="text" name="username" />
-            </div>
-            <div className="wrap-input">
-              <Field component="input" className="input" placeholder="Пароль" type="password" name="password" />
-            </div>
-            <div className="container-login-form-btn">
-              <div className="wrap-login-form-btn">
-                <div className="login-form-bgbtn" />
-                <button className="login-form-btn" type="submit">Увійти</button>
-              </div>
-            </div>
-            <div className="reg-reset">
-              <div className="reset-pass">
-                <a href="#" className="rp">Забули пароль?</a>
-              </div>
-              <a className="none-acc" href="#">Реєстрація</a>
-            </div>
-          </form>
-        </div>
+        <form className="form" onSubmit={this.handleSubmit}>
+          <span className="form-title">SB</span>
+          <Field component={FormField} className="input" label="Пошта" autoComplete="off" type="email" name="username" validate={[email, required]} />
+          <Field component={FormField} className="input" label="Пароль" type="password" name="password" validate={[required]} />
+          <button className="form-btn" type="submit" disabled={submitting || pristine || invalid}>УВІЙТИ</button>
+          <div className="reg-reset">
+            <button type="button" className="forgot-pass-link" onClick={() => modal.openForgotPassModal()}>Забули пароль?</button>
+            <button type="button" className="signup-link" onClick={() => modal.openSignUpModal()}>Реєстрація</button>
+          </div>
+        </form>
       </ModalWrapper>
     );
   }
 }
-
+ModalLogin.propTypes = {
+  username: PropTypes.string,
+  password: PropTypes.string,
+  actions: PropTypes.object.isRequired,
+  submitting: PropTypes.bool.isRequired,
+  invalid: PropTypes.bool.isRequired,
+  pristine: PropTypes.bool.isRequired,
+};
+ModalLogin.defaultProps = {
+  username: null,
+  password: null,
+};
 const selector = formValueSelector('LoginForm');
 
 const mapStateToProps = state => ({
@@ -61,6 +64,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   actions: {
     auth: bindActionCreators(authActions, dispatch),
+    modal: bindActionCreators(modalActions, dispatch),
   },
 });
 

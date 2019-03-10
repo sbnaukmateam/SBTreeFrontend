@@ -10,7 +10,7 @@ const prepareOptions = (method, data, options) => ({
 
 const getAuth = () => localStorage.getItem('token');
 
-const setAuth = token => localStorage.setItem('token', token);
+export const setAuth = token => localStorage.setItem('token', token);
 
 const addBearerAuth = options => ({
   ...options,

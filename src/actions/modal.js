@@ -9,8 +9,14 @@ const openSignUpModal = () => ({
   type: actionTypes.MODAL_OPEN,
   payload: 'signup',
 });
+const openForgotPassModal = () => ({
+  type: actionTypes.MODAL_OPEN,
+  payload: 'forgotPass',
+});
 const closeModal = () => ({
   type: actionTypes.MODAL_CLOSE,
   payload: '',
 });
-export const modalActions = { openLoginModal, openSignUpModal, closeModal };
+export const modalActions = {
+  openLoginModal, openSignUpModal, closeModal, openForgotPassModal,
+};

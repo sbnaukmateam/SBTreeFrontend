@@ -619,58 +619,42 @@ button {
 }
 .modal-wrapper{
   width: 400px;
-  height: 400px;
   position: fixed;
   left: calc(50% - 200px);
   top: calc(50% - 200px);
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  border-radius: 5px;
 }
 .btn-close{
   border:none;
   position: absolute;
-  right:10px;
-  top:10px;
-  background-color: red;
+  right:5px;
+  top:5px;
+  background-color: #28639b;
+  border-radius: 2px;
   color:white;
   width: 40px;
   height:40px;
-
 }
 
-.wrap-login {
-  width: 390px;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 40px 55px 33px 55px;
-}
 
-.login-form {
+.form {
   width: 100%;
+  padding: 30px 55px;
+  display: flex;
+  flex-direction: column;
 }
 
-.login-form-title {
-  display: block;
+.form-title {
   font-size: 30px;
   color: #333333;
-  margin-bottom: 30px;
   text-align: center;
 }
 
-.login-form-title i {
-  font-size: 60px;
-}
-
-.wrap-input {
-  width: 100%;
-  position: relative;
-  margin-bottom: 37px;
-}
-
 .input {
+  outline: none;
+  border: 2px solid #28639b;
+  border-radius: 4px;
   font-size: 15px;
   color: #555555;
   line-height: 1.2;
@@ -679,42 +663,49 @@ button {
   height: 45px;
   background: transparent;
   padding: 0 5px;
+  margin-top: 25px;
+  margin-bottom: 10px;
 }
 
-.container-login-form-btn {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 13px;
-}
-
-.wrap-login-form-btn {
-  width: 100%;
-  display: block;
-  position: relative;
-  z-index: 1;
-  border-radius: 25px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-.login-form-bgbtn {
-  position: absolute;
-  z-index: -1;
-  width: 300%;
-  height: 100%;
-  background: #28639b;;
-}
-
-.login-form-btn {
-  font-size: 15px;
+.form-btn {
   color: #fff;
-  line-height: 1.2;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  width: 100%;
+  background-color: #28639b;
   height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  margin: 30px 0 0;
+}
+.reg-reset{
+  position: relative;
+  margin-top: 55px;
+}
+.reg-reset button{
+  position: absolute;
+  bottom:0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+}
+.reg-reset button:hover{
+  text-decoration: underline;
+}
+.forgot-pass-link{
+  left:0;
+}
+.signup-link{
+  right: 0;
+}
+.error{
+  border-color: #f00;
+  margin-bottom: 0;
+}
+.warning{
+  border-color: #ffd700;
+  margin-bottom: 0;
 }

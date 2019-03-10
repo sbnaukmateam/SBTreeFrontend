@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ModalSignUp, ModalLogin } from '../components';
+import { ModalSignUp, ModalLogin, ModalForgotPass } from '../components';
 import { authActions } from '../actions';
 
 class App extends PureComponent {
@@ -18,6 +18,7 @@ class App extends PureComponent {
         {children}
         <ModalLogin />
         <ModalSignUp />
+        <ModalForgotPass />
       </React.Fragment>
     );
   }

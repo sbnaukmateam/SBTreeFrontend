@@ -3,20 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { selectorAuthResult } from '../selectors';
+import { selectorAuth } from '../selectors';
 import { modalActions } from '../actions';
-import { NavNoAuth } from '.';
-
-const NavAuth = () => (
-  <div className="d-flex">
-    <Link to="/profile" className="mr-2 d-flex align-items-center">
-      <img src="images/profile-icon.png" className="profile-icon" />
-    </Link>
-    <div className="auth-nav" />
-    <button type="button">ВИХІД</button>
-  </div>
-);
-
+import { NavNoAuth, NavAuth } from '.';
 
 class Navbar extends PureComponent {
   constructor() {
@@ -71,7 +60,7 @@ class Navbar extends PureComponent {
             </Link>
           </div>
           <div className="col-3 d-flex justify-content-center">
-            {auth ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
+            {auth.result ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
           </div>
         </div>
       </div>
@@ -91,7 +80,7 @@ Navbar.defaultProps = {
   transparent: null,
 };
 const mapStateToProps = state => ({
-  auth: selectorAuthResult(state),
+  auth: selectorAuth(state),
 });
 const mapDispatchToProps = dispatch => ({
   actions: {

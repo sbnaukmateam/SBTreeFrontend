@@ -7,7 +7,9 @@ const verify = () => request('/auth/v1/verify');
 
 const signIn = (username, password) => request('/auth/v1/login', 'POST', { username, password });
 
-const signUp = (username, password, name) => request('/auth/v1/signup', 'POST', { username, password, name });
+const signUp = (username, password, name, surname) => request('/auth/v1/signup', 'POST', {
+  username, password, name, surname,
+});
 
 
 // TODO remove mock
