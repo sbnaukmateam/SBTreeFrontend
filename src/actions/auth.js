@@ -14,8 +14,10 @@ const verifyUser = () => async (dispatch) => {
 const signIn = data => async (dispatch) => {
   dispatch({ type: actionTypes.AUTH_LOGIN_START });
   try {
-    const result = await api.signIn(data);
+    const { username, password } = data;
+    const result = await api.signIn(username, password);
     dispatch({ type: actionTypes.AUTH_LOGIN_SUCCESS, payload: result });
+    dispatch({ type: actionTypes.MODAL_CLOSE });
   } catch (err) {
     dispatch({ type: actionTypes.AUTH_LOGIN_FAIL, payload: err.toString() });
   }
@@ -24,7 +26,8 @@ const signIn = data => async (dispatch) => {
 const signUp = data => async (dispatch) => {
   dispatch({ type: actionTypes.AUTH_SIGNUP_START });
   try {
-    const result = await api.signUp(data);
+    const { username, password } = data;
+    const result = await api.signUp(username, password);
     dispatch({ type: actionTypes.AUTH_SIGNUP_SUCCESS, payload: result });
   } catch (err) {
     dispatch({ type: actionTypes.AUTH_SIGNUP_FAIL, payload: err.toString() });

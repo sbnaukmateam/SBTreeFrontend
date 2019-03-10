@@ -5,9 +5,9 @@ const ping = () => request('/ping/v1/ping');
 
 const verify = () => request('/auth/v1/verify');
 
-const signIn = (login, password) => request('/auth/v1/login', 'POST', { login, password });
+const signIn = (username, password) => request('/auth/v1/login', 'POST', { username, password });
 
-const signUp = (login, password, name) => request('/auth/v1/signup', 'POST', { login, password, name });
+const signUp = (username, password, name) => request('/auth/v1/signup', 'POST', { username, password, name });
 
 
 // TODO remove mock
