@@ -11,7 +11,6 @@ class ModalContainer extends PureComponent {
     return modal.closeModal();
   }
 
-  // TODO remove mock styling
   render() {
     const { actions: { modal }, children } = this.props;
     return (

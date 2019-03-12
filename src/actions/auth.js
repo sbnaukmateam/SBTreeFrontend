@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import { push } from 'connected-react-router';
 import actionTypes from '../actionTypes';
 import { api, setAuth, parseParams } from '../util';
@@ -52,7 +53,28 @@ const logout = () => (dispatch) => {
     dispatch({ type: actionTypes.AUTH_LOGOUT_FAIL, payload: err.toString() });
   }
 };
-
+const changePassMail = data => async (dispatch) => {
+  dispatch({ type: actionTypes.CHANGE_PASS_MAIL_START });
+  try {
+    const { username } = data;
+    const result = await api.sendChangePassMailMock(username);
+    dispatch({ type: actionTypes.CHANGE_PASS_MAIL_SUCCESS, payload: result });
+    dispatch({ type: actionTypes.MODAL_CLOSE });
+  } catch (err) {
+    dispatch({ type: actionTypes.CHANGE_PASS_MAIL_FAIL, payload: err.toString() });
+  }
+};
+const changePassword = data => async (dispatch) => {
+  dispatch({ type: actionTypes.CHANGE_PASSWORD_START });
+  try {
+    const { password } = data;
+    const result = await api.changePasswordMock(password);
+    dispatch({ type: actionTypes.CHANGE_PASSWORD_SUCCESS, payload: result });
+    dispatch({ type: actionTypes.MODAL_CLOSE });
+  } catch (err) {
+    dispatch({ type: actionTypes.CHANGE_PASSWORD_FAIL, payload: err.toString() });
+  }
+};
 export const authActions = {
-  verifyUser, signIn, signUp, logout,
+  verifyUser, signIn, signUp, logout, changePassMail, changePassword
 };

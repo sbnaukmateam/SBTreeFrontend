@@ -13,12 +13,10 @@ const signUp = (username, password, name, surname) => request('/auth/v1/signup',
 
 
 // TODO remove mock
+const sendChangePassMailMock = (/* username */) => ({ status: 'SUCCESS' });
 const getProjectsMock = () => Projects;
 const getMembersMock = () => Members;
-const changePasswordMock = (/* newPassword */) => {
-  if (Math.random() < 0.5) throw new Error('NO CONNECTION');
-  return { status: 'SUCCESS' };
-};
+const changePasswordMock = (/* newPassword */) => ({ status: 'SUCCESS' });
 const changeInfoMock = (/* data */) => {
   if (Math.random() < 0.5) throw new Error('SOMETHING WENT WRONG');
   return { status: 'SUCCESS' };
@@ -30,6 +28,7 @@ export const api = {
   getMembersMock,
   changePasswordMock,
   changeInfoMock,
+  sendChangePassMailMock,
   verify,
   signIn,
   signUp,

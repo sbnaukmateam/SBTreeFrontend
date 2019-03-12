@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style */
 import { createSelector } from 'reselect';
 
 export const selectorAuth = state => state.auth;

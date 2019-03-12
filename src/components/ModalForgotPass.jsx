@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style */
 import React, { PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -14,8 +15,8 @@ class ModalForgotPass extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { actions: { auth }, username, password } = this.props;
-    auth.signIn({ password, username });
+    const { actions: { auth }, username } = this.props;
+    auth.changePassMail(username);
   }
 
   render() {
@@ -30,18 +31,15 @@ class ModalForgotPass extends PureComponent {
 }
 ModalForgotPass.propTypes = {
   username: PropTypes.string,
-  password: PropTypes.string,
   actions: PropTypes.object.isRequired,
 };
 ModalForgotPass.defaultProps = {
   username: null,
-  password: null,
 };
 const selector = formValueSelector('ResetPassForm');
 
 const mapStateToProps = state => ({
-  username: selector(state, 'username'),
-  password: selector(state, 'password'),
+  username: selector(state, 'email'),
 });
 
 const mapDispatchToProps = dispatch => ({

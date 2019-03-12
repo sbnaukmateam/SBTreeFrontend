@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-const authStart = state => ({
+const handleStart = state => ({
   ...state,
   loading: true,
   error: null,
@@ -53,22 +53,31 @@ const logoutStart = state => ({
   loggedIn: false,
   user: null,
 });
-
+const handleSuccess = state => ({
+  ...state,
+  loading: false,
+});
 const handleFailure = (state, { payload }) => ({
   ...state,
   error: payload,
 });
 
 export const auth = handleActions({
-  [actionTypes.AUTH_VERIFY_START]: authStart,
+  [actionTypes.AUTH_VERIFY_START]: handleStart,
   [actionTypes.AUTH_VERIFY_SUCCESS]: authSuccess,
   [actionTypes.AUTH_VERIFY_FAIL]: verifyFail,
-  [actionTypes.AUTH_LOGIN_START]: authStart,
+  [actionTypes.AUTH_LOGIN_START]: handleStart,
   [actionTypes.AUTH_LOGIN_SUCCESS]: authSuccess,
   [actionTypes.AUTH_LOGIN_FAIL]: loginFail,
-  [actionTypes.AUTH_SIGNUP_START]: authStart,
+  [actionTypes.AUTH_SIGNUP_START]: handleStart,
   [actionTypes.AUTH_SIGNUP_SUCCESS]: signupSuccess,
   [actionTypes.AUTH_SIGNUP_FAIL]: handleFailure,
   [actionTypes.AUTH_LOGOUT_START]: logoutStart,
   [actionTypes.AUTH_LOGOUT_FAIL]: handleFailure,
+  [actionTypes.CHANGE_PASS_MAIL_START]: handleStart,
+  [actionTypes.CHANGE_PASS_MAIL_SUCCESS]: handleSuccess,
+  [actionTypes.CHANGE_PASS_MAIL_FAIL]: handleFailure,
+  [actionTypes.CHANGE_PASSWORD_START]: handleStart,
+  [actionTypes.CHANGE_PASSWORD_SUCCESS]: handleSuccess,
+  [actionTypes.CHANGE_PASSWORD_FAIL]: handleFailure,
 }, initialState);

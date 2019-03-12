@@ -9,7 +9,7 @@ import { modalWrapper } from '../hoc';
 import { FormField } from '.';
 
 const {
-  required, email, oneNumber, oneUpperChar, minLength, changePasswordValidate,
+  required, email, oneNumber, oneUpperChar, minLength, passwordConfirmation,
 } = validate;
 const minLength6 = minLength(6);
 
@@ -78,6 +78,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const WrappedModalLogin = modalWrapper('signup')(connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'SignUpForm', validate: changePasswordValidate })(ModalSignUp)));
+const WrappedModalLogin = modalWrapper('signup')(connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'SignUpForm', validate: passwordConfirmation })(ModalSignUp)));
 
 export { WrappedModalLogin as ModalSignUp };

@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style */
 import { parse, stringify } from 'querystring';
 
 export const parseParams = (queryString) => {

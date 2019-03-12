@@ -11,3 +11,4 @@ export * from './ModalContainer';
 export * from './ModalForgotPass';
 export * from './NavAuth';
 export * from './FormField';
+export * from './ModalChangePass';
