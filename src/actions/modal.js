@@ -1,5 +1,4 @@
 import actionTypes from '../actionTypes';
-import { setAuth } from '../util';
 
 
 const openLoginModal = () => ({
@@ -14,13 +13,10 @@ const openForgotPassModal = () => ({
   type: actionTypes.MODAL_OPEN,
   payload: 'forgotPass',
 });
-const openChangePassModal = (resetToken) => {
-  setAuth(resetToken);
-  return {
-    type: actionTypes.MODAL_OPEN,
-    payload: 'changePass',
-  };
-};
+const openChangePassModal = () => ({
+  type: actionTypes.MODAL_OPEN,
+  payload: 'changePass',
+});
 const closeModal = () => ({
   type: actionTypes.MODAL_CLOSE,
   payload: '',

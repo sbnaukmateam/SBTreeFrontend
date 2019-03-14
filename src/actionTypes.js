@@ -12,8 +12,9 @@ export default keyMirror({
   ...makeActionTypes('AUTH_LOGIN'),
   ...makeActionTypes('AUTH_SIGNUP'),
   ...makeActionTypes('AUTH_LOGOUT'),
-  ...makeActionTypes('CHANGE_PASS_MAIL'),
+  ...makeActionTypes('FORGOT_PASSWORD'),
   ...makeActionTypes('CHANGE_PASSWORD'),
   MODAL_OPEN: 0,
   MODAL_CLOSE: 0,
+  SET_AUTH: 0,
 });

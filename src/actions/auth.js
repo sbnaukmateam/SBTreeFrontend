@@ -44,24 +44,30 @@ const signUp = data => async (dispatch) => {
     dispatch({ type: actionTypes.AUTH_SIGNUP_FAIL, payload: err.toString() });
   }
 };
+const setAuthAction = (data) => {
+  setAuth(data);
+  return {
+    type: actionTypes.SET_AUTH,
+  };
+};
 const logout = () => (dispatch) => {
   dispatch({ type: actionTypes.AUTH_LOGOUT_START });
   try {
-    setAuth();
+    setAuthAction();
     dispatch({ type: actionTypes.AUTH_LOGOUT_SUCCESS });
   } catch (err) {
     dispatch({ type: actionTypes.AUTH_LOGOUT_FAIL, payload: err.toString() });
   }
 };
-const changePassMail = data => async (dispatch) => {
-  dispatch({ type: actionTypes.CHANGE_PASS_MAIL_START });
+const forgotPassword = data => async (dispatch) => {
+  dispatch({ type: actionTypes.FORGOT_PASSWORD_START });
   try {
     const { username } = data;
     const result = await api.sendChangePassMailMock(username);
-    dispatch({ type: actionTypes.CHANGE_PASS_MAIL_SUCCESS, payload: result });
+    dispatch({ type: actionTypes.FORGOT_PASSWORD_SUCCESS, payload: result });
     dispatch({ type: actionTypes.MODAL_CLOSE });
   } catch (err) {
-    dispatch({ type: actionTypes.CHANGE_PASS_MAIL_FAIL, payload: err.toString() });
+    dispatch({ type: actionTypes.FORGOT_PASSWORD_FAIL, payload: err.toString() });
   }
 };
 const changePassword = data => async (dispatch) => {
@@ -75,6 +81,8 @@ const changePassword = data => async (dispatch) => {
     dispatch({ type: actionTypes.CHANGE_PASSWORD_FAIL, payload: err.toString() });
   }
 };
+
+
 export const authActions = {
-  verifyUser, signIn, signUp, logout, changePassMail, changePassword
+  verifyUser, signIn, signUp, logout, forgotPassword, changePassword, setAuth: setAuthAction,
 };

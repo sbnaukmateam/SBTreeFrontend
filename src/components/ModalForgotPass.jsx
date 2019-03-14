@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style */
 import React, { PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -16,7 +15,8 @@ class ModalForgotPass extends PureComponent {
   handleSubmit(event) {
     event.preventDefault();
     const { actions: { auth }, username } = this.props;
-    auth.changePassMail(username);
+    auth.forgotPassword({ username });
+    auth.setAuth(username);
   }
 
   render() {
