@@ -17,4 +17,5 @@ export default keyMirror({
   MODAL_OPEN: 0,
   MODAL_CLOSE: 0,
   SET_AUTH: 0,
+  SET_RESET: 0,
 });

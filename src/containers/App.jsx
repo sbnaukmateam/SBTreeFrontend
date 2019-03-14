@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {
   ModalSignUp, ModalLogin, ModalForgotPass, ModalChangePass,
 } from '../components';
-import { authActions, modalActions } from '../actions';
+import { authActions, modalActions, resetActions } from '../actions';
 import { selectorRouterSearch } from '../selectors';
 import { parseParams } from '../util';
 
@@ -16,9 +16,12 @@ class App extends PureComponent {
   }
 
   componentDidMount() {
-    const { actions: { modal }, search } = this.props;
+    const { actions: { modal, reset }, search } = this.props;
     const { resetToken } = parseParams(search);
-    if (resetToken) modal.openChangePassModal(resetToken);
+    if (resetToken) {
+      modal.openChangePassModal();
+      reset.setReset(resetToken);
+    }
   }
 
   render() {
@@ -52,6 +55,7 @@ const mapDispatchToProps = dispatch => ({
   actions: {
     auth: bindActionCreators(authActions, dispatch),
     modal: bindActionCreators(modalActions, dispatch),
+    reset: bindActionCreators(resetActions, dispatch),
   },
 });
 

@@ -20,7 +20,11 @@ const changePasswordSuccess = state => ({
   message: 'passChanged',
   error: null,
 });
-
+const setResetToken = (state, { payload }) => ({
+  ...state,
+  error: null,
+  message: payload,
+});
 const handleFailureReset = (state, { payload }) => ({
   ...state,
   error: payload,
@@ -34,4 +38,5 @@ export const reset = handleActions({
   [actionTypes.CHANGE_PASSWORD_START]: handleStartReset,
   [actionTypes.CHANGE_PASSWORD_SUCCESS]: changePasswordSuccess,
   [actionTypes.CHANGE_PASSWORD_FAIL]: handleFailureReset,
+  [actionTypes.SET_RESET]: setResetToken,
 }, initialState);

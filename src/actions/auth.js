@@ -1,9 +1,14 @@
-/* eslint-disable comma-dangle */
 import { push } from 'connected-react-router';
 import actionTypes from '../actionTypes';
 import { api, setAuth, parseParams } from '../util';
 import { selectorRouterSearch } from '../selectors';
 
+const setAuthAction = (data) => {
+  setAuth(data);
+  return {
+    type: actionTypes.SET_AUTH,
+  };
+};
 const verifyUser = () => async (dispatch) => {
   dispatch({ type: actionTypes.AUTH_VERIFY_START });
   try {
@@ -21,6 +26,7 @@ const signIn = data => async (dispatch, getState) => {
   try {
     const { username, password } = data;
     const result = await api.signIn(username, password);
+    setAuthAction({ token: result.token });
     dispatch({ type: actionTypes.AUTH_LOGIN_SUCCESS, payload: result });
     dispatch({ type: actionTypes.MODAL_CLOSE });
     if (backUrl) {
@@ -44,12 +50,7 @@ const signUp = data => async (dispatch) => {
     dispatch({ type: actionTypes.AUTH_SIGNUP_FAIL, payload: err.toString() });
   }
 };
-const setAuthAction = (data) => {
-  setAuth(data);
-  return {
-    type: actionTypes.SET_AUTH,
-  };
-};
+
 const logout = () => (dispatch) => {
   dispatch({ type: actionTypes.AUTH_LOGOUT_START });
   try {
@@ -59,30 +60,7 @@ const logout = () => (dispatch) => {
     dispatch({ type: actionTypes.AUTH_LOGOUT_FAIL, payload: err.toString() });
   }
 };
-const forgotPassword = data => async (dispatch) => {
-  dispatch({ type: actionTypes.FORGOT_PASSWORD_START });
-  try {
-    const { username } = data;
-    const result = await api.sendChangePassMailMock(username);
-    dispatch({ type: actionTypes.FORGOT_PASSWORD_SUCCESS, payload: result });
-    dispatch({ type: actionTypes.MODAL_CLOSE });
-  } catch (err) {
-    dispatch({ type: actionTypes.FORGOT_PASSWORD_FAIL, payload: err.toString() });
-  }
-};
-const changePassword = data => async (dispatch) => {
-  dispatch({ type: actionTypes.CHANGE_PASSWORD_START });
-  try {
-    const { password } = data;
-    const result = await api.changePasswordMock(password);
-    dispatch({ type: actionTypes.CHANGE_PASSWORD_SUCCESS, payload: result });
-    dispatch({ type: actionTypes.MODAL_CLOSE });
-  } catch (err) {
-    dispatch({ type: actionTypes.CHANGE_PASSWORD_FAIL, payload: err.toString() });
-  }
-};
-
 
 export const authActions = {
-  verifyUser, signIn, signUp, logout, forgotPassword, changePassword, setAuth: setAuthAction,
+  verifyUser, signIn, signUp, logout, setAuth: setAuthAction,
 };

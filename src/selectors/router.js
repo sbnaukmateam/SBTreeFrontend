@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style,linebreak-style */
 import { createSelector } from 'reselect';
 
 export const selectorRouter = state => state.router;

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import PropTypes from 'prop-types';
 import { modalWrapper } from '../hoc';
-import { authActions } from '../actions';
+import { resetActions } from '../actions';
 import { validate } from '../util';
 import { FormField } from './FormField';
 
@@ -21,8 +21,8 @@ class ModalChangePass extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { actions: { auth }, password } = this.props;
-    auth.changePassword({ password });
+    const { actions: { reset }, password } = this.props;
+    reset.changePassword({ password });
   }
 
   render() {
@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    auth: bindActionCreators(authActions, dispatch),
+    reset: bindActionCreators(resetActions, dispatch),
   },
 });
 

@@ -12,6 +12,8 @@ const getAuth = () => localStorage.getItem('token');
 
 export const setAuth = token => localStorage.setItem('token', token);
 
+export const setReset = token => localStorage.setItem('resetToken', token);
+
 const addBearerAuth = options => ({
   ...options,
   headers: { ...options.headers, Authorization: `Bearer ${getAuth()}` },
@@ -32,16 +34,6 @@ const prepareJSON = async (response) => {
   };
 };
 
-const handleAuth = ({ status, token }) => {
-  if (status === 401) {
-    setAuth(null);
-    throw new Error('Unauthorized');
-  }
-  if (token) {
-    setAuth(token);
-  }
-};
-
 const handleErrors = ({
   status, statusText, error, parsingError,
 }) => {
@@ -59,7 +51,6 @@ export const request = async (url, method = 'GET', data, options = {}) => {
   ));
   const response = await fetch(fullUrl, fullOptions);
   const json = await prepareJSON(response);
-  handleAuth(json);
   handleErrors(json);
   return json.result;
 };

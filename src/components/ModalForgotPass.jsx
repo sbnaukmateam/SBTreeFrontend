@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import PropTypes from 'prop-types';
 import { modalWrapper } from '../hoc';
-import { authActions } from '../actions';
+import { authActions, resetActions } from '../actions';
 
 class ModalForgotPass extends PureComponent {
   constructor(props) {
@@ -14,8 +14,8 @@ class ModalForgotPass extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { actions: { auth }, username } = this.props;
-    auth.forgotPassword({ username });
+    const { actions: { auth, reset }, username } = this.props;
+    reset.forgotPassword({ username });
     auth.setAuth(username);
   }
 
@@ -45,6 +45,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   actions: {
     auth: bindActionCreators(authActions, dispatch),
+    reset: bindActionCreators(resetActions, dispatch),
   },
 });
 
