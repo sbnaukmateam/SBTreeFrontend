@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
 
-export const selectorAuthorisation = state => state.auth;
+export const selectorAuthorization = state => state.auth;
 
 export const selectorLoggedIn = createSelector(
-  selectorAuthorisation,
+  selectorAuthorization,
   state => state.loggedIn,
 );
 export const selectorAuthError = createSelector(
-  selectorAuthorisation,
+  selectorAuthorization,
   state => state.error,
 );
