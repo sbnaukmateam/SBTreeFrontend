@@ -1,13 +1,10 @@
 import actionTypes from '../actionTypes';
-import { api, setReset } from '../util';
+import { api } from '../util';
 
-const setResetAction = (data) => {
-  setReset(data);
-  return {
-    type: actionTypes.SET_AUTH,
-    payload: data,
-  };
-};
+const setResetAction = data => ({
+  type: actionTypes.SET_AUTH,
+  payload: data,
+});
 const forgotPassword = data => async (dispatch) => {
   dispatch({ type: actionTypes.FORGOT_PASSWORD_START });
   try {

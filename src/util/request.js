@@ -12,11 +12,9 @@ const getAuth = () => localStorage.getItem('token');
 
 export const setAuth = token => localStorage.setItem('token', token);
 
-export const setReset = token => localStorage.setItem('resetToken', token);
-
-const addBearerAuth = options => ({
+const addBearerAuth = (options, auth) => ({
   ...options,
-  headers: { ...options.headers, Authorization: `Bearer ${getAuth()}` },
+  headers: { ...options.headers, Authorization: `Bearer ${auth}` },
 });
 
 const prepareJSON = async (response) => {
@@ -44,11 +42,12 @@ const handleErrors = ({
   }
 };
 
-export const request = async (url, method = 'GET', data, options = {}) => {
+export const request = async (url, method = 'GET', data, options = {}, token = '') => {
   const fullUrl = apiUrl + url;
+  const auth = token || getAuth();
   const fullOptions = addBearerAuth(prepareOptions(
     method, data, options,
-  ));
+  ), auth);
   const response = await fetch(fullUrl, fullOptions);
   const json = await prepareJSON(response);
   handleErrors(json);
