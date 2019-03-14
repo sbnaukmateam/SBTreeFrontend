@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -35,7 +34,6 @@ class Navbar extends PureComponent {
     const {
       loggedIn, style, transparent, actions: { modal },
     } = this.props;
-    console.log(this.props);
     const { scroll } = this.state;
     const navStyle = `navbar${transparent && !scroll ? ' transparent' : ''}`;
     return (
