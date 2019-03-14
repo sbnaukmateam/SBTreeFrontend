@@ -12,28 +12,19 @@ const handleStartReset = state => ({
 });
 const forgotPasswordSuccess = state => ({
   ...state,
-  reset: {
-    ...state.reset,
-    message: 'sentMail',
-    error: null,
-  },
+  message: 'sentMail',
+  error: null,
 });
 const changePasswordSuccess = state => ({
   ...state,
-  reset: {
-    ...state.reset,
-    message: 'passChanged',
-    error: null,
-  },
+  message: 'passChanged',
+  error: null,
 });
 
 const handleFailureReset = (state, { payload }) => ({
   ...state,
-  reset: {
-    ...state.reset,
-    error: payload,
-    message: '',
-  },
+  error: payload,
+  message: '',
 });
 
 export const reset = handleActions({
