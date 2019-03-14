@@ -4,81 +4,141 @@ import actionTypes from '../actionTypes';
 // HERE'S BLACK MAGIC, DRAGONS AND EERY BATS ABOVE THE SCARY TOWER
 // TODO refactor, store token in redux
 const initialState = {
-  loggedIn: false,
-  user: null,
-  error: null,
-  loading: false,
+  reset: {
+    message: null,
+    error: null,
+  },
+  auth: {
+    token: null,
+    user: null,
+    loggedIn: false,
+    error: null,
+    loading: false,
+  },
 };
 
-const handleStart = state => ({
+const handleStartReset = state => ({
   ...state,
-  loading: true,
-  error: null,
+  reset: {
+    ...state.reset,
+    message: 'loading',
+    error: null,
+  },
 });
-
+const handleStartAuth = state => ({
+  ...state,
+  auth: {
+    ...state.auth,
+    loading: true,
+    error: null,
+  },
+});
 const authSuccess = (state, { payload }) => ({
   ...state,
-  loading: false,
-  loggedIn: true,
-  error: null,
-  user: payload,
+  auth: {
+    ...state.auth,
+    loading: false,
+    loggedIn: true,
+    error: null,
+    user: payload,
+  },
 });
 
 const loginFail = (state, { payload }) => ({
   ...state,
-  loading: false,
-  error: payload,
-  loggedIn: false,
-  user: null,
+  auth: {
+    ...state.auth,
+    loading: false,
+    error: payload,
+    loggedIn: false,
+    user: null,
+  },
 });
 
 const verifyFail = state => ({
   ...state,
-  loading: false,
-  loggedIn: false,
-  user: null,
-  error: null,
+  auth: {
+    ...state.auth,
+    loading: false,
+    loggedIn: false,
+    user: null,
+    error: null,
+  },
 });
 
-const signupSuccess = state => ({
+const signupSuccess = (state, { payload }) => ({
   ...state,
-  loading: false,
-  error: null,
+  auth: {
+    ...state.auth,
+    loading: false,
+    loggedIn: true,
+    error: null,
+    user: payload,
+  },
 });
 
-const logoutStart = state => ({
+const logoutSuccess = state => ({
   ...state,
-  loading: true,
-  error: null,
-  loggedIn: false,
-  user: null,
+  auth: {
+    ...state.auth,
+    loading: false,
+    error: null,
+    loggedIn: false,
+    user: null,
+  },
 });
-const handleSuccess = state => ({
+const logoutFail = (state, { payload }) => ({
   ...state,
-  loading: false,
+  auth: {
+    ...state.auth,
+    loading: false,
+    error: payload,
+  },
 });
-const handleFailure = (state, { payload }) => ({
+
+const forgotPasswordSuccess = state => ({
   ...state,
-  error: payload,
+  reset: {
+    ...state.reset,
+    message: 'sentMail',
+    error: null,
+  },
+});
+const changePasswordSuccess = state => ({
+  ...state,
+  reset: {
+    ...state.reset,
+    message: 'passChanged',
+    error: null,
+  },
+});
+
+const handleFailureReset = (state, { payload }) => ({
+  ...state,
+  reset: {
+    ...state.reset,
+    error: payload,
+    message: '',
+  },
 });
 
 export const auth = handleActions({
-  [actionTypes.AUTH_VERIFY_START]: handleStart,
+  [actionTypes.AUTH_VERIFY_START]: handleStartAuth,
   [actionTypes.AUTH_VERIFY_SUCCESS]: authSuccess,
   [actionTypes.AUTH_VERIFY_FAIL]: verifyFail,
-  [actionTypes.AUTH_LOGIN_START]: handleStart,
+  [actionTypes.AUTH_LOGIN_START]: handleStartAuth,
   [actionTypes.AUTH_LOGIN_SUCCESS]: authSuccess,
   [actionTypes.AUTH_LOGIN_FAIL]: loginFail,
-  [actionTypes.AUTH_SIGNUP_START]: handleStart,
+  [actionTypes.AUTH_SIGNUP_START]: handleStartAuth,
   [actionTypes.AUTH_SIGNUP_SUCCESS]: signupSuccess,
-  [actionTypes.AUTH_SIGNUP_FAIL]: handleFailure,
-  [actionTypes.AUTH_LOGOUT_START]: logoutStart,
-  [actionTypes.AUTH_LOGOUT_FAIL]: handleFailure,
-  [actionTypes.FORGOT_PASSWORD_START]: handleStart,
-  [actionTypes.FORGOT_PASSWORD_SUCCESS]: handleSuccess,
-  [actionTypes.FORGOT_PASSWORD_FAIL]: handleFailure,
-  [actionTypes.CHANGE_PASSWORD_START]: handleStart,
-  [actionTypes.CHANGE_PASSWORD_SUCCESS]: handleSuccess,
-  [actionTypes.CHANGE_PASSWORD_FAIL]: handleFailure,
-  [actionTypes.SET_AUTH]: handleSuccess,
+  [actionTypes.AUTH_SIGNUP_FAIL]: verifyFail,
+  [actionTypes.AUTH_LOGOUT_START]: handleStartAuth,
+  [actionTypes.AUTH_LOGOUT_FAIL]: logoutFail,
+  [actionTypes.AUTH_LOGOUT_SUCCESS]: logoutSuccess,
+  [actionTypes.FORGOT_PASSWORD_START]: handleStartReset,
+  [actionTypes.FORGOT_PASSWORD_SUCCESS]: forgotPasswordSuccess,
+  [actionTypes.FORGOT_PASSWORD_FAIL]: handleFailureReset,
+  [actionTypes.CHANGE_PASSWORD_START]: handleStartReset,
+  [actionTypes.CHANGE_PASSWORD_SUCCESS]: changePasswordSuccess,
+  [actionTypes.CHANGE_PASSWORD_FAIL]: handleFailureReset,
 }, initialState);
