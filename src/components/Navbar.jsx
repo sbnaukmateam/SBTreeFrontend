@@ -3,20 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { selectorAuthResult } from '../selectors';
+import { selectorLoggedIn } from '../selectors';
 import { modalActions } from '../actions';
-import { NavNoAuth } from '.';
-
-const NavAuth = () => (
-  <div className="d-flex">
-    <Link to="/profile" className="mr-2 d-flex align-items-center">
-      <img src="images/profile-icon.png" className="profile-icon" />
-    </Link>
-    <div className="auth-nav" />
-    <button type="button">ВИХІД</button>
-  </div>
-);
-
+import { NavNoAuth, NavAuth } from '.';
 
 class Navbar extends PureComponent {
   constructor() {
@@ -43,7 +32,7 @@ class Navbar extends PureComponent {
 
   render() {
     const {
-      auth, style, transparent, actions: { modal },
+      loggedIn, style, transparent, actions: { modal },
     } = this.props;
     const { scroll } = this.state;
     const navStyle = `navbar${transparent && !scroll ? ' transparent' : ''}`;
@@ -71,7 +60,7 @@ class Navbar extends PureComponent {
             </Link>
           </div>
           <div className="col-3 d-flex justify-content-center">
-            {auth ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
+            {loggedIn ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
           </div>
         </div>
       </div>
@@ -81,17 +70,17 @@ class Navbar extends PureComponent {
 
 Navbar.contextTypes = { router: PropTypes.object };
 Navbar.propTypes = {
-  auth: PropTypes.object,
+  loggedIn: PropTypes.bool,
   style: PropTypes.object.isRequired,
   transparent: PropTypes.bool,
   actions: PropTypes.object.isRequired,
 };
 Navbar.defaultProps = {
-  auth: null,
+  loggedIn: false,
   transparent: null,
 };
 const mapStateToProps = state => ({
-  auth: selectorAuthResult(state),
+  loggedIn: selectorLoggedIn(state),
 });
 const mapDispatchToProps = dispatch => ({
   actions: {

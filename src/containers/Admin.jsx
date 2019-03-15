@@ -6,6 +6,8 @@ import {
   selectorMembers,
 } from '../selectors';
 import { Layout } from '.';
+import { privateRoute } from '../hoc';
+
 
 class AdminSearch extends PureComponent {
   render() {
@@ -174,6 +176,6 @@ const mapStateToProps = state => ({
 });
 
 
-const WrappedAdminSearch = connect(mapStateToProps)(AdminSearch);
+const WrappedAdminSearch = privateRoute(connect(mapStateToProps)(AdminSearch));
 
 export { WrappedAdminSearch as Admin };

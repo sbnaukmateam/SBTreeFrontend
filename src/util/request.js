@@ -10,11 +10,11 @@ const prepareOptions = (method, data, options) => ({
 
 const getAuth = () => localStorage.getItem('token');
 
-const setAuth = token => localStorage.setItem('token', token);
+export const setAuth = token => localStorage.setItem('token', token);
 
-const addBearerAuth = options => ({
+const addBearerAuth = (options, auth) => ({
   ...options,
-  headers: { ...options.headers, Authorization: `Bearer ${getAuth()}` },
+  headers: { ...options.headers, Authorization: `Bearer ${auth}` },
 });
 
 const prepareJSON = async (response) => {
@@ -32,16 +32,6 @@ const prepareJSON = async (response) => {
   };
 };
 
-const handleAuth = ({ status, token }) => {
-  if (status === 401) {
-    setAuth(null);
-    throw new Error('Unauthorized');
-  }
-  if (token) {
-    setAuth(token);
-  }
-};
-
 const handleErrors = ({
   status, statusText, error, parsingError,
 }) => {
@@ -52,14 +42,14 @@ const handleErrors = ({
   }
 };
 
-export const request = async (url, method = 'GET', data, options = {}) => {
+export const request = async (url, method = 'GET', data, options = {}, token = '') => {
   const fullUrl = apiUrl + url;
+  const auth = token || getAuth();
   const fullOptions = addBearerAuth(prepareOptions(
     method, data, options,
-  ));
+  ), auth);
   const response = await fetch(fullUrl, fullOptions);
   const json = await prepareJSON(response);
-  handleAuth(json);
   handleErrors(json);
   return json.result;
 };

@@ -1,80 +1,78 @@
 import { handleActions } from 'redux-actions';
 import actionTypes from '../actionTypes';
 
+// HERE'S BLACK MAGIC, DRAGONS AND EERY BATS ABOVE THE SCARY TOWER
+// TODO refactor, store token in redux
 const initialState = {
-  result: null,
+  token: null,
+  user: null,
+  loggedIn: false,
   error: null,
   loading: false,
 };
 
-const authVerifyStart = state => ({
+const handleStartAuth = state => ({
   ...state,
   loading: true,
   error: null,
-  result: null,
 });
-
-const authVerifySuccess = (state, { payload }) => ({
+const authSuccess = (state, { payload }) => ({
   ...state,
   loading: false,
+  loggedIn: true,
   error: null,
-  result: payload,
+  user: payload,
 });
 
-const authVerifyFail = (state, { payload }) => ({
+const loginFail = (state, { payload }) => ({
   ...state,
   loading: false,
   error: payload,
-  result: null,
-});
-const authLoginStart = state => ({
-  ...state,
-  loading: true,
-  error: null,
-  result: null,
+  loggedIn: false,
+  user: null,
 });
 
-const authLoginSuccess = (state, { payload }) => ({
+const verifyFail = state => ({
+  ...state,
+  loading: false,
+  loggedIn: false,
+  user: null,
+  error: null,
+});
+
+const signupSuccess = state => ({
+  ...state,
+  loading: false,
+  loggedIn: false,
+  error: null,
+  user: null,
+});
+
+const logoutSuccess = state => ({
   ...state,
   loading: false,
   error: null,
-  result: payload,
+  loggedIn: false,
+  user: null,
 });
-
-const authLoginFail = (state, { payload }) => ({
-  ...state,
-  loading: false,
-  error: payload,
-  result: null,
-});
-const authSignUpStart = state => ({
-  ...state,
-  loading: true,
-  error: null,
-  result: null,
-});
-
-const authSignUpSuccess = (state, { payload }) => ({
-  ...state,
-  loading: false,
-  error: null,
-  result: payload,
-});
-
-const authSignUpFail = (state, { payload }) => ({
+const logoutFail = (state, { payload }) => ({
   ...state,
   loading: false,
   error: payload,
-  result: null,
 });
+
+
 export const auth = handleActions({
-  [actionTypes.AUTH_VERIFY_START]: authVerifyStart,
-  [actionTypes.AUTH_VERIFY_SUCCESS]: authVerifySuccess,
-  [actionTypes.AUTH_VERIFY_FAIL]: authVerifyFail,
-  [actionTypes.AUTH_LOGIN_START]: authLoginStart,
-  [actionTypes.AUTH_LOGIN_SUCCESS]: authLoginSuccess,
-  [actionTypes.AUTH_LOGIN_FAIL]: authLoginFail,
-  [actionTypes.AUTH_SIGNUP_START]: authSignUpStart,
-  [actionTypes.AUTH_SIGNUP_SUCCESS]: authSignUpSuccess,
-  [actionTypes.AUTH_SIGNUP_FAIL]: authSignUpFail,
+  [actionTypes.AUTH_VERIFY_START]: handleStartAuth,
+  [actionTypes.AUTH_VERIFY_SUCCESS]: authSuccess,
+  [actionTypes.AUTH_VERIFY_FAIL]: verifyFail,
+  [actionTypes.AUTH_LOGIN_START]: handleStartAuth,
+  [actionTypes.AUTH_LOGIN_SUCCESS]: authSuccess,
+  [actionTypes.AUTH_LOGIN_FAIL]: loginFail,
+  [actionTypes.AUTH_SIGNUP_START]: handleStartAuth,
+  [actionTypes.AUTH_SIGNUP_SUCCESS]: signupSuccess,
+  [actionTypes.AUTH_SIGNUP_FAIL]: verifyFail,
+  [actionTypes.AUTH_LOGOUT_START]: handleStartAuth,
+  [actionTypes.AUTH_LOGOUT_FAIL]: logoutFail,
+  [actionTypes.AUTH_LOGOUT_SUCCESS]: logoutSuccess,
 }, initialState);

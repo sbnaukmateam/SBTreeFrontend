@@ -9,6 +9,7 @@ import {
 import { profileActions } from '../actions';
 import { formatData } from '../util';
 import { Layout } from '.';
+import { privateRoute } from '../hoc';
 
 class Profile extends PureComponent {
   constructor() {
@@ -177,6 +178,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const ProfileWrapped = connect(mapStateToProps, mapDispatchToProps)(Profile);
+const ProfileWrapped = privateRoute(connect(mapStateToProps, mapDispatchToProps)(Profile));
 
 export { ProfileWrapped as Profile };
