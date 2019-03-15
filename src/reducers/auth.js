@@ -40,12 +40,12 @@ const verifyFail = state => ({
   error: null,
 });
 
-const signupSuccess = (state, { payload }) => ({
+const signupSuccess = state => ({
   ...state,
   loading: false,
-  loggedIn: true,
+  loggedIn: false,
   error: null,
-  user: payload,
+  user: null,
 });
 
 const logoutSuccess = state => ({
