@@ -77,3 +77,12 @@ export const Members = [{
   interests: ['football', 'reading'],
   projects: ['id1', 'id2'],
 }];
+export const Roles = [{
+  role: {
+    admin: true,
+    kek: false,
+    lol: false,
+  },
+  email: ['rshchibrik@gmail.com'],
+  password: ['Roma3228'],
+}];

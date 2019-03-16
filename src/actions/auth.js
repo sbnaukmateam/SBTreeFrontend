@@ -26,8 +26,9 @@ const signIn = data => async (dispatch, getState) => {
   try {
     const { username, password } = data;
     const result = await api.signIn(username, password);
+    const tRole = await api.getRoleMock(username, password);
     setAuthAction({ token: result.token });
-    dispatch({ type: actionTypes.AUTH_LOGIN_SUCCESS, payload: result });
+    dispatch({ type: actionTypes.AUTH_LOGIN_SUCCESS, payload: [result, tRole] });
     dispatch({ type: actionTypes.MODAL_CLOSE });
     if (backUrl) {
       dispatch(push(backUrl));

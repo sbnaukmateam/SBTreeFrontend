@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Cart } from '../components';
 import {
-  selectorMembers,
+  selectorMembers, selectorRole,
 } from '../selectors';
 import { Layout } from '.';
 import { privateRoute } from '../hoc';
@@ -11,7 +11,7 @@ import { privateRoute } from '../hoc';
 
 class AdminSearch extends PureComponent {
   render() {
-    const { contacts } = this.props;
+    const { contacts, role } = this.props;
     return (
       <Layout>
         <section className="accounts-admin">
@@ -48,6 +48,12 @@ class AdminSearch extends PureComponent {
                       <button className="btn btn-block font-weight-bold accounts-admin_control_classes-btn" type="button">
                         УПРАВА
                       </button>
+                      {role.admin
+                      && (
+                      <button className="btn btn-block font-weight-bold accounts-admin_control_classes-btn" type="button">
+                        ЗАПИТИ НА ПІДТВЕРДЖЕННЯ
+                      </button>
+                      )}
                     </div>
 
                     <h4 className="col-12 text-mid-blue">ФІЛЬТРИ</h4>
@@ -167,12 +173,14 @@ class AdminSearch extends PureComponent {
 }
 AdminSearch.propTypes = {
   contacts: PropTypes.array,
+  role: PropTypes.object.isRequired,
 };
 AdminSearch.defaultProps = {
   contacts: null,
 };
 const mapStateToProps = state => ({
   contacts: selectorMembers(state),
+  role: selectorRole(state),
 });
 
 
