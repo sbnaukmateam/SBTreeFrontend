@@ -10,3 +10,7 @@ export const selectorAuthError = createSelector(
   selectorAuthorization,
   state => state.error,
 );
+export const selectorRole = createSelector(
+  selectorAuthorization,
+  state => state.role,
+);
