@@ -6,7 +6,9 @@ import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { membersActions } from '../actions';
 import { createQuery } from '../util/search';
 import { DatePickerField } from './DatePickerField';
-import { SB_STATUS, FACULTIES } from '../constants';
+import {
+  SB_STATUS, FACULTIES, PROGRAMS, POSSIBLE_YEARS,
+} from '../constants';
 
 const onFormChange = function onFormChange(values, dispatch) {
   dispatch(membersActions.nedbQueryMembers(createQuery(values)));
@@ -68,7 +70,7 @@ class SearchForm extends PureComponent {
           <div className="col-12">
             <select
               className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white">
-              <option>Статус в СБ</option>
+              <option>Патрон</option>
             </select>
           </div>
           <div className="col-sm-12 col-md-6">
@@ -95,16 +97,16 @@ class SearchForm extends PureComponent {
             </Field>
           </div>
           <div className="col-sm-12 col-md-6">
-            <select
-              className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white">
-              <option>Фото є</option>
-            </select>
+            <Field component="select" name="program" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
+              <option default value="">Програма</option>
+              {PROGRAMS.map(({ name, value }) => <option key={value} value={value}>{name}</option>)}
+            </Field>
           </div>
           <div className="col-sm-12 col-md-6">
-            <select
-              className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
-              <option>01.01.1995</option>
-            </select>
+            <Field component="select" name="entranceYear" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
+              <option default value="">Рік вступу</option>
+              {POSSIBLE_YEARS.map(item => <option item={item} value={item}>{item}</option>)}
+            </Field>
           </div>
 
           <h5 className="text-mid-blue mt-3 col-12 text-mid-blue">КОНТАКТИ</h5>

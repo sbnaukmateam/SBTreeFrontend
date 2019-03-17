@@ -18,7 +18,9 @@ const isEmptyQuery = key => ({
 export const createQuery = (values) => {
   const query = [];
   const {
-    quicksearch, birthday, status, email, phone, profile, avatar, faculty, speciality,
+    quicksearch, birthday, status, email,
+    phone, profile, avatar, faculty, speciality,
+    program, entranceYear,
   } = values;
   if (quicksearch) {
     const tokens = tokenize(quicksearch);
@@ -53,6 +55,12 @@ export const createQuery = (values) => {
   }
   if (speciality) {
     query.push({ 'degrees.specialityId': speciality });
+  }
+  if (program) {
+    query.push({ 'degrees.programId': program });
+  }
+  if (entranceYear) {
+    query.push({ 'degrees.year': entranceYear });
   }
   return { $and: query };
 };

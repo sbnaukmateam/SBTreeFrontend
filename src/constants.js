@@ -48,7 +48,11 @@ export const FACULTIES = [
   },
 ];
 
-export const PROGRAMS = ['Бакалавр', 'Магістр', 'Аспірант'];
+export const PROGRAMS = [
+  { name: 'Бакалавр', value: '1' },
+  { name: 'Магістр', value: '2' },
+  { name: 'Аспірант', value: '3' },
+];
 export const MIN_YEAR = 1992;
 export const CURRENT_YEAR = new Date().getFullYear();
 export const POSSIBLE_YEARS = Array.from(new Array(CURRENT_YEAR - MIN_YEAR + 1), (val, index) => index + MIN_YEAR);
