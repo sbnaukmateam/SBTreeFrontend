@@ -69,10 +69,11 @@ class SearchForm extends PureComponent {
             </select>
           </div>
           <div className="col-sm-12 col-md-6">
-            <select
-              className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white">
-              <option>Фото є</option>
-            </select>
+            <Field component="select" name="avatar" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white">
+              <option default value="">Фото</option>
+              <option default value="true">Є фото</option>
+              <option default value="false">Нема фото</option>
+            </Field>
           </div>
           <div className="col-sm-12 col-md-6">
             <Field component={DatePickerField} name="birthday" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white" placeholder="Дата народження" />

@@ -8,36 +8,45 @@ const tokenize = str => Array.from((str && str.match(WORD_REGEX)) || []);
 
 const createRegexp = str => str && new RegExp(str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
 
+const isEmptyQuery = key => ({
+  $or: [
+    { [key]: null },
+    { [key]: { $exists: false } },
+  ],
+});
+
 export const createQuery = (values) => {
-  const query = {};
+  const query = [];
   const {
-    quicksearch, birthday, status, email, phone, profile,
+    quicksearch, birthday, status, email, phone, profile, avatar,
   } = values;
   if (quicksearch) {
     const tokens = tokenize(quicksearch);
-    Object.assign(
-      query,
-      {
-        $and: tokens.map(token => ({
-          $or: QUICKSEARCH_FIELDS.map(item => ({ [item]: { $regex: createRegexp(token) } })),
-        })),
-      },
-    );
+    query.push({
+      $and: tokens.map(token => ({
+        $or: QUICKSEARCH_FIELDS.map(item => ({ [item]: { $regex: createRegexp(token) } })),
+      })),
+    });
   }
   if (birthday) {
-    Object.assign(query, { birthday });
+    query.push({ birthday });
   }
   if (status) {
-    Object.assign(query, { status });
+    query.push({ status });
   }
   if (email) {
-    Object.assign(query, { emails: { $elemMatch: createRegexp(email) } });
+    query.push({ emails: { $elemMatch: createRegexp(email) } });
   }
   if (phone) {
-    Object.assign(query, { phones: { $elemMatch: createRegexp(phone) } });
+    query.push({ phones: { $elemMatch: createRegexp(phone) } });
   }
   if (profile) {
-    Object.assign(query, { profiles: { $elemMatch: createRegexp(profile) } });
+    query.push({ profiles: { $elemMatch: createRegexp(profile) } });
   }
-  return query;
+  if (avatar) {
+    const isEmpty = avatar !== 'true';
+    const emptyQuery = isEmptyQuery('avatar');
+    query.push(isEmpty ? emptyQuery : { $not: emptyQuery });
+  }
+  return { $and: query };
 };
