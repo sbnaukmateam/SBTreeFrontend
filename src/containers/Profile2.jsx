@@ -40,9 +40,9 @@ class Profile extends PureComponent {
     const { contacts, positions, degrees } = formattedProfile;
     return (
       <Layout>
-        <p>{message}</p>
         {profile && (
           <section className="profile">
+            { message && <p>{message}</p>}
             <div>
               <div className="l-col">
                 <ProfileCard {...formattedProfile} patron={patron} />

@@ -14,9 +14,6 @@ h2{
 #root {
   text-align: center;
 }
-button {
-  margin: 10px;
-}
 .hide{
   display: none;
 }
@@ -93,6 +90,7 @@ button {
 .accounts-admin_control_classes-btn {
   background-color: #85deff;
   font-size: calc(0.7vw + 5px);
+  margin: 10px;
 }
 
 .admin-menu_sign-img {
@@ -193,17 +191,23 @@ button {
   -o-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
-#sign-up-btn{
+.nav-no-auth .sign-up-btn{
   border:none;
   margin: 0;
+}
+.nav-no-auth .sign-in-btn {
+  margin: 10px;
 }
 .profile-icon{
   height: 20px;
   /*margin-top: 15px;*/
 }
-.auth-nav{
+.nav-auth .nav-separator{
   border-right: 1px solid white;
   margin: 5px;
+}
+.nav-auth .sign-out-btn {
+  margin: 10px;
 }
 .main-photo{
   margin-top: -70px;
@@ -339,6 +343,7 @@ button {
   display: flex;
   margin: 0 auto;
   max-width: 1400px;
+  border-radius: 0;
 }
 .l-col{
   width: 70%;
@@ -836,6 +841,7 @@ button {
   color:white;
   width: 40px;
   height:40px;
+  margin: 10px;
 }
 
 

@@ -9,12 +9,12 @@ class NavAuth extends PureComponent {
   render() {
     const { actions: { auth } } = this.props;
     return (
-      <div className="d-flex">
+      <div className="d-flex nav-auth">
         <Link to="/profile" className="mr-2 d-flex align-items-center">
           <img src="/images/profile-icon.png" className="profile-icon" />
         </Link>
-        <div className="auth-nav" />
-        <button type="button" onClick={() => auth.logout()}>ВИХІД</button>
+        <div className="nav-separator" />
+        <button type="button" className="sign-out-btn" onClick={() => auth.logout()}>ВИХІД</button>
       </div>
     );
   }

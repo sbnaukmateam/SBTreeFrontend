@@ -4,6 +4,7 @@ import debounce from 'debounce';
 import { Field, reduxForm } from 'redux-form';
 import { membersActions } from '../actions';
 import { createQuery } from '../util/search';
+import { DatePickerField } from './DatePickerField';
 
 const onFormChange = function onFormChange(values, dispatch) {
   dispatch(membersActions.nedbQueryMembers(createQuery(values)));
@@ -25,7 +26,7 @@ class SearchForm extends PureComponent {
               </div>
               <div className="col-9">
                 <Field component="input" type="text" name="quicksearch"
-                  className="form-control  accounts-admin_control_search-input"
+                  className="form-control accounts-admin_control_search-input"
                   placeholder="Пошук" />
               </div>
             </div>
@@ -73,10 +74,7 @@ class SearchForm extends PureComponent {
             </select>
           </div>
           <div className="col-sm-12 col-md-6">
-            <select
-              className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
-              <option>01.01.1995</option>
-            </select>
+            <Field component={DatePickerField} name="birthday" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white" />
           </div>
           <h5 className="mt-3 col-12 text-mid-blue">ОСВІТА В НАУКМА</h5>
           <div className="col-sm-12 col-md-6">
