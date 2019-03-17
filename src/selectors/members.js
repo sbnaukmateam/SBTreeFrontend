@@ -14,7 +14,7 @@ export const selectorMembersProfile = createSelector(
 
 export const selectorMembersPatron = createSelector(
   selectorMembers,
-  state => state.profile,
+  state => state.patron,
 );
 
 export const selectorMembersId = createSelector(

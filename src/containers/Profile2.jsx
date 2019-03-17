@@ -7,7 +7,7 @@ import { createSelector } from 'reselect';
 import { profileActions, membersActions } from '../actions';
 
 import {
-  selectorMembersProfile, selectorPatron, selectorMessage,
+  selectorMembersProfile, selectorMembersPatron, selectorMessage,
 } from '../selectors';
 
 import { ProfileCard, ProfileSidebar, ProfileInfoColumn } from '../components';
@@ -76,7 +76,7 @@ Profile.defaultProps = {
 };
 
 const mapStateToProps = createSelector(
-  [selectorMembersProfile, selectorPatron, selectorMessage],
+  [selectorMembersProfile, selectorMembersPatron, selectorMessage],
   (profile, patron, message) => ({
     profile, patron, message,
   }),
