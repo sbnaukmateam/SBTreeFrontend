@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import { selectorProjects } from '../selectors';
+import { selectorProjectsList } from '../selectors';
 
 class MainSlider extends React.Component {
   render() {
@@ -56,7 +56,7 @@ class MainSlider extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  projects: selectorProjects(state),
+  projects: selectorProjectsList(state),
 });
 MainSlider.propTypes = {
   projects: PropTypes.array,

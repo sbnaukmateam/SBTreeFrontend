@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { selectorLoggedIn } from '../selectors';
 import { modalActions } from '../actions';
 import { NavNoAuth, NavAuth } from '.';

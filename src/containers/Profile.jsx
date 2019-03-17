@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,7 +9,7 @@ import {
 } from '../selectors';
 import { profileActions } from '../actions';
 import { formatData } from '../util';
-import { Layout } from '.';
+import { Layout } from './Layout';
 import { privateRoute } from '../hoc';
 
 class Profile extends PureComponent {

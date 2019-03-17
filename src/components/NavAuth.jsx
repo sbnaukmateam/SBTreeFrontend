@@ -11,7 +11,7 @@ class NavAuth extends PureComponent {
     return (
       <div className="d-flex">
         <Link to="/profile" className="mr-2 d-flex align-items-center">
-          <img src="images/profile-icon.png" className="profile-icon" />
+          <img src="/images/profile-icon.png" className="profile-icon" />
         </Link>
         <div className="auth-nav" />
         <button type="button" onClick={() => auth.logout()}>ВИХІД</button>

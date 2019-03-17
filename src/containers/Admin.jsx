@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Cart } from '../components';
+import { Card } from '../components';
 import {
-  selectorMembers, selectorRole,
+  selectorMembersList, selectorRole,
 } from '../selectors';
 import { Layout } from '.';
 import { privateRoute } from '../hoc';
@@ -157,7 +157,7 @@ class AdminSearch extends PureComponent {
                   <div className="row d-flex justify-content-center accounts-admin_list_row">
                     {
                       contacts && contacts.map(x => (
-                        <Cart key={x.id} name={`${x.name} ${x.surname}`} comment={x.nickName} faculty={x.degrees[0].faculty} year={+x.degrees[0].year}
+                        <Card key={x.id} name={`${x.name} ${x.surname}`} comment={x.nickName} faculty={x.degrees[0].faculty} year={+x.degrees[0].year}
                           img={x.avatar} />
                       ))
                     }
@@ -179,7 +179,7 @@ AdminSearch.defaultProps = {
   contacts: null,
 };
 const mapStateToProps = state => ({
-  contacts: selectorMembers(state),
+  contacts: selectorMembersList(state),
   role: selectorRole(state),
 });
 

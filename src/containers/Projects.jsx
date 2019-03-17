@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { selectorProjects } from '../selectors';
+import { selectorProjectsList } from '../selectors';
 import { Project } from '../components';
 import { Layout } from '.';
 
@@ -29,7 +29,7 @@ Projects.defaultProps = {
   projects: null,
 };
 const mapStateToProps = state => ({
-  projects: selectorProjects(state),
+  projects: selectorProjectsList(state),
 });
 
 

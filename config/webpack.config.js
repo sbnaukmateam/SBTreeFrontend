@@ -1,12 +1,18 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
 
 const isProd = process.env.NODE_ENV === 'production';
 const port = parseInt(process.env.PORT, 10) || 3000;
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.jsx'],
+  output: {
+    path: path.join(process.cwd(), 'dist'),
+    publicPath: '/',
+    filename: 'main.js',
+  },
   devtool: !isProd && 'cheap-module-eval-source-map',
   stats: {
     colors: !isProd,
