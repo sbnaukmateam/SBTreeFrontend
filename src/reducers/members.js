@@ -18,11 +18,12 @@ const fetchMembersStart = state => ({
   initial: false,
 });
 
-const fetchMembersSuccess = state => ({
+const fetchMembersSuccess = (state, { payload }) => ({
   ...state,
   loading: false,
   error: null,
   initial: false,
+  list: payload,
 });
 
 const fetchMembersFail = (state, { payload }) => ({

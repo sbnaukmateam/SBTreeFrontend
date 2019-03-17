@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card } from '../components';
 import {
-  selectorMembers, selectorRole,
+  selectorMembersList, selectorRole,
 } from '../selectors';
 import { Layout } from '.';
 import { privateRoute } from '../hoc';
@@ -179,7 +179,7 @@ AdminSearch.defaultProps = {
   contacts: null,
 };
 const mapStateToProps = state => ({
-  contacts: selectorMembers(state),
+  contacts: selectorMembersList(state),
   role: selectorRole(state),
 });
 

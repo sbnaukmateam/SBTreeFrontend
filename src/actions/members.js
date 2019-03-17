@@ -54,7 +54,7 @@ const fetchMembers = () => async (dispatch, getState) => {
     if (id) {
       dispatch(nedbGetMember(id));
     }
-    dispatch({ type: actionTypes.FETCH_MEMBERS_SUCCESS });
+    dispatch({ type: actionTypes.FETCH_MEMBERS_SUCCESS, payload: result });
   } catch (err) {
     dispatch({ type: actionTypes.FETCH_MEMBERS_FAIL, payload: err.toString() });
   }
