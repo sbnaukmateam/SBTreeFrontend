@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
 import { push } from 'connected-react-router';
 import PropTypes from 'prop-types';
-import { selectorLoggedIn, selectorRouterPathname } from '../selectors';
+import { selectorLoggedIn, selectorRouterPathname, selectorAuthInitial } from '../selectors';
 import { modalActions } from '../actions';
 import { stringifyParams } from '../util';
 
@@ -16,15 +16,15 @@ function basicPrivateRoute(WrappedComponent) {
     }
 
     componentDidMount() {
-      const { hocLoggedIn } = this.props;
-      if (!hocLoggedIn) {
+      const { hocLoggedIn, hocInitial } = this.props;
+      if (!hocLoggedIn && !hocInitial) {
         this.handleAnonymous();
       }
     }
 
     componentDidUpdate() {
-      const { hocLoggedIn } = this.props;
-      if (!hocLoggedIn) {
+      const { hocLoggedIn, hocInitial } = this.props;
+      if (!hocLoggedIn && !hocInitial) {
         this.handleAnonymous();
       }
     }
@@ -36,7 +36,9 @@ function basicPrivateRoute(WrappedComponent) {
     }
 
     render() {
-      const { hocActions, hocLoggedIn, ...rest } = this.props;
+      const {
+        hocActions, hocLoggedIn, hocInitial, ...rest
+      } = this.props;
       if (!hocLoggedIn) {
         return null;
       }
@@ -46,6 +48,7 @@ function basicPrivateRoute(WrappedComponent) {
   HocWrapper.propTypes = {
     hocActions: PropTypes.object.isRequired,
     hocLoggedIn: PropTypes.bool.isRequired,
+    hocInitial: PropTypes.bool.isRequired,
     hocPathname: PropTypes.string.isRequired,
   };
   return HocWrapper;
@@ -53,6 +56,7 @@ function basicPrivateRoute(WrappedComponent) {
 
 const mapStateToProps = state => ({
   hocLoggedIn: selectorLoggedIn(state),
+  hocInitial: selectorAuthInitial(state),
   hocPathname: selectorRouterPathname(state),
 });
 

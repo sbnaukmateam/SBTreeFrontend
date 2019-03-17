@@ -37,7 +37,7 @@ export const Projects = [{
 }];
 
 export const Members = [{
-  id: 1,
+  id: '1',
   name: 'Василій',
   surname: 'Іванов',
   nickName: 'Васив',
@@ -48,7 +48,7 @@ export const Members = [{
     speciality: "Комп'ютерні науки",
     program: 'БП',
   }],
-  patronId: 2,
+  patronId: '2',
   birthday: '25.08.1990',
   phones: ['0991234567'],
   profiles: ['github.com'],
@@ -57,7 +57,7 @@ export const Members = [{
   interests: ['football', 'reading'],
   projects: ['id1', 'id2'],
 }, {
-  id: 2,
+  id: '2',
   name: 'Петро',
   surname: 'Сидоров',
   nickName: 'Петрос',
@@ -68,7 +68,7 @@ export const Members = [{
     speciality: "Комп'ютерні науки",
     program: 'БП',
   }],
-  patronId: -1,
+  patronId: '-1',
   birthday: '25.08.1990',
   phones: ['0991234567'],
   profiles: ['github.com'],

@@ -62,7 +62,7 @@ class Profile extends PureComponent {
 }
 
 Profile.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   profile: PropTypes.object,
   patron: PropTypes.object,
   message: PropTypes.string,

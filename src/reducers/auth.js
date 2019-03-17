@@ -10,6 +10,7 @@ const initialState = {
   error: null,
   loading: false,
   role: null,
+  initial: true,
 };
 
 const handleStartAuth = state => ({
@@ -22,6 +23,7 @@ const authSuccess = (state, { payload: { user, role, token } }) => ({
   ...state,
   loading: false,
   loggedIn: true,
+  initial: false,
   error: null,
   user,
   role,
@@ -41,6 +43,7 @@ const verifyFail = state => ({
   ...state,
   loading: false,
   loggedIn: false,
+  initial: false,
   user: null,
   error: null,
   token: null,
