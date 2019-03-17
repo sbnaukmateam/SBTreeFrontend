@@ -9,7 +9,7 @@ import { stringifyParams } from '../util';
 
 
 function basicPrivateRoute(WrappedComponent) {
-  class HocWrapper extends React.Component {
+  class HocWrapper extends React.PureComponent {
     constructor(props) {
       super(props);
       this.handleAnonymous = this.handleAnonymous.bind(this);

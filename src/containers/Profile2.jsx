@@ -7,7 +7,7 @@ import { createSelector } from 'reselect';
 import { profileActions, membersActions } from '../actions';
 
 import {
-  selectorCurrentProfile, selectorPatron, selectorMessage,
+  selectorMembersProfile, selectorPatron, selectorMessage,
 } from '../selectors';
 
 import { ProfileCard, ProfileSidebar, ProfileInfoColumn } from '../components';
@@ -16,13 +16,25 @@ import { formatProfileS2C, formatDegree, formatPosition } from '../util/format';
 
 class Profile extends PureComponent {
   componentDidMount() {
-    const { actions, match: { params } } = this.props;
-    const { id } = params || {};
-    actions.members.nedbGetMember(id);
+    this.fetchProfile();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { id } = this.props;
+    const { id: prevId } = prevProps;
+    if (id !== prevId) {
+      this.fetchProfile();
+    }
+  }
+
+  fetchProfile() {
+    const { id, actions } = this.props;
+    if (id) {
+      actions.members.nedbGetMember(id);
+    }
   }
 
   render() {
-    console.log(this.props);
     const { profile, patron, message } = this.props;
     const formattedProfile = formatProfileS2C(profile);
     const { contacts, positions, degrees } = formattedProfile;
@@ -50,6 +62,7 @@ class Profile extends PureComponent {
 }
 
 Profile.propTypes = {
+  id: PropTypes.number,
   profile: PropTypes.object,
   patron: PropTypes.object,
   message: PropTypes.string,
@@ -60,11 +73,14 @@ Profile.defaultProps = {
   patron: null,
   profile: null,
   message: null,
+  id: null,
 };
 
 const mapStateToProps = createSelector(
-  [selectorCurrentProfile, selectorPatron, selectorMessage],
-  (profile, patron, message) => ({ profile, patron, message }),
+  [selectorMembersProfile, selectorPatron, selectorMessage],
+  (profile, patron, message) => ({
+    profile, patron, message,
+  }),
 );
 
 const mapDispatchToProps = dispatch => ({

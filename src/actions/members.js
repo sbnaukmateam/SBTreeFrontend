@@ -7,7 +7,7 @@ import { selectorMembersId } from '../selectors';
 const nedbQueryMembers = query => async (dispatch) => {
   dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_START });
   try {
-    const result = await db.members.find(query);
+    const result = await db.members.findAsync(query);
     dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_SUCCESS, result });
   } catch (err) {
     dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_FAIL, payload: err.toString() });
@@ -17,13 +17,13 @@ const nedbQueryMembers = query => async (dispatch) => {
 const nedbGetMember = id => async (dispatch) => {
   dispatch({ type: actionTypes.NEDB_GET_MEMBER_START, payload: id });
   try {
-    const profile = await db.members.findOne({ id });
+    const profile = await db.members.findOneAsync({ id });
     if (!profile) {
       throw new Error('Profile not found!');
     }
-    const patron = await db.members.findOne({ id: profile.patronId });
+    const patron = await db.members.findOneAsync({ id: profile.patronId });
     const result = { profile, patron };
-    dispatch({ type: actionTypes.NEDB_GET_MEMBER_SUCCESS, result });
+    dispatch({ type: actionTypes.NEDB_GET_MEMBER_SUCCESS, payload: result });
   } catch (err) {
     dispatch({ type: actionTypes.NEDB_GET_MEMBER_FAIL, payload: err.toString() });
   }
@@ -33,7 +33,7 @@ const updateMember = (id, update) => async (dispatch, getState) => {
   dispatch({ type: actionTypes.NEDB_UPDATE_MEMBER_START });
   try {
     const profile = await api.changeInfoMock(id, update);
-    await db.members.update({ id }, profile);
+    await db.members.updateAsync({ id }, profile);
     const prevProfileId = selectorMembersId(getState()) || {};
     if (prevProfileId === id) {
       dispatch(nedbGetMember(id));
@@ -49,7 +49,7 @@ const fetchMembers = () => async (dispatch, getState) => {
   try {
     const result = await api.getMembersMock();
     await db.members.remove({}, { multi: true });
-    await Promise.all(result.map(member => db.members.insert(member)));
+    await Promise.all(result.map(member => db.members.insertAsync(member)));
     const id = selectorMembersId(getState());
     if (id) {
       dispatch(nedbGetMember(id));

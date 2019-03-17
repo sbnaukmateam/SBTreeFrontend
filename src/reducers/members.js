@@ -56,13 +56,13 @@ const queryMembersFail = (state, { payload }) => ({
   initial: false,
 });
 
-const getMemberStart = (state, payload) => ({
+const getMemberStart = (state, { payload: id }) => ({
   ...state,
   item: null,
   loading: true,
   error: null,
   initial: false,
-  id: payload,
+  id,
 });
 
 const getMemberSuccess = (state, { payload: { profile, patron } }) => ({

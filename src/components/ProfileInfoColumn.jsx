@@ -16,17 +16,20 @@ class ProfileInfoColumn extends PureComponent {
           <h3>{title}</h3>
           <div>
             {/* TODO handle item type */}
-            {items.map(format).map((item, index) => (
-              <div key={item} className="edit-info-point" title={item}>
-                <div>
-                  <img src="/images/point.png" alt="" />
-                  {makeAnchors ? <a href={item}>{item}</a> : item }
+            {items.map(({ item: rawItem }, index) => {
+              const item = format(rawItem);
+              return (
+                <div key={item} className="edit-info-point" title={item}>
+                  <div>
+                    <img src="/images/point.png" alt="" />
+                    {makeAnchors ? <a href={item}>{item}</a> : item }
+                  </div>
+                  <button type="button" className="point-btn" onClick={() => onRemove(index)}>
+                    <img src="/images/del-point.png" alt="" />
+                  </button>
                 </div>
-                <button type="button" className="point-btn" onClick={() => onRemove(index)}>
-                  <img src="/images/del-point.png" alt="" />
-                </button>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
         <button type="button" className="point-btn add-btn">
