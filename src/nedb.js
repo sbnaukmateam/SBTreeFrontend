@@ -1,11 +1,13 @@
 import Datastore from 'nedb';
 import { promisifyAll } from './util';
 
+promisifyAll(Datastore.prototype);
+
 const ensureMultipleDefaultIndexes = (collection, fields) => Promise.all(
   fields.map(field => collection.ensureIndex({ [field]: 1 })),
 );
 
-const members = promisifyAll(new Datastore());
+const members = new Datastore();
 
 export const db = { members };
 
