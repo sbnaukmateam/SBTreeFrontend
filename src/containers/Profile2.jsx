@@ -66,7 +66,6 @@ Profile.propTypes = {
   profile: PropTypes.object,
   patron: PropTypes.object,
   message: PropTypes.string,
-  match: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
 };
 Profile.defaultProps = {
