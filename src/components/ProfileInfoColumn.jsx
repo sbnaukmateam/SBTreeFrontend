@@ -19,18 +19,18 @@ class ProfileInfoColumn extends PureComponent {
             {items.map(format).map((item, index) => (
               <div key={item} className="edit-info-point" title={item}>
                 <div>
-                  <img src="images/point.png" alt="" />
+                  <img src="/images/point.png" alt="" />
                   {makeAnchors ? <a href={item}>{item}</a> : item }
                 </div>
                 <button type="button" className="point-btn" onClick={() => onRemove(index)}>
-                  <img src="images/del-point.png" alt="" />
+                  <img src="/images/del-point.png" alt="" />
                 </button>
               </div>
             ))}
           </div>
         </div>
         <button type="button" className="point-btn add-btn">
-          <img src="images/add-point-btn.png" alt="" />
+          <img src="/images/add-point-btn.png" alt="" />
         </button>
       </div>
     );

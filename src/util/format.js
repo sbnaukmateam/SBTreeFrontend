@@ -22,7 +22,7 @@ export const formatData = (data, messages) => {
 export const formatProfileS2C = (profile) => {
   const {
     phones, emails, profiles, ...rest
-  } = profile;
+  } = profile || {};
   const contacts = [
     ...(phones || []).map(item => ({ item, type: 'phone' })),
     ...(emails || []).map(item => ({ item, type: 'email' })),
@@ -32,7 +32,7 @@ export const formatProfileS2C = (profile) => {
 };
 
 export const formatProfileC2S = (profile) => {
-  const { contacts, ...rest } = profile;
+  const { contacts, ...rest } = profile || {};
   const phones = (contacts || []).filter(({ type }) => type === 'phone').map(({ item }) => item);
   const emails = (contacts || []).filter(({ type }) => type === 'email').map(({ item }) => item);
   const profiles = (contacts || []).filter(({ type }) => type === 'profile').map(({ item }) => item);

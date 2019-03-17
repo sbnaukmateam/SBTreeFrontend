@@ -9,9 +9,9 @@ class MyContainer extends PureComponent {
     return (
       <Layout transparent>
         <section className="main-page">
-          <img src="images/main-photo.png" className="img-fluid main-photo" />
+          <img src="/images/main-photo.png" className="img-fluid main-photo" />
           <div className="col-12 col-sm-11 d-flex flex-column align-items-center mt-5 ml-auto mr-auto">
-            {/* <img src="images/main-bg.png" className="main-bg" /> */}
+            {/* <img src="/images/main-bg.png" className="main-bg" /> */}
             <div className="row m-0">
               <div className="col-sm-8 col-12 mt-5 pr-5">
                 <h2>СПУДЕЙСЬКЕ БРАТСТВО</h2>
@@ -33,7 +33,7 @@ class MyContainer extends PureComponent {
                 </p>
               </div>
               <div className="col-sm-4 col-12 d-flex flex-column align-items-center">
-                <img src="images/logo-big.png" className="logo-main" />
+                <img src="/images/logo-big.png" className="logo-main" />
                 <Link to="/about" className="main-about-link">
                   ЧИТАТИ ДАЛI
                   {' '}

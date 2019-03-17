@@ -1,37 +1,37 @@
 export const Projects = [{
   id: 1,
   title: 'МОГИЛЯНСЬКИЙ ВЕРТЕП',
-  img: 'images/project1.png',
+  img: '/images/project1.png',
   available: true,
   fbLink: '//facebook.com',
 }, {
   id: 2,
   title: 'КОЛОДІЙ',
-  img: 'images/project1.png',
+  img: '/images/project1.png',
   available: false,
   fbLink: '//facebook.com',
 }, {
   id: 3,
   title: 'КУПАЛА',
-  img: 'images/project2.png',
+  img: '/images/project2.png',
   available: true,
   fbLink: '//facebook.com',
 }, {
   id: 4,
   title: 'МОГИЛЯНСЬКИЙ ВЕРТЕП',
-  img: 'images/project1.png',
+  img: '/images/project1.png',
   available: true,
   fbLink: '//facebook.com',
 }, {
   id: 5,
   title: 'КОЛОДІЙ',
-  img: 'images/project1.png',
+  img: '/images/project1.png',
   available: false,
   fbLink: '//facebook.com',
 }, {
   id: 6,
   title: 'КУПАЛА',
-  img: 'images/project2.png',
+  img: '/images/project2.png',
   available: true,
   fbLink: '//facebook.com',
 }];

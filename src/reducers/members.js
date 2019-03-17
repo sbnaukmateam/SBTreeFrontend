@@ -3,7 +3,9 @@ import actionTypes from '../actionTypes';
 
 const initialState = {
   list: null,
-  item: null,
+  id: null,
+  profile: null,
+  patron: null,
   error: null,
   loading: false,
   initial: true,
@@ -54,17 +56,19 @@ const queryMembersFail = (state, { payload }) => ({
   initial: false,
 });
 
-const getMemberStart = state => ({
+const getMemberStart = (state, payload) => ({
   ...state,
   item: null,
   loading: true,
   error: null,
   initial: false,
+  id: payload,
 });
 
-const getMemberSuccess = (state, { payload }) => ({
+const getMemberSuccess = (state, { payload: { profile, patron } }) => ({
   ...state,
-  item: payload,
+  profile,
+  patron,
   loading: false,
   error: null,
   initial: false,

@@ -16,11 +16,13 @@ import { formatProfileS2C, formatDegree, formatPosition } from '../util/format';
 
 class Profile extends PureComponent {
   componentDidMount() {
-    const { actions } = this.props;
-    actions.members.fetchMembers();
+    const { actions, match: { params } } = this.props;
+    const { id } = params || {};
+    actions.members.nedbGetMember(id);
   }
 
   render() {
+    console.log(this.props);
     const { profile, patron, message } = this.props;
     const formattedProfile = formatProfileS2C(profile);
     const { contacts, positions, degrees } = formattedProfile;
@@ -51,6 +53,7 @@ Profile.propTypes = {
   profile: PropTypes.object,
   patron: PropTypes.object,
   message: PropTypes.string,
+  match: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
 };
 Profile.defaultProps = {

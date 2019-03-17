@@ -14,3 +14,7 @@ export const selectorRole = createSelector(
   selectorAuthorization,
   state => state.role,
 );
+export const selectorAuthUser = createSelector(
+  selectorAuthorization,
+  state => state.user,
+);

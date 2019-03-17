@@ -25,6 +25,7 @@ ReactDOM.render(
           <Route path="/about" component={About} />
           <Route path="/projects" component={Projects} />
           <Route path="/profile" render={MyProfile} />
+          <Route path="/profiles/:userId" render={MyProfile} />
           <Route path="/contacts" component={Admin} />
           <Route path="*" component={NotFound} />
         </Switch>
