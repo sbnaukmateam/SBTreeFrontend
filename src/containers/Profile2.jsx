@@ -12,9 +12,7 @@ import {
 
 import { ProfileCard, ProfileSidebar, ProfileInfoColumn } from '../components';
 import { Layout } from './Layout';
-
-// TODO detect profile type or change it to server detection
-const detectProfileType = () => 'profile';
+import { formatProfileS2C, formatDegree, formatPosition } from '../util/format';
 
 class Profile extends PureComponent {
   componentDidMount() {
@@ -24,23 +22,8 @@ class Profile extends PureComponent {
 
   render() {
     const { profile, patron, message } = this.props;
-    const {
-      phones, emails, profiles,
-      positions, degrees,
-    } = profile || {};
-    const contacts = [
-      ...(phones || []).map(item => ({ item, type: 'phone' })),
-      ...(profiles || []).map(item => ({ item, type: detectProfileType(item) })),
-      ...(emails || []).map(item => ({ item, type: 'email' })),
-    ];
-    const formattedPositions = (positions || []).map(({ years, name }) => ({
-      item: `${name} - ${years.join(', ')}`,
-    }));
-    const formattedDegrees = (degrees || []).map(({
-      faculty, year, speciality, program,
-    }) => ({
-      item: `${faculty} - ${year} (${speciality}, ${program})`,
-    }));
+    const formattedProfile = formatProfileS2C(profile);
+    const { contacts, positions, degrees } = formattedProfile;
     return (
       <Layout>
         <p>{message}</p>
@@ -48,11 +31,11 @@ class Profile extends PureComponent {
           <section className="profile">
             <div>
               <div className="l-col">
-                <ProfileCard {...profile} patron={patron} />
+                <ProfileCard {...formattedProfile} patron={patron} />
                 <div className="edit-info-wrapper">
                   <ProfileInfoColumn items={contacts} title="Контакти:" makeAnchors />
-                  <ProfileInfoColumn items={formattedPositions} title="Посади в СБ:" />
-                  <ProfileInfoColumn items={formattedDegrees} title="Навчання:" />
+                  <ProfileInfoColumn items={positions} title="Посади в СБ:" formatter={formatPosition} />
+                  <ProfileInfoColumn items={degrees} title="Навчання:" formatter={formatDegree} />
                 </div>
               </div>
               <ProfileSidebar />

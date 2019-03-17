@@ -11,33 +11,33 @@ const nedbInit = () => async (dispatch) => {
   }
 };
 
-const nedbQueryMembers = (query, projection) => async (dispatch) => {
+const nedbQueryMembers = query => async (dispatch) => {
   dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_START });
   try {
-    const result = await db.members.find(query, projection);
+    const result = await db.members.find(query);
     dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_SUCCESS, result });
   } catch (err) {
     dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_FAIL, payload: err.toString() });
   }
 };
 
-const nedbGetMember = (id, projection) => async (dispatch) => {
-  dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_START });
+const nedbGetMember = id => async (dispatch) => {
+  dispatch({ type: actionTypes.NEDB_GET_MEMBER_START });
   try {
-    const result = await db.members.findOne({ id }, projection);
-    dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_SUCCESS, result });
+    const result = await db.members.findOne({ id });
+    dispatch({ type: actionTypes.NEDB_GET_MEMBER_SUCCESS, result });
   } catch (err) {
-    dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_FAIL, payload: err.toString() });
+    dispatch({ type: actionTypes.NEDB_GET_MEMBER_FAIL, payload: err.toString() });
   }
 };
 
 const nedbUpdateMember = (id, update) => async (dispatch) => {
-  dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_START });
+  dispatch({ type: actionTypes.NEDB_UPDATE_MEMBER_START });
   try {
-    const result = await db.members.update({ id }, { $set: update });
-    dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_SUCCESS, result });
+    const result = await db.members.update({ _id: id }, { $set: update });
+    dispatch({ type: actionTypes.NEDB_UPDATE_MEMBER_SUCCESS, result });
   } catch (err) {
-    dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_FAIL, payload: err.toString() });
+    dispatch({ type: actionTypes.NEDB_UPDATE_MEMBER_FAIL, payload: err.toString() });
   }
 };
 

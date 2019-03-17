@@ -2,8 +2,8 @@ import { handleActions } from 'redux-actions';
 import actionTypes from '../actionTypes';
 
 const initialState = {
-  map: null,
-  filtered: null,
+  list: null,
+  item: null,
   error: null,
   loading: false,
   initial: true,
@@ -16,9 +16,8 @@ const fetchMembersStart = state => ({
   initial: false,
 });
 
-const fetchMembersSuccess = (state, { payload }) => ({
+const fetchMembersSuccess = state => ({
   ...state,
-  map: payload,
   loading: false,
   error: null,
   initial: false,
@@ -26,7 +25,6 @@ const fetchMembersSuccess = (state, { payload }) => ({
 
 const fetchMembersFail = (state, { payload }) => ({
   ...state,
-  map: null,
   loading: false,
   error: payload,
   initial: false,
@@ -34,7 +32,7 @@ const fetchMembersFail = (state, { payload }) => ({
 
 const queryMembersStart = state => ({
   ...state,
-  filtered: null,
+  list: null,
   loading: true,
   error: null,
   initial: false,
@@ -42,7 +40,7 @@ const queryMembersStart = state => ({
 
 const queryMembersSuccess = (state, { payload }) => ({
   ...state,
-  filtered: payload,
+  list: payload,
   loading: false,
   error: null,
   initial: false,
@@ -50,11 +48,36 @@ const queryMembersSuccess = (state, { payload }) => ({
 
 const queryMembersFail = (state, { payload }) => ({
   ...state,
-  filtered: null,
+  list: null,
   loading: false,
   error: payload,
   initial: false,
 });
+
+const getMemberStart = state => ({
+  ...state,
+  item: null,
+  loading: true,
+  error: null,
+  initial: false,
+});
+
+const getMemberSuccess = (state, { payload }) => ({
+  ...state,
+  item: payload,
+  loading: false,
+  error: null,
+  initial: false,
+});
+
+const getMemberFail = (state, { payload }) => ({
+  ...state,
+  item: null,
+  loading: false,
+  error: payload,
+  initial: false,
+});
+
 
 export const members = handleActions({
   [actionTypes.FETCH_MEMBERS_START]: fetchMembersStart,
@@ -63,4 +86,7 @@ export const members = handleActions({
   [actionTypes.NEDB_QUERY_MEMBERS_START]: queryMembersStart,
   [actionTypes.NEDB_QUERY_MEMBERS_SUCCESS]: queryMembersSuccess,
   [actionTypes.NEDB_QUERY_MEMBERS_FAIL]: queryMembersFail,
+  [actionTypes.NEDB_GET_MEMBER_START]: getMemberStart,
+  [actionTypes.NEDB_GET_MEMBER_SUCCESS]: getMemberSuccess,
+  [actionTypes.NEDB_GET_MEMBER_FAIL]: getMemberFail,
 }, initialState);

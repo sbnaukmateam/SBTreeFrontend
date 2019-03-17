@@ -7,11 +7,6 @@ export const selectorMembersMap = createSelector(
   state => state.map,
 );
 
-export const selectorMembersById = id => createSelector(
-  selectorMembersFull,
-  state => state[id],
-);
-
 export const selectorMembersFiltered = createSelector(
   selectorMembers,
   state => state.filtered,

@@ -8,15 +8,11 @@ const fetchMembers = () => async (dispatch) => {
     const result = await api.getMembersMock();
     await db.members.remove({}, { multi: true });
     await Promise.all(result.map(member => db.members.insert(member)));
-    const membersMap = result.reduce((prev, curr) => {
-      prev[curr.id] = curr; // eslint-disable-line no-param-reassign
-      return prev;
-    }, {});
-    dispatch({ type: actionTypes.FETCH_MEMBERS_SUCCESS, membersMap });
+    dispatch({ type: actionTypes.FETCH_MEMBERS_SUCCESS });
   } catch (err) {
     dispatch({ type: actionTypes.FETCH_MEMBERS_FAIL, payload: err.toString() });
   }
 };
 
 
-export const membersActions = { fetchMembers, queryMembers, getMember };
+export const membersActions = { fetchMembers };
