@@ -4,13 +4,15 @@ import { connect } from 'react-redux';
 import { formValueSelector } from 'redux-form';
 import { Cart, SearchForm } from '../components';
 import {
-  selectorMembers,
+  selectorMembers, selectorRole,
 } from '../selectors';
 import { Layout } from '.';
+import { privateRoute } from '../hoc';
+
 
 class AdminSearch extends PureComponent {
   render() {
-    const { contacts, quicksearch } = this.props;
+    const { contacts, quicksearch, role } = this.props;
     const searchStr = quicksearch.toLowerCase();
     const filteredContacts = (contacts || [])
       .filter(({ name, surname, nickName }) => [name, surname, nickName]
@@ -24,7 +26,7 @@ class AdminSearch extends PureComponent {
             <div className="col-12 col-lg-10">
               <div className="row">
                 <div className="col-3 accounts-admin_control pb-3">
-                  <SearchForm />
+                  <SearchForm role={role} />
                 </div>
                 <div className="col-9 accounts-admin_list">
                   <div className="row d-flex justify-content-center accounts-admin_list_row">
@@ -47,6 +49,7 @@ class AdminSearch extends PureComponent {
 AdminSearch.propTypes = {
   contacts: PropTypes.array,
   quicksearch: PropTypes.string,
+  role: PropTypes.object.isRequired,
 };
 AdminSearch.defaultProps = {
   contacts: null,
@@ -58,9 +61,10 @@ const selector = formValueSelector('ContactSearchForm');
 const mapStateToProps = state => ({
   contacts: selectorMembers(state),
   quicksearch: selector(state, 'quicksearch'),
+  role: selectorRole(state),
 });
 
 
-const WrappedAdminSearch = connect(mapStateToProps)(AdminSearch);
+const WrappedAdminSearch = privateRoute(connect(mapStateToProps)(AdminSearch));
 
 export { WrappedAdminSearch as Admin };

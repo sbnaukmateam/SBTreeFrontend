@@ -2,23 +2,11 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { selectorProfileName } from '../selectors';
+import { bindActionCreators } from 'redux';
+import { selectorLoggedIn } from '../selectors';
+import { modalActions } from '../actions';
+import { NavNoAuth, NavAuth } from '.';
 
-const NavAuth = () => (
-  <div className="d-flex">
-    <Link to="/profile" className="mr-2 d-flex align-items-center">
-      <img src="images/profile-icon.png" className="profile-icon" />
-    </Link>
-    <div className="auth-nav" />
-    <button type="button">ВИХІД</button>
-  </div>
-);
-const NavNoAuth = () => (
-  <div>
-    <button type="button">ВХІД</button>
-    <Link to="/">РЕЄСТРАЦІЯ</Link>
-  </div>
-);
 class Navbar extends PureComponent {
   constructor() {
     super();
@@ -44,7 +32,7 @@ class Navbar extends PureComponent {
 
   render() {
     const {
-      name, style, transparent,
+      loggedIn, style, transparent, actions: { modal },
     } = this.props;
     const { scroll } = this.state;
     const navStyle = `navbar${transparent && !scroll ? ' transparent' : ''}`;
@@ -59,40 +47,47 @@ class Navbar extends PureComponent {
           </div>
           <div className="col-6 d-flex justify-content-around">
             <Link to="/about">
-            ПРО НАС
+              ПРО НАС
             </Link>
             <Link to="/projects">
-            ПРОЕКТИ
+              ПРОЕКТИ
             </Link>
             <Link to="/contacts">
-            КОНТАКТИ
+              КОНТАКТИ
             </Link>
             <Link to="/">
               ДЕРЕВО
             </Link>
           </div>
           <div className="col-3 d-flex justify-content-center">
-            {name ? <NavAuth /> : <NavNoAuth />}
+            {loggedIn ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
           </div>
         </div>
       </div>
     );
   }
 }
+
 Navbar.contextTypes = { router: PropTypes.object };
 Navbar.propTypes = {
-  name: PropTypes.string,
+  loggedIn: PropTypes.bool,
   style: PropTypes.object.isRequired,
   transparent: PropTypes.bool,
+  actions: PropTypes.object.isRequired,
 };
 Navbar.defaultProps = {
-  name: null,
+  loggedIn: false,
   transparent: null,
 };
-const mapStateToProps = (state, ownProps) => ({
-  name: selectorProfileName(state, ownProps.id),
+const mapStateToProps = state => ({
+  loggedIn: selectorLoggedIn(state),
+});
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    modal: bindActionCreators(modalActions, dispatch),
+  },
 });
 
-const NavbarWrapped = connect(mapStateToProps)(Navbar);
+const NavbarWrapped = connect(mapStateToProps, mapDispatchToProps)(Navbar);
 
 export { NavbarWrapped as Navbar };
