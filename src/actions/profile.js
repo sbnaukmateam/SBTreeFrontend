@@ -11,13 +11,4 @@ const changePassword = newPassword => async (dispatch) => {
   }
 };
 
-const changeInfo = data => async (dispatch) => {
-  dispatch({ type: actionTypes.CHANGE_INFORMATION_START });
-  try {
-    const result = await api.changeInfoMock(data);
-    dispatch({ type: actionTypes.CHANGE_INFORMATION_SUCCESS, payload: result });
-  } catch (err) {
-    dispatch({ type: actionTypes.CHANGE_INFORMATION_FAIL, payload: err.toString() });
-  }
-};
-export const profileActions = { changePassword, changeInfo };
+export const profileActions = { changePassword };

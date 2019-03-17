@@ -1,19 +1,17 @@
 import { push } from 'connected-react-router';
 import actionTypes from '../actionTypes';
-import { api, setAuth, parseParams } from '../util';
+import {
+  api, setAuth, getAuth, parseParams,
+} from '../util';
 import { selectorRouterSearch } from '../selectors';
 
-const setAuthAction = (data) => {
-  setAuth(data);
-  return {
-    type: actionTypes.SET_AUTH,
-  };
-};
 const verifyUser = () => async (dispatch) => {
   dispatch({ type: actionTypes.AUTH_VERIFY_START });
   try {
-    const result = await api.verify();
-    dispatch({ type: actionTypes.AUTH_VERIFY_SUCCESS, payload: result });
+    const user = await api.verify();
+    const role = { isAdmin: true, isActive: true, status: 'BRATCHYK' };
+    const token = getAuth();
+    dispatch({ type: actionTypes.AUTH_VERIFY_SUCCESS, payload: { user, role, token } });
   } catch (err) {
     dispatch({ type: actionTypes.AUTH_VERIFY_FAIL, payload: err.toString() });
   }
@@ -25,10 +23,10 @@ const signIn = data => async (dispatch, getState) => {
   dispatch({ type: actionTypes.AUTH_LOGIN_START });
   try {
     const { username, password } = data;
-    const result = await api.signIn(username, password);
-    const tRole = await api.getRoleMock(username, password);
-    setAuthAction({ token: result.token });
-    dispatch({ type: actionTypes.AUTH_LOGIN_SUCCESS, payload: [result, tRole] });
+    const { token, user } = await api.signIn(username, password);
+    const role = { isAdmin: true, isActive: true, status: 'BRATCHYK' }; // await api.getRoleMock(username, password);
+    setAuth(token);
+    dispatch({ type: actionTypes.AUTH_LOGIN_SUCCESS, payload: { user, role, token } });
     dispatch({ type: actionTypes.MODAL_CLOSE });
     if (backUrl) {
       dispatch(push(backUrl));
@@ -55,7 +53,7 @@ const signUp = data => async (dispatch) => {
 const logout = () => (dispatch) => {
   dispatch({ type: actionTypes.AUTH_LOGOUT_START });
   try {
-    setAuthAction();
+    setAuth(null);
     dispatch({ type: actionTypes.AUTH_LOGOUT_SUCCESS });
   } catch (err) {
     dispatch({ type: actionTypes.AUTH_LOGOUT_FAIL, payload: err.toString() });
@@ -63,5 +61,5 @@ const logout = () => (dispatch) => {
 };
 
 export const authActions = {
-  verifyUser, signIn, signUp, logout, setAuth: setAuthAction,
+  verifyUser, signIn, signUp, logout,
 };

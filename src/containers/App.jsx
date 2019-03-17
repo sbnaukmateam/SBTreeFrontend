@@ -20,7 +20,7 @@ class App extends PureComponent {
     const { resetToken } = parseParams(search);
     if (resetToken) {
       modal.openChangePassModal();
-      reset.setReset(resetToken);
+      reset.setResetToken(resetToken);
     }
   }
 

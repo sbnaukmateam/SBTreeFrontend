@@ -6,15 +6,13 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { store, history } from './store';
 import {
-  MyContainer, NotFound, About, Projects, Profile, Admin, App,
+  MyContainer, NotFound, About, Projects, ProfileContainer, Admin, App,
 } from './containers';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/app.css';
 
-// TODO remove mock
-const MyProfile = props => (<Profile id={1} {...props} />);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -24,7 +22,8 @@ ReactDOM.render(
           <Route path="/" exact component={MyContainer} />
           <Route path="/about" component={About} />
           <Route path="/projects" component={Projects} />
-          <Route path="/profile" render={MyProfile} />
+          <Route path="/profile" component={ProfileContainer} />
+          <Route path="/profiles/:id" component={ProfileContainer} />
           <Route path="/contacts" component={Admin} />
           <Route path="*" component={NotFound} />
         </Switch>

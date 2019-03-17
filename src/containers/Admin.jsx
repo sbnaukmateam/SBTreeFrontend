@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { formValueSelector } from 'redux-form';
-import { Cart, SearchForm } from '../components';
+import { Card, SearchForm } from '../components';
 import {
-  selectorMembers, selectorRole,
+  selectorMembersList, selectorRole,
 } from '../selectors';
 import { Layout } from '.';
 import { privateRoute } from '../hoc';
@@ -31,8 +31,8 @@ class AdminSearch extends PureComponent {
                 <div className="col-9 accounts-admin_list">
                   <div className="row d-flex justify-content-center accounts-admin_list_row">
                     {
-                      filteredContacts.map(x => (
-                        <Cart key={x.id} name={`${x.name} ${x.surname}`} comment={x.nickName} faculty={x.degrees[0].faculty} year={+x.degrees[0].year}
+                      filteredContacts && filteredContacts.map(x => (
+                        <Card key={x.id} name={`${x.name} ${x.surname}`} comment={x.nickName} faculty={x.degrees[0].faculty} year={+x.degrees[0].year}
                           img={x.avatar} />
                       ))
                     }
@@ -59,7 +59,7 @@ AdminSearch.defaultProps = {
 const selector = formValueSelector('ContactSearchForm');
 
 const mapStateToProps = state => ({
-  contacts: selectorMembers(state),
+  contacts: selectorMembersList(state),
   quicksearch: selector(state, 'quicksearch'),
   role: selectorRole(state),
 });

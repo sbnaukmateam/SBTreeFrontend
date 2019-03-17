@@ -1,15 +1,23 @@
-export const selectorMembers = state => state.members.result;
-export const selectorProfileById = (state, id) => selectorMembers(state) && selectorMembers(state).find(x => x.id === id);
-export const selectorPatron = (state, childId) => {
-  if (!selectorMembers(state)) return null;
-  const id = selectorMembers(state).find(x => x.id === childId).patron;
-  return selectorMembers(state).find(x => x.id === id);
-};
-export const selectorProfileName = (state, id) => {
-  const me = selectorProfileById(state, id);
-  return me && `${me.name} ${me.surname}`;
-};
-export const selectorProfileAvatar = (state, id) => {
-  const me = selectorProfileById(state, id);
-  return me && me.avatar;
-};
+import { createSelector } from 'reselect';
+
+export const selectorMembers = state => state.members;
+
+export const selectorMembersList = createSelector(
+  selectorMembers,
+  state => state.list,
+);
+
+export const selectorMembersProfile = createSelector(
+  selectorMembers,
+  state => state.profile,
+);
+
+export const selectorMembersPatron = createSelector(
+  selectorMembers,
+  state => state.profile,
+);
+
+export const selectorMembersId = createSelector(
+  selectorMembers,
+  state => state.id,
+);

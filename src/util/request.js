@@ -8,7 +8,7 @@ const prepareOptions = (method, data, options) => ({
   body: JSON.stringify(data),
 });
 
-const getAuth = () => localStorage.getItem('token');
+export const getAuth = () => localStorage.getItem('token');
 
 export const setAuth = token => localStorage.setItem('token', token);
 
