@@ -3,8 +3,8 @@ const QUICKSEARCH_FIELDS = ['name', 'surname', 'nickName'];
 export const createQuery = (values) => {
   const query = {};
   const { quicksearch, birthday } = values;
-  const quicksearchRegex = new RegExp(quicksearch, 'i');
-  if (query) {
+  if (quicksearch) {
+    const quicksearchRegex = new RegExp(quicksearch, 'i');
     Object.assign(
       query,
       { $or: QUICKSEARCH_FIELDS.map(item => ({ [item]: { $regex: quicksearchRegex } })) },
