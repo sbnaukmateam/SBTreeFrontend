@@ -35,12 +35,6 @@ class DatePickerField extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  shouldComponentUpdate(nextProps) {
-    const { input: { value } } = this.props;
-    const { input: { value: newValue } } = nextProps;
-    return formatDate(value) !== formatDate(newValue);
-  }
-
   handleChange(date) {
     const { input } = this.props;
     input.onChange(formatDate(date));
@@ -59,7 +53,7 @@ class DatePickerField extends React.Component {
         <DatePicker
           {...input}
           className={className}
-          placeholder={placeholder}
+          placeholderText={placeholder}
           dateFormat={DATE_FORMAT}
           selected={parseDate(input.value)}
           onChange={this.handleChange}

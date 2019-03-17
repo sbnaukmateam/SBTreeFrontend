@@ -58,7 +58,7 @@ class SearchForm extends PureComponent {
           <h4 className="col-12 text-mid-blue">ФІЛЬТРИ</h4>
           <div className="col-12">
             <Field component="select" name="status" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
-              <option value="">Статус в СБ</option>
+              <option default value="">Статус в СБ</option>
               {SB_STATUS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
             </Field>
           </div>
@@ -75,7 +75,7 @@ class SearchForm extends PureComponent {
             </select>
           </div>
           <div className="col-sm-12 col-md-6">
-            <Field component={DatePickerField} name="birthday" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white" />
+            <Field component={DatePickerField} name="birthday" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white" placeholder="Дата народження" />
           </div>
           <h5 className="mt-3 col-12 text-mid-blue">ОСВІТА В НАУКМА</h5>
           <div className="col-sm-12 col-md-6">
@@ -105,22 +105,13 @@ class SearchForm extends PureComponent {
 
           <h5 className="text-mid-blue mt-3 col-12 text-mid-blue">КОНТАКТИ</h5>
           <div className="col-12">
-            <select
-              className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
-              <option>Статус в СБ</option>
-            </select>
+            <Field component="input" name="email" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white" placeholder="E-mail" />
           </div>
           <div className="col-12">
-            <select
-              className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white">
-              <option>Статус в СБ</option>
-            </select>
+            <Field component="input" name="phone" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white" placeholder="Телефон" />
           </div>
           <div className="col-12">
-            <select
-              className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
-              <option>Статус в СБ</option>
-            </select>
+            <Field component="input" name="profile" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white" placeholder="Профіль" />
           </div>
           <h5 className="text-mid-blue mt-3 col-12">ДІЯЛЬНІСТЬ В СБ</h5>
           <div className="col-sm-12 col-md-6">
