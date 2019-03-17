@@ -45,8 +45,11 @@ export const Members = [{
   degrees: [{
     year: '2010',
     faculty: 'ФІ',
+    facultyId: '1',
     speciality: "Комп'ютерні науки",
+    specialityId: '3',
     program: 'БП',
+    programId: '1',
   }],
   patronId: '2',
   birthday: '1990-08-25',
@@ -66,8 +69,11 @@ export const Members = [{
   degrees: [{
     year: '2010',
     faculty: 'ФІ',
+    facultyId: '1',
     speciality: "Комп'ютерні науки",
+    specialityId: '3',
     program: 'БП',
+    programId: '1',
   }],
   patronId: '-1',
   birthday: '1990-08-25',

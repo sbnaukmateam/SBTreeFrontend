@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'debounce';
-import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { membersActions } from '../actions';
 import { createQuery } from '../util/search';
 import { DatePickerField } from './DatePickerField';
-import { SB_STATUS } from '../constants';
+import { SB_STATUS, FACULTIES } from '../constants';
 
 const onFormChange = function onFormChange(values, dispatch) {
   dispatch(membersActions.nedbQueryMembers(createQuery(values)));
@@ -15,8 +16,10 @@ const debouncedOnFormChange = debounce(onFormChange, 200);
 
 class SearchForm extends PureComponent {
   render() {
-    const { role } = this.props;
+    const { role, faculty: selectedFaculty } = this.props;
     const { admin } = role || {};
+    console.log(selectedFaculty);
+    const { specialities = [] } = FACULTIES.find(({ value }) => value === selectedFaculty) || {};
     return (
       <form>
         <div className="row d-flex justify-content-center text-center">
@@ -80,16 +83,16 @@ class SearchForm extends PureComponent {
           </div>
           <h5 className="mt-3 col-12 text-mid-blue">ОСВІТА В НАУКМА</h5>
           <div className="col-sm-12 col-md-6">
-            <select
-              className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg mt-1 mb-1 p-0 bg-white">
-              <option>Фото є</option>
-            </select>
+            <Field component="select" name="faculty" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
+              <option default value="">Факультет</option>
+              {FACULTIES.map(({ name, value }) => <option key={value} value={value}>{name}</option>)}
+            </Field>
           </div>
           <div className="col-sm-12 col-md-6">
-            <select
-              className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
-              <option>01.01.1995</option>
-            </select>
+            <Field component="select" name="speciality" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
+              <option default value="">Спеціальність</option>
+              {specialities.map(({ name, value }) => <option key={value} value={value}>{name}</option>)}
+            </Field>
           </div>
           <div className="col-sm-12 col-md-6">
             <select
@@ -147,14 +150,24 @@ class SearchForm extends PureComponent {
 
 SearchForm.propTypes = {
   role: PropTypes.object,
+  faculty: PropTypes.string,
 };
 SearchForm.defaultProps = {
   role: null,
+  faculty: null,
 };
 
-const WrappedSearchForm = reduxForm({
-  form: 'ContactSearchForm',
-  onChange: debouncedOnFormChange,
-})(SearchForm);
+const selector = formValueSelector('ContactSearchForm');
+
+const mapStateToProps = state => ({
+  faculty: selector(state, 'faculty'),
+});
+
+const WrappedSearchForm = connect(mapStateToProps)(
+  reduxForm({
+    form: 'ContactSearchForm',
+    onChange: debouncedOnFormChange,
+  })(SearchForm),
+);
 
 export { WrappedSearchForm as SearchForm };
