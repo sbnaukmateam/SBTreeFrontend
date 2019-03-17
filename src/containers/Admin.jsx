@@ -25,8 +25,14 @@ class AdminSearch extends PureComponent {
                   <div className="row d-flex justify-content-center accounts-admin_list_row">
                     {
                       contacts && contacts.map(x => (
-                        <Card key={x.id} name={`${x.name} ${x.surname}`} comment={x.nickName} faculty={x.degrees[0].faculty} year={+x.degrees[0].year}
-                          img={x.avatar} />
+                        <Card
+                          key={x.id}
+                          name={`${x.name} ${x.surname}`}
+                          comment={x.nickName}
+                          faculty={x.degrees[0].faculty}
+                          year={+x.degrees[0].year}
+                          img={x.avatar}
+                          id={x.id} />
                       ))
                     }
                   </div>
