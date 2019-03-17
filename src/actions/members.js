@@ -49,7 +49,7 @@ const fetchMembers = () => async (dispatch, getState) => {
   try {
     const result = await api.getMembersMock();
     await db.members.remove({}, { multi: true });
-    await Promise.all(result.map(member => db.members.insertAsync(member)));
+    await db.members.insertAsync(result);
     const id = selectorMembersId(getState());
     if (id) {
       dispatch(nedbGetMember(id));
