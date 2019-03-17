@@ -29,3 +29,8 @@ export const PROGRAMS = ['Бакалавр', 'Магістр', 'Аспірант
 export const MIN_YEAR = 1992;
 export const CURRENT_YEAR = new Date().getFullYear();
 export const POSSIBLE_YEARS = Array.from(new Array(CURRENT_YEAR - MIN_YEAR + 1), (val, index) => index + MIN_YEAR);
+export const SB_STATUS = [
+  { value: 'MALIUK', label: 'Малюк' },
+  { value: 'BRATCHYK', label: 'Братчик' },
+  { value: 'POSHANOVANYJ', label: 'Пошанований' },
+];

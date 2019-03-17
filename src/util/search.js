@@ -2,7 +2,7 @@ const QUICKSEARCH_FIELDS = ['name', 'surname', 'nickName'];
 
 export const createQuery = (values) => {
   const query = {};
-  const { quicksearch, birthday } = values;
+  const { quicksearch, birthday, status } = values;
   if (quicksearch) {
     const quicksearchRegex = new RegExp(quicksearch, 'i');
     Object.assign(
@@ -12,6 +12,9 @@ export const createQuery = (values) => {
   }
   if (birthday) {
     Object.assign(query, { birthday });
+  }
+  if (status) {
+    Object.assign(query, { status });
   }
   return query;
 };

@@ -5,6 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import { membersActions } from '../actions';
 import { createQuery } from '../util/search';
 import { DatePickerField } from './DatePickerField';
+import { SB_STATUS } from '../constants';
 
 const onFormChange = function onFormChange(values, dispatch) {
   dispatch(membersActions.nedbQueryMembers(createQuery(values)));
@@ -56,10 +57,10 @@ class SearchForm extends PureComponent {
 
           <h4 className="col-12 text-mid-blue">ФІЛЬТРИ</h4>
           <div className="col-12">
-            <select
-              className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
-              <option>Статус в СБ</option>
-            </select>
+            <Field component="select" name="status" className="text-mid-blue accounts-admin_control_filter-select form-control form-control-lg  mt-1 mb-1 p-0 bg-white">
+              <option value="">Статус в СБ</option>
+              {SB_STATUS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
+            </Field>
           </div>
           <div className="col-12">
             <select
