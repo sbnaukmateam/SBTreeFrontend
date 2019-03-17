@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { formValueSelector } from 'redux-form';
 import { Card, SearchForm } from '../components';
 import {
   selectorMembersList, selectorRole,
@@ -12,13 +11,7 @@ import { privateRoute } from '../hoc';
 
 class AdminSearch extends PureComponent {
   render() {
-    const { contacts, quicksearch, role } = this.props;
-    const searchStr = quicksearch.toLowerCase();
-    const filteredContacts = (contacts || [])
-      .filter(({ name, surname, nickName }) => [name, surname, nickName]
-        .filter(item => !!item)
-        .map(item => item.toLowerCase())
-        .some(item => item.indexOf(searchStr) !== -1));
+    const { contacts, role } = this.props;
     return (
       <Layout>
         <section className="accounts-admin">
@@ -31,7 +24,7 @@ class AdminSearch extends PureComponent {
                 <div className="col-9 accounts-admin_list">
                   <div className="row d-flex justify-content-center accounts-admin_list_row">
                     {
-                      filteredContacts && filteredContacts.map(x => (
+                      contacts && contacts.map(x => (
                         <Card key={x.id} name={`${x.name} ${x.surname}`} comment={x.nickName} faculty={x.degrees[0].faculty} year={+x.degrees[0].year}
                           img={x.avatar} />
                       ))
@@ -48,19 +41,14 @@ class AdminSearch extends PureComponent {
 }
 AdminSearch.propTypes = {
   contacts: PropTypes.array,
-  quicksearch: PropTypes.string,
   role: PropTypes.object.isRequired,
 };
 AdminSearch.defaultProps = {
   contacts: null,
-  quicksearch: '',
 };
-
-const selector = formValueSelector('ContactSearchForm');
 
 const mapStateToProps = state => ({
   contacts: selectorMembersList(state),
-  quicksearch: selector(state, 'quicksearch'),
   role: selectorRole(state),
 });
 

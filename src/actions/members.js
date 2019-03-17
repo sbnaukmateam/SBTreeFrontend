@@ -8,7 +8,7 @@ const nedbQueryMembers = query => async (dispatch) => {
   dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_START });
   try {
     const result = await db.members.findAsync(query);
-    dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_SUCCESS, result });
+    dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_SUCCESS, payload: result });
   } catch (err) {
     dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_FAIL, payload: err.toString() });
   }

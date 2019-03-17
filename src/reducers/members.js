@@ -35,7 +35,6 @@ const fetchMembersFail = (state, { payload }) => ({
 
 const queryMembersStart = state => ({
   ...state,
-  list: null,
   loading: true,
   error: null,
   initial: false,
