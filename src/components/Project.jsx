@@ -22,12 +22,5 @@ Project.propTypes = {
   title: PropTypes.string.isRequired,
   available: PropTypes.bool.isRequired,
 };
-// const mapDispatchToProps = dispatch => ({
-//   actions: {
-//     // routs: bindActionCreators(routsActions, dispatch),
-//   },
-// });
-
-// const NavbarWrapped = connect(null, mapDispatchToProps)(Navbar);
 
 export { Project };

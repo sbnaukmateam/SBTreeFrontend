@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,6 +10,7 @@ import {
 import { profileActions } from '../actions';
 import { formatData } from '../util';
 import { Layout } from './Layout';
+import { privateRoute } from '../hoc';
 
 class Profile extends PureComponent {
   constructor() {
@@ -177,6 +179,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const ProfileWrapped = connect(mapStateToProps, mapDispatchToProps)(Profile);
+const ProfileWrapped = privateRoute(connect(mapStateToProps, mapDispatchToProps)(Profile));
 
 export { ProfileWrapped as Profile };

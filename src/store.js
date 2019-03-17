@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import { routerMiddleware, connectRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { createLogger } from 'redux-logger';
+import { reducer as formReducer } from 'redux-form';
 
 import * as appReducers from './reducers';
 
@@ -17,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const reducers = combineReducers({
-  router: connectRouter(history), ...appReducers,
+  router: connectRouter(history), form: formReducer, ...appReducers,
 });
 
 const enhancers = compose(applyMiddleware(
