@@ -10,34 +10,47 @@ class Card extends PureComponent {
     const linkIcons = ['tg', 'fb', 'tel', 'mail'];
     const link = `/profiles/${id}`;
     return (
-      <div className="col-md-6 col-sm-12 accounts-admin_list_card p-3">
-        <div className="accounts-admin_list_card_icon">
+      <div className="cart-item-wrapper">
+        <div className="card-container">
           <Link to={link}>
-            <img className="accounts-admin_list_card_person-img rounded-circle position-relative" src={img} />
-          </Link>
-          <img className="accounts-admin_list_card_small-icon rounded-circle position-absolute" src="/images/l-ico.png" />
-        </div>
-        <div className="text-center accounts-admin_list_card_text">
-          <h6 className="border-bottom-blue pb-2 ml-3 text-mid-blue font-weight-mid">
-            <Link to={link}>{name}</Link>
-          </h6>
-          <div className="border-bottom-blue pb-2 ml-3">
-            <p className="text-mid-blue mt-1 mb-1 accounts-admin_list_card_plus-info">
-              {comment}
-            </p>
-            <div className="row d-flex justify-content-center">
-              <p className="text-mid-blue mb-0 accounts-admin_list_card_plus-info">
-                {faculty}
-                {', '}
-                {year}
-              </p>
+            <div className="card-flex-element card-profile-icons-box">
+              <img className="card-leaf" src="static/images/l-ico.png" />
+              <img className="card-members-photo" src={img} />
             </div>
-            <div>
-              {linkIcons.map(x => <img key={x} src={`/images/${x}-icon.png`} className="m-1 mb-0 fab" />)}
+          </Link>
+          <div className="card-flex-element card-member-info">
+            <div className="card-container2">
+              <Link to={link}>
+                <div className="card-flex-element2">
+                  <p>{name}</p>
+                </div>
+              </Link>
+              <hr />
+              <div className="card-flex-element2">
+                <p>{comment}</p>
+              </div>
+              <div className="card-flex-element2 card-fac">
+                <p>
+                  {faculty}
+                  {', '}
+                  {year}
+                </p>
+              </div>
+              <div className="card-flex-element2">
+                <div className="hr">
+                  <hr />
+                </div>
+              </div>
+              <div className="card-flex-element2 card-links">
+                <span>
+                  {linkIcons.map(x => <img key={x} src={`/images/${x}-icon.png`} className="m-1 mb-0 fab" />)}
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     );
   }
 }
