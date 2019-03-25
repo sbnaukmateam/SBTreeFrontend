@@ -34,6 +34,7 @@ h2 {
     display: flex;
     flex-direction: row;
 
+
 }
 
 .contacts-section_content-wrapper_search-control {
@@ -133,6 +134,7 @@ hr {
     padding: 0 10%;
 }
 
+
 .contacts-search-wrapper_search-line-box {
     display: flex;
     justify-content: space-between;
@@ -180,6 +182,7 @@ hr {
 
 .contacts-search-wrapper_filters {
     margin-top: 20px;
+
 }
 
 .contacts-search-wrapper_filters_two-in-row-box {
@@ -187,6 +190,7 @@ hr {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+
 }
 
 
@@ -376,6 +380,7 @@ hr {
 .navbar a, .navbar button {
     color: white;
     font-size: calc(0.7vw + 5px);
+
 }
 
 .navbar button {
@@ -384,6 +389,7 @@ hr {
     padding-left: 8px;
     padding-right: 8px;
 }
+
 
 .navbar a:hover, .navbar button:hover {
     color: white;
@@ -547,6 +553,7 @@ hr {
     display: block;
     margin: 0 auto;
 }
+
 
 .proj-slider-img:hover + .proj-slider-btn-box, .proj-slider-btn-box:hover {
     display: flex;
@@ -1245,12 +1252,14 @@ hr {
         margin-right: 0px;
     }
 
+
     .contacts-search-wrapper_filters_two-in-row-box {
         flex-direction: row;
     }
 }
 
 @media screen and (min-width: 768px) {
+
     .carts-box{
         padding: 10px 20px;
     }
@@ -1268,6 +1277,7 @@ hr {
 
     .carts-wrapper {
         width: 70%;
+
     }
 }
 
@@ -1286,6 +1296,7 @@ hr {
 
     .carts-wrapper {
         width: 72%;
+
     }
 
 }
@@ -1309,6 +1320,7 @@ hr {
 
     .carts-wrapper {
         width: 75%;
+
     }
 
 }

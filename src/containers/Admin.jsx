@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Card, SearchForm } from '../components';
+import { SearchForm } from '../components';
 import {
   selectorMembersList, selectorRole,
 } from '../selectors';
@@ -11,7 +11,7 @@ import { privateRoute } from '../hoc';
 
 class AdminSearch extends PureComponent {
   render() {
-    const { contacts, role } = this.props;
+    const { /* contacts, */ role } = this.props;
     return (
       <Layout>
         <section className="contacts-section">
@@ -35,6 +35,7 @@ class AdminSearch extends PureComponent {
                   }
               </div>
               <div>kekweqweq</div>
+
             </div>
           </div>
 
@@ -45,11 +46,9 @@ class AdminSearch extends PureComponent {
 }
 
 AdminSearch.propTypes = {
-  contacts: PropTypes.array,
   role: PropTypes.object.isRequired,
 };
 AdminSearch.defaultProps = {
-  contacts: null,
 };
 
 const mapStateToProps = state => ({

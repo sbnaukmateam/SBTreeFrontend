@@ -82,10 +82,12 @@ class SearchForm extends PureComponent {
                 <option default value="false">Нема фото</option>
               </Field>
               <Field component={DatePickerField} name="birthday"
+
                 className="text-mid-blue datepicker contact-search_select"
                 placeholder="Дата народження" />
             </div>
             <br />
+
             <h5 className="text-mid-blue">ОСВІТА В НАУКМА</h5>
             <div className="contacts-search-wrapper_filters_two-in-row-box">
               <Field component="select" name="faculty"
@@ -124,8 +126,11 @@ class SearchForm extends PureComponent {
             <Field component="input" name="profile"
               className="text-mid-blue contact-search_select"
               placeholder="Профіль" />
+
             <br />
             <br />
+
+
             <h5 className="text-mid-blue">ДІЯЛЬНІСТЬ В СБ</h5>
             <div className="contacts-search-wrapper_filters_two-in-row-box">
               <select
