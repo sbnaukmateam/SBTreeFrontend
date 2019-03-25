@@ -37,6 +37,7 @@ class AdminSearch extends PureComponent {
               <button className="btn show-more-btn" type="button">
                 ПОКАЗАТИ ЩЕ...
               </button>
+
             </div>
           </div>
 
@@ -47,8 +48,8 @@ class AdminSearch extends PureComponent {
 }
 
 AdminSearch.propTypes = {
-  contacts: PropTypes.array,
   role: PropTypes.object.isRequired,
+  contacts: PropTypes.object,
 };
 AdminSearch.defaultProps = {
   contacts: null,
