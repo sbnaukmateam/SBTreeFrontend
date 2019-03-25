@@ -4,6 +4,7 @@ export * from './Footer';
 export * from './Project';
 export * from './Card';
 export * from './MainSlider';
+export * from './SearchForm';
 export * from './PasswordChangeForm';
 export * from './ProfileCard';
 export * from './ProfileInfoColumn';

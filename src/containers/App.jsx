@@ -5,14 +5,18 @@ import { connect } from 'react-redux';
 import {
   ModalSignUp, ModalLogin, ModalForgotPass, ModalChangePass,
 } from '../components';
-import { authActions, modalActions, resetActions } from '../actions';
+import {
+  authActions, modalActions, resetActions, membersActions, projectsActions,
+} from '../actions';
 import { selectorRouterSearch } from '../selectors';
 import { parseParams } from '../util';
 
 class App extends PureComponent {
   componentWillMount() {
-    const { actions: { auth } } = this.props;
+    const { actions: { auth, members, projects } } = this.props;
     auth.verifyUser();
+    members.fetchMembers();
+    projects.fetchProjects();
   }
 
   componentDidMount() {
@@ -56,6 +60,8 @@ const mapDispatchToProps = dispatch => ({
     auth: bindActionCreators(authActions, dispatch),
     modal: bindActionCreators(modalActions, dispatch),
     reset: bindActionCreators(resetActions, dispatch),
+    members: bindActionCreators(membersActions, dispatch),
+    projects: bindActionCreators(projectsActions, dispatch),
   },
 });
 

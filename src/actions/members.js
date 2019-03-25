@@ -8,7 +8,7 @@ const nedbQueryMembers = query => async (dispatch) => {
   dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_START });
   try {
     const result = await db.members.findAsync(query);
-    dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_SUCCESS, result });
+    dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_SUCCESS, payload: result });
   } catch (err) {
     dispatch({ type: actionTypes.NEDB_QUERY_MEMBERS_FAIL, payload: err.toString() });
   }
@@ -49,7 +49,7 @@ const fetchMembers = () => async (dispatch, getState) => {
   try {
     const result = await api.getMembersMock();
     await db.members.remove({}, { multi: true });
-    await Promise.all(result.map(member => db.members.insertAsync(member)));
+    await db.members.insertAsync(result);
     const id = selectorMembersId(getState());
     if (id) {
       dispatch(nedbGetMember(id));

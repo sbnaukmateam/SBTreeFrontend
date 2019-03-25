@@ -5,9 +5,9 @@ class NavNoAuth extends PureComponent {
   render() {
     const { login, signUp } = this.props;
     return (
-      <div>
-        <button type="button" onClick={() => login()}>ВХІД</button>
-        <button type="button" id="sign-up-btn" onClick={() => signUp()}>РЕЄСТРАЦІЯ</button>
+      <div className="nav-no-auth">
+        <button type="button" className="sign-in-btn" onClick={() => login()}>ВХІД</button>
+        <button type="button" className="sign-up-btn" onClick={() => signUp()}>РЕЄСТРАЦІЯ</button>
       </div>
     );
   }

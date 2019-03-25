@@ -14,7 +14,7 @@ export const db = { members };
 export const ensureIndexes = async () => {
   await ensureMultipleDefaultIndexes(members, [
     'id', 'name', 'surname', 'nickName', 'avatar',
-    'degrees.year', 'degrees.faculty', 'degrees.speciality', 'degrees.program',
+    'degrees.year', 'degrees.facultyId', 'degrees.specialityId', 'degrees.programId',
     'patronId', 'birthday', 'phones', 'profiles', 'emails',
     'positions.years', 'positions.name', 'interests',
   ]);
