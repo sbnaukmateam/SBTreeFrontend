@@ -34,7 +34,9 @@ class AdminSearch extends PureComponent {
                       ))
                   }
               </div>
-              <div>kekweqweq</div>
+              <button className="btn show-more-btn" type="button">
+                ПОКАЗАТИ ЩЕ...
+              </button>
             </div>
           </div>
 

@@ -26,7 +26,7 @@ class SearchForm extends PureComponent {
         <div className="contacts-search-wrapper">
           <div className="contacts-search-wrapper_search-line-box border-top-blue ">
             <div className=" accounts-admin_control_search-icon-box">
-              <i className="fa fa-search" />
+              <img src="static/images/magnifier.png" className="magnifier-ico" />
             </div>
             <div>
               <Field component="input" type="text" name="quicksearch"
@@ -85,8 +85,7 @@ class SearchForm extends PureComponent {
                 className="text-mid-blue datepicker contact-search_select"
                 placeholder="Дата народження" />
             </div>
-            <br />
-            <h5 className="text-mid-blue">ОСВІТА В НАУКМА</h5>
+            <h5 className="text-mid-blue my-mt-1">ОСВІТА В НАУКМА</h5>
             <div className="contacts-search-wrapper_filters_two-in-row-box">
               <Field component="select" name="faculty"
                 className="text-mid-blue contact-search_select small">
@@ -112,9 +111,7 @@ class SearchForm extends PureComponent {
                 {POSSIBLE_YEARS.map(({ item, value }) => <option item={item} key={value} value={item}>{item}</option>)}
               </Field>
             </div>
-
-            <br />
-            <h5 className="text-mid-blue">КОНТАКТИ</h5>
+            <h5 className="text-mid-blue my-mt-1">КОНТАКТИ</h5>
             <Field component="input" name="email"
               className="text-mid-blue contact-search_select"
               placeholder="E-mail" />
@@ -124,9 +121,7 @@ class SearchForm extends PureComponent {
             <Field component="input" name="profile"
               className="text-mid-blue contact-search_select"
               placeholder="Профіль" />
-            <br />
-            <br />
-            <h5 className="text-mid-blue">ДІЯЛЬНІСТЬ В СБ</h5>
+            <h5 className="text-mid-blue my-mt-1">ДІЯЛЬНІСТЬ В СБ</h5>
             <div className="contacts-search-wrapper_filters_two-in-row-box">
               <select
                 className="text-mid-blue contact-search_select small">
