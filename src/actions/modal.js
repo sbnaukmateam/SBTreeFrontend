@@ -1,26 +1,30 @@
 import actionTypes from '../actionTypes';
 
 
-const openLoginModal = () => ({
+const openLoginModal = payload => ({
   type: actionTypes.MODAL_OPEN,
-  payload: 'login',
+  payload: { key: 'login', data: payload },
 });
-const openSignUpModal = () => ({
+const openSignUpModal = payload => ({
   type: actionTypes.MODAL_OPEN,
-  payload: 'signup',
+  payload: { key: 'signup', data: payload },
 });
-const openForgotPassModal = () => ({
+const openForgotPassModal = payload => ({
   type: actionTypes.MODAL_OPEN,
-  payload: 'forgotPass',
+  payload: { key: 'forgotPass', data: payload },
 });
-const openChangePassModal = () => ({
+const openChangePassModal = payload => ({
   type: actionTypes.MODAL_OPEN,
-  payload: 'changePass',
+  payload: { key: 'changePass', data: payload },
+});
+const openAddMemberModal = payload => ({
+  type: actionTypes.MODAL_OPEN,
+  payload: { key: 'addMember', data: payload },
 });
 const closeModal = () => ({
   type: actionTypes.MODAL_CLOSE,
-  payload: '',
 });
+
 export const modalActions = {
-  openLoginModal, openSignUpModal, closeModal, openForgotPassModal, openChangePassModal,
+  openLoginModal, openSignUpModal, closeModal, openForgotPassModal, openChangePassModal, openAddMemberModal,
 };

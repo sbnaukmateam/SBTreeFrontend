@@ -46,7 +46,9 @@ class MyContainer extends PureComponent {
         <div className="main-projects-sect">
           <h3>ПРОЕКТИ</h3>
           <MainSlider />
-          <Link to="/projects" className="main-proj-link">
+          {/* TODO: Uncomment after projects will be finished */}
+          {/* <Link to="/projects" className="main-proj-link"> */}
+          <Link to="/" className="main-proj-link">
             УСІ ПРОЕКТИ
             {' '}
             {' >>'}

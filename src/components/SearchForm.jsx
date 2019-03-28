@@ -82,9 +82,12 @@ class SearchForm extends PureComponent {
                 <option default value="false">Нема фото</option>
               </Field>
               <Field component={DatePickerField} name="birthday"
-                className="text-mid-blue contact-search_select"
+
+                className="text-mid-blue datepicker contact-search_select"
                 placeholder="Дата народження" />
             </div>
+            <br />
+
             <h5 className="text-mid-blue">ОСВІТА В НАУКМА</h5>
             <div className="contacts-search-wrapper_filters_two-in-row-box">
               <Field component="select" name="faculty"
@@ -108,10 +111,11 @@ class SearchForm extends PureComponent {
               <Field component="select" name="entranceYear"
                 className="text-mid-blue contact-search_select small">
                 <option default value="">Рік вступу</option>
-                {POSSIBLE_YEARS.map(item => <option item={item} value={item}>{item}</option>)}
+                {POSSIBLE_YEARS.map(({ item, value }) => <option item={item} key={value} value={item}>{item}</option>)}
               </Field>
             </div>
 
+            <br />
             <h5 className="text-mid-blue">КОНТАКТИ</h5>
             <Field component="input" name="email"
               className="text-mid-blue contact-search_select"
@@ -122,7 +126,11 @@ class SearchForm extends PureComponent {
             <Field component="input" name="profile"
               className="text-mid-blue contact-search_select"
               placeholder="Профіль" />
-            <h5 className="text-mid-blue">ДІЯЛЬНІСТЬ В СБ</h5>
+
+            <br />
+            <br />
+            {/* TODO: uncomment once it will be ready */}
+            {/* <h5 className="text-mid-blue">ДІЯЛЬНІСТЬ В СБ</h5>
             <div className="contacts-search-wrapper_filters_two-in-row-box">
               <select
                 className="text-mid-blue contact-search_select small">
@@ -140,7 +148,7 @@ class SearchForm extends PureComponent {
             <select
               className="text-mid-blue contact-search_select">
               <option>Статус в СБ</option>
-            </select>
+            </select> */}
           </div>
         </div>
       </form>

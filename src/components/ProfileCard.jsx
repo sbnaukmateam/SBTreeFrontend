@@ -1,9 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { PureComponent } from 'react';
+import moment from 'moment';
+
+// TODO move format to utils
+const DATE_FORMAT = 'YYYY-MM-DD';
+
+const formatDate = date => moment.utc(date).format(DATE_FORMAT);
 
 class ProfileCard extends PureComponent {
   render() {
-    // TODO format birthday with moment/luxon
     // TODO add projects
     // TODO add different icons to interests
     // TODO add props validation
@@ -11,12 +16,13 @@ class ProfileCard extends PureComponent {
       avatar, name, surname, nickName,
       birthday, patron, interests,
     } = this.props;
-    const interestsShort = interests.slice(0, 3);
+    const birthdayFormatted = birthday && formatDate(birthday);
+    const interestsShort = (interests || []).slice(0, 3);
     const { name: patronName, surname: patronSurname } = patron || {};
     return (
       <div className="profile-card">
         <div>
-          <img src={avatar} className="profile-ava" />
+          <img src={avatar || '/images/profile-default-02.png'} className="profile-ava" />
           <img src="/images/r-ico.png" className="profile-ico-r" />
           <img src="/images/l-ico.png" className="profile-ico-l" />
         </div>
@@ -34,7 +40,7 @@ class ProfileCard extends PureComponent {
           <div className="card-info-box">
             <div className="card-info">
               <p>Дата народження:</p>
-              <p>{birthday}</p>
+              <p>{birthdayFormatted}</p>
             </div>
             <div className="card-info">
               <p>Патрон:</p>

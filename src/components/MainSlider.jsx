@@ -41,10 +41,13 @@ class MainSlider extends React.Component {
           <div key={x.id} className="proj-slider">
             <img src={x.img} className="proj-slider-img" />
             <div className="proj-slider-btn-box">
-              <Link to="/projects" className="proj-slider-btn">
+              {/* TODO: Uncomment after projects will be finished */}
+              {/* <Link to="/projects" className="proj-slider-btn"> */}
+              <Link to="/" className="proj-slider-btn">
               ДЕТАЛІ
               </Link>
-              <Link to="/projects" className="proj-slider-btn">
+              {/* <Link to="/projects" className="proj-slider-btn"> */}
+              <Link to="/" className="proj-slider-btn">
               ДОЛУЧИТИСЯ
               </Link>
             </div>
