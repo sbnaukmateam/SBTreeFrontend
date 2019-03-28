@@ -6,7 +6,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { store, history } from './store';
 import {
-  MyContainer, NotFound, About, Projects, ProfileContainer, Admin, App,
+  MyContainer, NotFound, About, /* Projects, */ ProfileContainer, Admin, App,
 } from './containers';
 
 import 'bootstrap';
@@ -21,7 +21,8 @@ ReactDOM.render(
         <Switch>
           <Route path="/" exact component={MyContainer} />
           <Route path="/about" component={About} />
-          <Route path="/projects" component={Projects} />
+          {/* TODO: Uncomment after projects will be finished */}
+          {/* <Route path="/projects" component={Projects} /> */}
           <Route path="/profile" component={ProfileContainer} />
           <Route path="/profiles/:id" component={ProfileContainer} />
           <Route path="/contacts" component={Admin} />

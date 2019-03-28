@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { selectorModalResult } from '../selectors';
+import { selectorModalResult, selectorModalData } from '../selectors';
 import { ModalContainer } from '../components';
 
 const basicModalWrapper = modalKey => (WrappedComponent) => {
@@ -31,6 +31,7 @@ const basicModalWrapper = modalKey => (WrappedComponent) => {
 
 const mapStateToProps = state => ({
   hocOpenModal: selectorModalResult(state),
+  modalData: selectorModalData(state),
 });
 
 export const modalWrapper = modalKey => compose(

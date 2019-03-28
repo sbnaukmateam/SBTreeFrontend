@@ -11,11 +11,10 @@ import { privateRoute } from '../hoc';
 
 class ProfileContainer extends PureComponent {
   render() {
-    // TODO use real user's id
     const { user, match } = this.props; // eslint-disable-line
     const { params } = match;
     const { id: paramsId } = params || {};
-    const { id: userId } = { id: '1' }; // user || {};
+    const { id: userId } = user || {};
     const id = paramsId || userId;
     if (!id) {
       return null;

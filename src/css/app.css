@@ -186,6 +186,9 @@ hr {
 .datepicker {
     text-align: center;
 }
+.react-datepicker-wrapper, .react-datepicker__input-container {
+    width: 100%;
+}
 
 .contacts-search-wrapper_filters {
     margin-top: 20px;
@@ -748,6 +751,20 @@ hr {
     min-width: 60%;
 }
 
+.add-member-btn {
+    position: fixed;
+    right: 100px;
+    bottom: 200px;
+    width: auto;
+    min-width: 100px;
+    font-size: 100px;
+    color: #003470;
+    cursor: pointer;
+}
+.add-member-btn:hover {
+    transform: scale(1.2);
+}
+
 .profile button {
     font-size: calc(0.6vw + 5px);
 }
@@ -1301,7 +1318,7 @@ input[name="quicksearch"]{
 }
 
 @media screen and (min-width: 768px) {
-<<<<<<< HEAD
+
     .magnifier-ico {
 
         width: 45px;

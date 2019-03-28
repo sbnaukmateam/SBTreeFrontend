@@ -3,17 +3,19 @@ import actionTypes from '../actionTypes';
 
 const initialState = {
   open: null,
+  data: null,
 };
 
-
-const modalOpen = (state, { payload }) => ({
+const modalOpen = (state, { payload: { data, key } }) => ({
   ...state,
-  open: payload,
+  open: key,
+  data,
 });
 
-const modalClose = (state, { payload }) => ({
+const modalClose = state => ({
   ...state,
-  open: payload,
+  data: null,
+  open: null,
 });
 
 export const modal = handleActions({

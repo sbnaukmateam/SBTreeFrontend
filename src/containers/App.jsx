@@ -10,6 +10,7 @@ import {
 } from '../actions';
 import { selectorRouterSearch } from '../selectors';
 import { parseParams } from '../util';
+import { ModalAddMember } from '../components/ModalAddMember';
 
 class App extends PureComponent {
   componentWillMount() {
@@ -37,6 +38,7 @@ class App extends PureComponent {
         <ModalSignUp />
         <ModalForgotPass />
         <ModalChangePass />
+        <ModalAddMember />
       </React.Fragment>
     );
   }

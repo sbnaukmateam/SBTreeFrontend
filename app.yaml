@@ -6,8 +6,15 @@ skip_files:
  - ^src$
  - ^static$
 handlers:
-- url: /
+- url: /images/(.*)$
+  static_files: dist/images/\1
+  upload: dist/images/.*
+- url: /robots.txt
+  static_files: dist/robots.txt
+  upload: dist/robots.txt
+- url: /main.js
+  static_files: dist/main.js
+  upload: dist/main.js
+- url: /(.*)$
   static_files: dist/index.html
   upload: dist/index.html
-- url: /
-  static_dir: dist

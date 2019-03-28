@@ -11,6 +11,11 @@ const signUp = (username, password, name, surname) => request('/auth/v1/signup',
   username, password, name, surname,
 });
 
+const fetchMembers = () => request('/contact/v1/contacts', 'GET');
+
+const addMember = (name, surname, username, birthday) => request('/contact/v1/contacts', 'POST', {
+  name, surname, username, birthday,
+});
 
 // TODO remove mock
 const sendChangePassMailMock = (/* username */) => ({ status: 'SUCCESS' });
@@ -34,4 +39,6 @@ export const api = {
   verify,
   signIn,
   signUp,
+  fetchMembers,
+  addMember,
 };

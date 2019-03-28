@@ -26,7 +26,7 @@ class SearchForm extends PureComponent {
         <div className="contacts-search-wrapper">
           <div className="contacts-search-wrapper_search-line-box border-top-blue ">
             <div className=" accounts-admin_control_search-icon-box">
-              <img src="static/images/magnifier.png" className="magnifier-ico" />
+              <img src="/images/magnifier.png" className="magnifier-ico" />
             </div>
             <div>
               <Field component="input" type="text" name="quicksearch"
@@ -87,7 +87,7 @@ class SearchForm extends PureComponent {
                 placeholder="Дата народження" />
             </div>
 
-            <h5 className="text-mid-blue my-mt-1">ОСВІТА В НАУКМА</h5>
+            <h5 className="text-mid-blue">ОСВІТА В НАУКМА</h5>
             <div className="contacts-search-wrapper_filters_two-in-row-box">
               <Field component="select" name="faculty"
                 className="text-mid-blue contact-search_select small">
@@ -124,8 +124,8 @@ class SearchForm extends PureComponent {
               className="text-mid-blue contact-search_select"
               placeholder="Профіль" />
 
-            <h5 className="text-mid-blue my-mt-1">ДІЯЛЬНІСТЬ В СБ</h5>
-
+            {/* TODO: uncomment once it will be ready */}
+            {/* <h5 className="text-mid-blue my-mt-1">ДІЯЛЬНІСТЬ В СБ</h5>
             <div className="contacts-search-wrapper_filters_two-in-row-box">
               <select
                 className="text-mid-blue contact-search_select small">
@@ -143,7 +143,7 @@ class SearchForm extends PureComponent {
             <select
               className="text-mid-blue contact-search_select">
               <option>Статус в СБ</option>
-            </select>
+            </select> */}
           </div>
         </div>
       </form>

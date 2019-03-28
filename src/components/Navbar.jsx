@@ -49,15 +49,17 @@ class Navbar extends PureComponent {
             <Link to="/about">
               ПРО НАС
             </Link>
-            <Link to="/projects">
+            {/* TODO: Uncomment after projects will be finished */}
+            {/* <Link to="/projects">
               ПРОЕКТИ
-            </Link>
+            </Link> */}
             <Link to="/contacts">
               КОНТАКТИ
             </Link>
-            <Link to="/">
+            {/* TODO: Uncomment after tree will be finished */}
+            {/* <Link to="/">
               ДЕРЕВО
-            </Link>
+            </Link> */}
           </div>
           <div className="col-3 d-flex justify-content-center">
             {loggedIn ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}

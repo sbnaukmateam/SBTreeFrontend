@@ -15,7 +15,7 @@ class Card extends PureComponent {
           <Link to={link}>
             <div className="card-flex-element card-profile-icons-box">
               <img className="card-leaf" src="static/images/l-ico.png" />
-              <img className="card-members-photo" src={img} />
+              <img className="card-members-photo" src={img || '/images/profile-default-02.png'} />
             </div>
           </Link>
           <div className="card-flex-element card-member-info">

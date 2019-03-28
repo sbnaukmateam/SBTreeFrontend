@@ -90,7 +90,7 @@ class About extends PureComponent {
 
               <div className="child">
                 <img className="circle-ava"
-                  src="https://bcdcog.com/wp-content/uploads/2016/05/profile-default-02.png" />
+                  src="/images/profile-default-02.png" />
                 <h2 className="circle-heading">ПИСАР</h2>
                 <p className="under-heading">
 Спудейське братство ініціює,
@@ -103,7 +103,7 @@ class About extends PureComponent {
                 </p>
               </div>
               <div className="child">
-                <img className="circle-ava" src="https://bcdcog.com/wp-content/uploads/2016/05/profile-default-02.png" />
+                <img className="circle-ava" src="/images/profile-default-02.png" />
                 <h2 className="circle-heading">ГОЛОВА</h2>
                 <p className="under-heading">
 Спудейське братство ініціює,
@@ -116,7 +116,7 @@ class About extends PureComponent {
                 </p>
               </div>
               <div className="child">
-                <img className="circle-ava" src="https://bcdcog.com/wp-content/uploads/2016/05/profile-default-02.png" />
+                <img className="circle-ava" src="/images/profile-default-02.png" />
                 <h2 className="circle-heading">СКАРБНИК</h2>
                 <p className="under-heading">
 Спудейське братство ініціює,
@@ -129,7 +129,7 @@ class About extends PureComponent {
                 </p>
               </div>
               <div className="child">
-                <img className="circle-ava" src="https://bcdcog.com/wp-content/uploads/2016/05/profile-default-02.png" />
+                <img className="circle-ava" src="/images/profile-default-02.png" />
                 <h2 className="circle-heading">РАДНИК</h2>
                 <p className="under-heading">
 Спудейське братство ініціює,
@@ -142,7 +142,7 @@ class About extends PureComponent {
                 </p>
               </div>
               <div className="child">
-                <img className="circle-ava" src="https://bcdcog.com/wp-content/uploads/2016/05/profile-default-02.png" />
+                <img className="circle-ava" src="/images/profile-default-02.png" />
                 <h2 className="circle-heading">РАДНИК</h2>
                 <p className="under-heading">
 Спудейське братство ініціює,

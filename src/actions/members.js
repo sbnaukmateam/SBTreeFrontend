@@ -1,3 +1,4 @@
+import { push } from 'connected-react-router';
 import actionTypes from '../actionTypes';
 import { api } from '../util';
 import { db } from '../nedb';
@@ -47,7 +48,7 @@ const updateMember = (id, update) => async (dispatch, getState) => {
 const fetchMembers = () => async (dispatch, getState) => {
   dispatch({ type: actionTypes.FETCH_MEMBERS_START });
   try {
-    const result = await api.getMembersMock();
+    const result = await api.fetchMembers();
     await db.members.remove({}, { multi: true });
     await db.members.insertAsync(result);
     const id = selectorMembersId(getState());
@@ -60,9 +61,26 @@ const fetchMembers = () => async (dispatch, getState) => {
   }
 };
 
+const addMember = data => async (dispatch) => {
+  dispatch({ type: actionTypes.ADD_MEMBER_START });
+  try {
+    const {
+      name, surname, username, birthday,
+    } = data;
+    const result = await api.addMember(name, surname, username, birthday);
+    await db.members.insertAsync(result);
+    dispatch(push(`/profiles/${result.id}`));
+    dispatch({ type: actionTypes.MODAL_CLOSE });
+    dispatch({ type: actionTypes.ADD_MEMBER_SUCCESS, payload: result });
+  } catch (err) {
+    dispatch({ type: actionTypes.ADD_MEMBER_FAIL, payload: err.toString() });
+  }
+};
+
 export const membersActions = {
   fetchMembers,
   updateMember,
   nedbQueryMembers,
   nedbGetMember,
+  addMember,
 };
