@@ -49,7 +49,12 @@ class AdminSearch extends PureComponent {
                   ))
                 }
               </div>
-              {/* <div>kekweqweq</div> */}
+              {/* TODO show button only if we have more */}
+              {(contacts && contacts.length) && (
+                <button className="btn show-more-btn" type="button">
+                  ПОКАЗАТИ ЩЕ...
+                </button>
+              )}
               {(!contacts || !contacts.length) && (
                 <h3>
                   <span>За вашими параметрами пошуку нікого не знайдено.</span>
