@@ -9,8 +9,8 @@ class NavAuth extends PureComponent {
   render() {
     const { actions: { auth } } = this.props;
     return (
-      <div className="d-flex nav-auth">
-        <Link to="/profile" className="mr-2 d-flex align-items-center">
+      <div className="auth-box">
+        <Link to="/profile" className="profile-icon-link">
           <img src="/images/profile-icon.png" className="profile-icon" />
         </Link>
         <div className="nav-separator" />
