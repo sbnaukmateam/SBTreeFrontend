@@ -40,6 +40,7 @@ const updateMember = (id, update) => async (dispatch, getState) => {
       dispatch(nedbGetMember(id));
     }
     dispatch({ type: actionTypes.NEDB_UPDATE_MEMBER_SUCCESS });
+    dispatch({ type: actionTypes.MODAL_CLOSE });
   } catch (err) {
     dispatch({ type: actionTypes.NEDB_UPDATE_MEMBER_FAIL, payload: err.toString() });
   }
