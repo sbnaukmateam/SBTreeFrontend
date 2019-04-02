@@ -21,3 +21,5 @@ export * from './ModalChangePass';
 export * from './ModalAddContact';
 export * from './ModalAddPosition';
 export * from './ModalAddDegree';
+export * from './ModalChangeAva';
+export * from './FormFileField';

@@ -33,6 +33,10 @@ const openAddPositionModal = payload => ({
   type: actionTypes.MODAL_OPEN,
   payload: { key: 'addPosition', data: payload },
 });
+const openChangeAvaModal = payload => ({
+  type: actionTypes.MODAL_OPEN,
+  payload: { key: 'changeAva', data: payload },
+});
 const closeModal = () => ({
   type: actionTypes.MODAL_CLOSE,
 });
@@ -47,4 +51,5 @@ export const modalActions = {
   openAddContactModal,
   openAddDegreeModal,
   openAddPositionModal,
+  openChangeAvaModal,
 };

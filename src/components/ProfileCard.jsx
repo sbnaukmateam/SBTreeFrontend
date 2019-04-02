@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { PureComponent } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import moment from 'moment';
+import { modalActions } from '../actions';
+
 
 // TODO move format to utils
 const DATE_FORMAT = 'YYYY-MM-DD';
@@ -14,7 +18,7 @@ class ProfileCard extends PureComponent {
     // TODO add props validation
     const {
       avatar, name, surname, nickName,
-      birthday, patron, interests,
+      birthday, patron, interests, actions: { modal },
     } = this.props;
     const birthdayFormatted = birthday && formatDate(birthday);
     const interestsShort = (interests || []).slice(0, 3);
@@ -23,7 +27,7 @@ class ProfileCard extends PureComponent {
       <div className="profile-card">
         <div>
           <img src={avatar || '/images/profile-default-02.png'} className="profile-ava" />
-          <img src="/images/r-ico.png" className="profile-ico-r" />
+          <button className="profile-ico-r" type="button" onClick={modal.openChangeAvaModal}><img src="/images/r-ico.png" /></button>
           <img src="/images/l-ico.png" className="profile-ico-l" />
         </div>
         <div className="d-flex flex-column justify-content-between">
@@ -72,5 +76,10 @@ class ProfileCard extends PureComponent {
     );
   }
 }
-
-export { ProfileCard };
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    modal: bindActionCreators(modalActions, dispatch),
+  },
+});
+const ProfileCardWrapped = connect(null, mapDispatchToProps)(ProfileCard);
+export { ProfileCardWrapped as ProfileCard };
