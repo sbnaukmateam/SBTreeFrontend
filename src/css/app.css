@@ -1,6 +1,6 @@
 @import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 
-p, h1 {
+* {
     font-family: 'Lato', sans-serif;
 }
 
@@ -1148,35 +1148,46 @@ input[name="quicksearch"] {
 
 .flex-container4 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
-
+    padding: 0 15%;
     margin: 0 0 0 6%;
 
 
 }
 
+.find-icons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
+    max-width: 150px;
+}
+
+.flex-container4 > div {
+    width: 80%;
+}
+
 .address {
+    margin: 0;
+    font-size: 14px;
     position: relative;
-    width: 30%;
-    margin-bottom: 20px;
-    margin-left: 280px;
+    text-align: left;
 }
 
 #facebook {
-    margin-top: 50px;
-    width: 20px;
-    height: 30px;
+    margin-top: 15px;
+    width: 18px;
+    height: 26px;
 }
 
 #instagram, #email, #web {
-    margin-top: 50px;
-    width: 30px;
-    height: 30px;
+    margin-top: 15px;
+    width: 25px;
+    height: 25px;
 }
 
 #map {
-    width: 120%;
+    width: 100%;
 }
 
 @media screen and (max-width: 600px) {
@@ -1221,20 +1232,9 @@ input[name="quicksearch"] {
         text-align: center;
     }
 
-    .flex-container4 {
-        display: flex;
-        flex-direction: column;
-
-    }
 
     #map {
         width: 75%;
-    }
-
-    .address {
-        position: absolute;
-        width: 50%;
-        margin-left: 0px;
     }
 
     #org-history {
@@ -1249,9 +1249,11 @@ input[name="quicksearch"] {
         text-align: center;
     }
 }
-#org-history{
+
+#org-history {
     text-align: left;
 }
+
 .modal-wrapper-box {
     width: 100%;
     height: 100%;
@@ -1422,6 +1424,13 @@ input[name="quicksearch"] {
     .logo-wrapper {
         width: 50%;
     }
+
+    .flex-container4 {
+        display: flex;
+        flex-direction: row;
+
+    }
+
     .second-section, .first-section {
         flex-direction: row;
     }
@@ -1508,21 +1517,30 @@ input[name="quicksearch"] {
     }
 
     .contacts-section_content-wrapper {
-        width: 88%;
+        width: 89%;
     }
 
     .contacts-section_content-wrapper_search-control {
-        width: 25%;
+        width: 22%;
         padding: 1% 2%;
     }
 
     .carts-wrapper {
-        width: 75%;
+        width: 78%;
 
     }
 
 }
 
 @media screen and (min-width: 1920px) {
-
+    .carts-box {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 }
+
+@media screen and (min-width: 2480px) {
+    .carts-box {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+

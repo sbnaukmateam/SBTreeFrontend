@@ -180,24 +180,31 @@ class About extends PureComponent {
           <section>
             <h1 id="where-to-find">ДЕ НАС ЗНАЙТИ?</h1>
             <div className="flex-container4">
-              <div className="flex-element fourth-sec-el section4-wrapper">
+              <div className="flex-element">
                 <img src="/images/mapMock.png" id="map" />
               </div>
-              <div className="flex-element fourth-sec-el">
+              <div className="flex-element">
                 <p className="address">
 Національний університет
+                  <br />
                                     «Києво-Могилянська академія»
+                  <br />
                                     ГО Спудейське Братсво НаУКМА
+                  <br />
                                     вул. Волоська 8/5, 4 корпус,
+                  <br />
                                     кумната 107
                   <br />
+
+                </p>
+                <div className="find-icons">
                   <img src="/images/fb-blue.png" id="facebook" />
                   <img src="/images/inst-blue.png"
                     id="instagram" />
                   <img src="/images/mail-blue.png" id="email" />
                   <img src="/images/web-blue.png"
                     id="web" />
-                </p>
+                </div>
               </div>
             </div>
           </section>
