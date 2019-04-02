@@ -32,27 +32,47 @@ class ProfileCard extends PureComponent {
         </div>
         <div className="d-flex flex-column justify-content-between">
           <div>
-            <p className="card-name">
-              {name}
+            <div className="name-box">
+              <p className="card-name">
+                {name}
               &nbsp;
-              {surname}
-            </p>
-            <p className="card-nickname">
-              {nickName}
-            </p>
+                {surname}
+              </p>
+              <button type="button" className="pen-icon-btn">
+                <img src="/images/pen.png" className="pen-icon-big" />
+              </button>
+            </div>
+            <div className="name-box">
+              <p className="card-nickname">
+                {nickName}
+              </p>
+              <button type="button" className="pen-icon-btn">
+                <img src="/images/pen.png" className="pen-icon-medium" />
+              </button>
+            </div>
           </div>
           <div className="card-info-box">
             <div className="card-info">
               <p>Дата народження:</p>
-              <p>{birthdayFormatted}</p>
+              <div className="name-box">
+                <p>{birthdayFormatted}</p>
+                <button type="button" className="pen-icon-btn">
+                  <img src="/images/pen.png" className="pen-icon-medium" />
+                </button>
+              </div>
             </div>
             <div className="card-info">
               <p>Патрон:</p>
-              <p>
-                {patronName}
-                &nbsp;
-                {patronSurname}
-              </p>
+              <div className="name-box">
+                <p>
+                  {patronName}
+                  &nbsp;
+                  {patronSurname}
+                </p>
+                <button type="button" className="pen-icon-btn">
+                  <img src="/images/pen.png" className="pen-icon-medium" />
+                </button>
+              </div>
             </div>
             <div className="card-info">
               <p>Проекти:</p>
