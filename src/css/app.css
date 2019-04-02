@@ -1291,7 +1291,7 @@ input[name="quicksearch"] {
 
 
 .form {
-    width: 100%;
+    /* width: 100%; */
     padding: 30px 55px;
     display: flex;
     flex-direction: column;

@@ -52,4 +52,4 @@ export const formatDegree = ({
   faculty, year, speciality, program,
 }) => `${faculty} - ${year} (${speciality}, ${program})`;
 
-export const formatPosition = ({ years, name }) => `${name} - ${years.join(', ')}`;
+export const formatPosition = ({ years, name }) => `${name} - ${(years || []).join(', ')}`;

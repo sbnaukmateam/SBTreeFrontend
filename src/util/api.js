@@ -17,6 +17,8 @@ const addMember = (name, surname, username, birthday) => request('/contact/v1/co
   name, surname, username, birthday,
 });
 
+const updateMember = (id, data) => request(`/contact/v1/contacts/${id}`, 'PUT', data);
+
 // TODO remove mock
 const sendChangePassMailMock = (/* username */) => ({ status: 'SUCCESS' });
 const getProjectsMock = () => Projects;
@@ -41,4 +43,5 @@ export const api = {
   signUp,
   fetchMembers,
   addMember,
+  updateMember,
 };
