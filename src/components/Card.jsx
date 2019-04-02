@@ -26,22 +26,16 @@ class Card extends PureComponent {
                 </div>
               </Link>
               <hr />
-              <div className="card-flex-element2">
-                <p>{comment}</p>
-              </div>
-              <div className="card-flex-element2 card-fac">
+              <p>{comment}</p>
+              <div className="card-fac">
                 <p>
                   {faculty}
                   {', '}
                   {year}
                 </p>
               </div>
-              <div className="card-flex-element2">
-                <div className="hr">
-                  <hr />
-                </div>
-              </div>
-              <div className="card-flex-element2 card-links">
+              <hr />
+              <div className="card-links">
                 <span>
                   {linkIcons.map(x => <img key={x} src={`/images/${x}-icon.png`} className="m-1 mb-0 fab" />)}
                 </span>
@@ -56,12 +50,17 @@ class Card extends PureComponent {
 }
 
 Card.propTypes = {
-  img: PropTypes.string.isRequired,
+  img: PropTypes.string,
   name: PropTypes.string.isRequired,
-  comment: PropTypes.string.isRequired,
-  faculty: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
+  comment: PropTypes.string,
+  faculty: PropTypes.string,
+  year: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+};
+Card.defaultProps = {
+  faculty: '',
+  img: '',
+  comment: '',
 };
 
 export { Card };
