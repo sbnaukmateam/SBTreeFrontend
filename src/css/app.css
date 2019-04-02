@@ -21,6 +21,9 @@ body {
     margin: 0;
 }
 
+button:hover{
+    outline: none;
+}
 #root {
     text-align: center;
 }
@@ -753,7 +756,11 @@ input {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
-
+.name-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .profile-ico-r {
     right: 10px;
     height: 30%;
@@ -769,7 +776,8 @@ input {
 }
 
 .card-name, .card-nickname {
-    width: 90%;
+    margin: 0;
+    /*width: 90%;*/
 }
 
 .card-nickname {
@@ -779,7 +787,19 @@ input {
 .card-name {
     font-size: calc(2vw);
 }
-
+.pen-icon-btn{
+    outline: none;
+    border: none;
+    background: transparent;
+}
+.pen-icon-big{
+    height: 1.3em;
+    margin-left: 6px;
+}
+.pen-icon-medium{
+    height: 1.1em;
+    margin-left: 4px;
+}
 .edit-info-wrapper {
     padding-top: 20px;
     display: grid;
