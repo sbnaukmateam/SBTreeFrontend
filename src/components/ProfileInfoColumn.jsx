@@ -7,7 +7,7 @@ const emptyFormatter = item => item;
 class ProfileInfoColumn extends PureComponent {
   render() {
     const {
-      title, items, formatter, makeAnchors, onRemove,
+      title, items, formatter, makeAnchors, onRemove, onAdd,
     } = this.props;
     const format = formatter || emptyFormatter;
     return (
@@ -32,7 +32,7 @@ class ProfileInfoColumn extends PureComponent {
             })}
           </div>
         </div>
-        <button type="button" className="point-btn add-btn">
+        <button type="button" className="point-btn add-btn" onClick={() => onAdd()}>
           <img src="/images/add-point-btn.png" alt="" />
         </button>
       </div>
