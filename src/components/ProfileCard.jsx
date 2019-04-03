@@ -27,15 +27,6 @@ class ProfileCard extends PureComponent {
     this.newAvatar = null;
   }
 
-  componentDidMount() {
-    document.addEventListener('keydown', this.saveName);
-    document.addEventListener('keydown', this.saveNickName);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.saveName);
-    document.removeEventListener('keydown', this.saveNickName);
-  }
 
   toggleNameEditor() {
     this.setState(prevState => ({
@@ -43,7 +34,12 @@ class ProfileCard extends PureComponent {
     }));
     const { editName } = this.state;
     const elem = document.getElementById('nameEditor');
-    if (editName) this.updateName(elem.value);
+    if (editName) {
+      this.updateName(elem.value);
+      document.removeEventListener('keydown', this.saveName);
+    } else {
+      document.addEventListener('keydown', this.saveName);
+    }
   }
 
   toggleNickNameEditor() {
@@ -52,7 +48,12 @@ class ProfileCard extends PureComponent {
     }));
     const { editNickName } = this.state;
     const elem = document.getElementById('nickNameEditor');
-    if (editNickName) this.updateNickName(elem.value);
+    if (editNickName) {
+      document.removeEventListener('keydown', this.saveNickName);
+      this.updateNickName(elem.value);
+    } else {
+      document.addEventListener('keydown', this.saveNickName);
+    }
   }
 
   saveName(event) {
