@@ -3,7 +3,8 @@ import React, { PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { modalActions } from '../actions';
+import { membersActions } from '../actions';
+import { selectorMembersProfile } from '../selectors';
 
 
 // TODO move format to utils
@@ -12,13 +13,35 @@ const DATE_FORMAT = 'YYYY-MM-DD';
 const formatDate = date => moment.utc(date).format(DATE_FORMAT);
 
 class ProfileCard extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.updateAvatar = this.updateAvatar.bind(this);
+    this.newAvatar = null;
+  }
+
+  updateAvatar(avatar, event) {
+    const r = new FileReader();
+    r.onloadend = () => {
+      this.newAvatar = r.result;
+    };
+    r.readAsDataURL(avatar);
+    event.preventDefault();
+    const {
+      actions: { members }, profile: { id },
+    } = this.props;
+    members.updateMember(id, {
+      avatar: this.newAvatar,
+    });
+  }
+
   render() {
     // TODO add projects
     // TODO add different icons to interests
     // TODO add props validation
+
     const {
       avatar, name, surname, nickName,
-      birthday, patron, interests, actions: { modal },
+      birthday, patron, interests,
     } = this.props;
     const birthdayFormatted = birthday && formatDate(birthday);
     const interestsShort = (interests || []).slice(0, 3);
@@ -27,7 +50,12 @@ class ProfileCard extends PureComponent {
       <div className="profile-card">
         <div>
           <img src={avatar || '/images/profile-default-02.png'} className="profile-ava" />
-          <button className="profile-ico-r" type="button" onClick={modal.openChangeAvaModal}><img src="/images/r-ico.png" /></button>
+          <div className="profile-ico-r">
+            <label htmlFor="update-photo">
+              <img src="/images/r-ico.png" alt="update" />
+              <input type="file" name="file" id="update-photo" className="update-photo" onChange={e => this.updateAvatar(e.target.files[0], e)} />
+            </label>
+          </div>
           <img src="/images/l-ico.png" className="profile-ico-l" />
         </div>
         <div className="d-flex flex-column justify-content-between">
@@ -96,10 +124,14 @@ class ProfileCard extends PureComponent {
     );
   }
 }
+const mapStateToProps = state => ({
+  profile: selectorMembersProfile(state),
+});
+
 const mapDispatchToProps = dispatch => ({
   actions: {
-    modal: bindActionCreators(modalActions, dispatch),
+    members: bindActionCreators(membersActions, dispatch),
   },
 });
-const ProfileCardWrapped = connect(null, mapDispatchToProps)(ProfileCard);
+const ProfileCardWrapped = connect(mapStateToProps, mapDispatchToProps)(ProfileCard);
 export { ProfileCardWrapped as ProfileCard };

@@ -12,9 +12,11 @@ h2 {
     font-family: 'Lato', sans-serif;
     color: #28639b;
 }
-button:hover{
+
+button:hover {
     outline: none;
 }
+
 #root {
     text-align: center;
 }
@@ -188,6 +190,7 @@ hr {
 .datepicker {
     text-align: center;
 }
+
 .react-datepicker-wrapper, .react-datepicker__input-container {
     width: 100%;
 }
@@ -667,21 +670,28 @@ hr {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
-.name-box{
+
+.name-box {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .profile-ico-r {
     right: 10px;
     height: 30%;
     padding: 0;
     border: 1px solid #317199;
 }
-.profile-ico-r img{
+.profile-ico-r img, .profile-ico-r label{
     width: 100%;
     height: 100%;
 }
+
+.profile-card .profile-ico-r input.update-photo {
+    display:none;
+}
+
 .profile-ico-l {
     left: 10px;
 }
@@ -698,19 +708,23 @@ hr {
 .card-name {
     font-size: calc(2vw);
 }
-.pen-icon-btn{
+
+.pen-icon-btn {
     outline: none;
     border: none;
     background: transparent;
 }
-.pen-icon-big{
+
+.pen-icon-big {
     height: 1.3em;
     margin-left: 6px;
 }
-.pen-icon-medium{
+
+.pen-icon-medium {
     height: 1.1em;
     margin-left: 4px;
 }
+
 .edit-info-wrapper {
     padding-top: 20px;
     display: grid;
@@ -785,6 +799,7 @@ hr {
     color: #003470;
     cursor: pointer;
 }
+
 .add-member-btn:hover {
     transform: scale(1.2);
 }
@@ -1040,19 +1055,22 @@ hr {
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
-input[name="quicksearch"]{
-    margin-top:8px;
+
+input[name="quicksearch"] {
+    margin-top: 8px;
 }
-.my-mt-1{
-    margin-top:25px;
+
+.my-mt-1 {
+    margin-top: 25px;
 }
+
 .magnifier-ico {
     background-color: #003470;
     border-radius: 50%;
     border: 4px solid #003470;
     width: 35px;
     height: 35px;
-    padding:1px;
+    padding: 1px;
 
 }
 
@@ -1348,6 +1366,7 @@ input[name="quicksearch"]{
         width: 45px;
         height: 45px;
     }
+
     .carts-box {
         padding: 10px 20px;
     }
