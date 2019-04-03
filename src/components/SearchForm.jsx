@@ -35,10 +35,10 @@ class SearchForm extends PureComponent {
             </div>
           </div>
           <div className="contacts-search-wrapper_classes border-top-blue">
-            <button className="contacts-search-wrapper_classes_btn"
+            {/* <button className="contacts-search-wrapper_classes_btn"
               type="button">
                             НІЧИМ НЕ ЗАЙНЯТІ
-            </button>
+            </button> */}
             <button className="contacts-search-wrapper_classes_btn"
               type="button">
                             НЕОПАТРОНЕНІ
@@ -51,10 +51,10 @@ class SearchForm extends PureComponent {
               type="button">
                             ПОШАНОВАНІ
             </button>
-            <button className="contacts-search-wrapper_classes_btn"
+            {/* <button className="contacts-search-wrapper_classes_btn"
               type="button">
                             УПРАВА
-            </button>
+            </button> */}
             {admin && (
             <button className="contacts-search-wrapper_classes_btn"
               type="button">
@@ -110,7 +110,7 @@ class SearchForm extends PureComponent {
               <Field component="select" name="entranceYear"
                 className="text-mid-blue contact-search_select small">
                 <option default value="">Рік вступу</option>
-                {POSSIBLE_YEARS.map(({ item, value }) => <option item={item} key={value} value={item}>{item}</option>)}
+                {POSSIBLE_YEARS.map(value => <option key={value} value={value}>{value}</option>)}
               </Field>
             </div>
             <h5 className="text-mid-blue my-mt-1">КОНТАКТИ</h5>
