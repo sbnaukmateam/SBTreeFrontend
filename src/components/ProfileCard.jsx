@@ -12,6 +12,21 @@ const DATE_FORMAT = 'YYYY-MM-DD';
 const formatDate = date => moment.utc(date).format(DATE_FORMAT);
 
 class ProfileCard extends PureComponent {
+  constructor() {
+    super();
+    this.state = ({
+      editName: false,
+    });
+  }
+
+  toggleNameEditor(elem) {
+    this.setState(prevState => ({
+      editName: !prevState.editName,
+    }));
+    const { editName } = this.state;
+    if (editName) elem.focus();
+  }
+
   render() {
     // TODO add projects
     // TODO add different icons to interests
@@ -20,6 +35,7 @@ class ProfileCard extends PureComponent {
       avatar, name, surname, nickName,
       birthday, patron, interests, actions: { modal },
     } = this.props;
+    const { editName } = this.state;
     const birthdayFormatted = birthday && formatDate(birthday);
     const interestsShort = (interests || []).slice(0, 3);
     const { name: patronName, surname: patronSurname } = patron || {};
@@ -32,11 +48,16 @@ class ProfileCard extends PureComponent {
         </div>
         <div className="d-flex flex-column justify-content-between">
           <div>
-            <p className="card-name">
-              {name}
+            {editName
+              ? <input type="text" id="nameEditor" value={`${name} ${surname}`} />
+              : (
+                <p className="card-name">
+                  {name}
               &nbsp;
-              {surname}
-            </p>
+                  {surname}
+                </p>
+              )}
+
             <p className="card-nickname">
               {nickName}
             </p>
@@ -48,6 +69,7 @@ class ProfileCard extends PureComponent {
             </div>
             <div className="card-info">
               <p>Патрон:</p>
+
               <p>
                 {patronName}
                 &nbsp;
