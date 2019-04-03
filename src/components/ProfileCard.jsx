@@ -13,19 +13,89 @@ const DATE_FORMAT = 'YYYY-MM-DD';
 const formatDate = date => moment.utc(date).format(DATE_FORMAT);
 
 class ProfileCard extends PureComponent {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.state = ({
+      editName: false,
+      editNickName: false,
+    });
     this.updateAvatar = this.updateAvatar.bind(this);
+    this.saveName = this.saveName.bind(this);
+    this.saveNickName = this.saveNickName.bind(this);
+    this.toggleNameEditor = this.toggleNameEditor.bind(this);
+    this.toggleNickNameEditor = this.toggleNickNameEditor.bind(this);
     this.newAvatar = null;
   }
 
+  componentDidMount() {
+    document.addEventListener('keydown', this.saveName);
+    document.addEventListener('keydown', this.saveNickName);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.saveName);
+    document.removeEventListener('keydown', this.saveNickName);
+  }
+
+  toggleNameEditor() {
+    this.setState(prevState => ({
+      editName: !prevState.editName,
+    }));
+    const { editName } = this.state;
+    const elem = document.getElementById('nameEditor');
+    if (editName) this.updateName(elem.value);
+  }
+
+  toggleNickNameEditor() {
+    this.setState(prevState => ({
+      editNickName: !prevState.editNickName,
+    }));
+    const { editNickName } = this.state;
+    const elem = document.getElementById('nickNameEditor');
+    if (editNickName) this.updateNickName(elem.value);
+  }
+
+  saveName(event) {
+    if (event.keyCode !== 13) return;
+    const elem = document.getElementById('nameEditor');
+    this.updateName(elem.value);
+    this.setState({ editName: false });
+  }
+
+  saveNickName(event) {
+    if (event.keyCode !== 13) return;
+    const elem = document.getElementById('nickNameEditor');
+    this.updateNickName(elem.value);
+    this.setState({ editNickName: false });
+  }
+
+  updateName(value) {
+    const {
+      actions: { members }, profile: { id },
+    } = this.props;
+    const name = value.split(' ');
+    members.updateMember(id, {
+      name: name[0],
+      surname: name[1],
+    });
+  }
+
+  updateNickName(value) {
+    const {
+      actions: { members }, profile: { id },
+    } = this.props;
+    members.updateMember(id, {
+      nickName: value,
+    });
+  }
+
   updateAvatar(avatar, event) {
+    event.preventDefault();
     const r = new FileReader();
     r.onloadend = () => {
       this.newAvatar = r.result;
     };
     r.readAsDataURL(avatar);
-    event.preventDefault();
     const {
       actions: { members }, profile: { id },
     } = this.props;
@@ -43,6 +113,7 @@ class ProfileCard extends PureComponent {
       avatar, name, surname, nickName,
       birthday, patron, interests,
     } = this.props;
+    const { editName, editNickName } = this.state;
     const birthdayFormatted = birthday && formatDate(birthday);
     const interestsShort = (interests || []).slice(0, 3);
     const { name: patronName, surname: patronSurname } = patron || {};
@@ -61,20 +132,28 @@ class ProfileCard extends PureComponent {
         <div className="d-flex flex-column justify-content-between">
           <div>
             <div className="name-box">
-              <p className="card-name">
-                {name}
-              &nbsp;
-                {surname}
-              </p>
-              <button type="button" className="pen-icon-btn">
+              {editName
+                ? <input className="card-name" type="text" id="nameEditor" defaultValue={`${name} ${surname}`} />
+                : (
+                  <p className="card-name">
+                    {name}
+                    &nbsp;
+                    {surname}
+                  </p>
+                )}
+              <button type="button" className="pen-icon-btn" onClick={this.toggleNameEditor}>
                 <img src="/images/pen.png" className="pen-icon-big" />
               </button>
             </div>
             <div className="name-box">
-              <p className="card-nickname">
-                {nickName}
-              </p>
-              <button type="button" className="pen-icon-btn">
+              {editNickName
+                ? <input className="card-nickname" type="text" id="nickNameEditor" defaultValue={nickName} />
+                : (
+                  <p className="card-nickname">
+                    {nickName}
+                  </p>
+                )}
+              <button type="button" className="pen-icon-btn" onClick={this.toggleNickNameEditor}>
                 <img src="/images/pen.png" className="pen-icon-medium" />
               </button>
             </div>
