@@ -3,7 +3,8 @@ import React, { PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { modalActions } from '../actions';
+import { membersActions } from '../actions';
+import { selectorMembersProfile } from '../selectors';
 
 
 // TODO move format to utils
@@ -16,26 +17,103 @@ class ProfileCard extends PureComponent {
     super();
     this.state = ({
       editName: false,
+      editNickName: false,
     });
+    this.updateAvatar = this.updateAvatar.bind(this);
+    this.saveName = this.saveName.bind(this);
+    this.saveNickName = this.saveNickName.bind(this);
+    this.toggleNameEditor = this.toggleNameEditor.bind(this);
+    this.toggleNickNameEditor = this.toggleNickNameEditor.bind(this);
+    this.newAvatar = null;
   }
 
-  toggleNameEditor(elem) {
+  componentDidMount() {
+    document.addEventListener('keydown', this.saveName);
+    document.addEventListener('keydown', this.saveNickName);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.saveName);
+    document.removeEventListener('keydown', this.saveNickName);
+  }
+
+  toggleNameEditor() {
     this.setState(prevState => ({
       editName: !prevState.editName,
     }));
     const { editName } = this.state;
-    if (editName) elem.focus();
+    const elem = document.getElementById('nameEditor');
+    if (editName) this.updateName(elem.value);
+  }
+
+  toggleNickNameEditor() {
+    this.setState(prevState => ({
+      editNickName: !prevState.editNickName,
+    }));
+    const { editNickName } = this.state;
+    const elem = document.getElementById('nickNameEditor');
+    if (editNickName) this.updateNickName(elem.value);
+  }
+
+  saveName(event) {
+    if (event.keyCode !== 13) return;
+    const elem = document.getElementById('nameEditor');
+    this.updateName(elem.value);
+    this.setState({ editName: false });
+  }
+
+  saveNickName(event) {
+    if (event.keyCode !== 13) return;
+    const elem = document.getElementById('nickNameEditor');
+    this.updateNickName(elem.value);
+    this.setState({ editNickName: false });
+  }
+
+  updateName(value) {
+    const {
+      actions: { members }, profile: { id },
+    } = this.props;
+    const name = value.split(' ');
+    members.updateMember(id, {
+      name: name[0],
+      surname: name[1],
+    });
+  }
+
+  updateNickName(value) {
+    const {
+      actions: { members }, profile: { id },
+    } = this.props;
+    members.updateMember(id, {
+      nickName: value,
+    });
+  }
+
+  updateAvatar(avatar, event) {
+    event.preventDefault();
+    const r = new FileReader();
+    r.onloadend = () => {
+      this.newAvatar = r.result;
+    };
+    r.readAsDataURL(avatar);
+    const {
+      actions: { members }, profile: { id },
+    } = this.props;
+    members.updateMember(id, {
+      avatar: this.newAvatar,
+    });
   }
 
   render() {
     // TODO add projects
     // TODO add different icons to interests
     // TODO add props validation
+
     const {
       avatar, name, surname, nickName,
-      birthday, patron, interests, actions: { modal },
+      birthday, patron, interests,
     } = this.props;
-    const { editName } = this.state;
+    const { editName, editNickName } = this.state;
     const birthdayFormatted = birthday && formatDate(birthday);
     const interestsShort = (interests || []).slice(0, 3);
     const { name: patronName, surname: patronSurname } = patron || {};
@@ -43,38 +121,65 @@ class ProfileCard extends PureComponent {
       <div className="profile-card">
         <div>
           <img src={avatar || '/images/profile-default-02.png'} className="profile-ava" />
-          <button className="profile-ico-r" type="button" onClick={modal.openChangeAvaModal}><img src="/images/r-ico.png" /></button>
+          <div className="profile-ico-r">
+            <label htmlFor="update-photo">
+              <img src="/images/r-ico.png" alt="update" />
+              <input type="file" name="file" id="update-photo" className="update-photo" onChange={e => this.updateAvatar(e.target.files[0], e)} />
+            </label>
+          </div>
           <img src="/images/l-ico.png" className="profile-ico-l" />
         </div>
         <div className="d-flex flex-column justify-content-between">
           <div>
-            {editName
-              ? <input type="text" id="nameEditor" value={`${name} ${surname}`} />
-              : (
-                <p className="card-name">
-                  {name}
-              &nbsp;
-                  {surname}
-                </p>
-              )}
-
-            <p className="card-nickname">
-              {nickName}
-            </p>
+            <div className="name-box">
+              {editName
+                ? <input className="card-name" type="text" id="nameEditor" defaultValue={`${name} ${surname}`} />
+                : (
+                  <p className="card-name">
+                    {name}
+                    &nbsp;
+                    {surname}
+                  </p>
+                )}
+              <button type="button" className="pen-icon-btn" onClick={this.toggleNameEditor}>
+                <img src="/images/pen.png" className="pen-icon-big" />
+              </button>
+            </div>
+            <div className="name-box">
+              {editNickName
+                ? <input className="card-nickname" type="text" id="nickNameEditor" defaultValue={nickName} />
+                : (
+                  <p className="card-nickname">
+                    {nickName}
+                  </p>
+                )}
+              <button type="button" className="pen-icon-btn" onClick={this.toggleNickNameEditor}>
+                <img src="/images/pen.png" className="pen-icon-medium" />
+              </button>
+            </div>
           </div>
           <div className="card-info-box">
             <div className="card-info">
               <p>Дата народження:</p>
-              <p>{birthdayFormatted}</p>
+              <div className="name-box">
+                <p>{birthdayFormatted}</p>
+                <button type="button" className="pen-icon-btn">
+                  <img src="/images/pen.png" className="pen-icon-medium" />
+                </button>
+              </div>
             </div>
             <div className="card-info">
               <p>Патрон:</p>
-
-              <p>
-                {patronName}
-                &nbsp;
-                {patronSurname}
-              </p>
+              <div className="name-box">
+                <p>
+                  {patronName}
+                  &nbsp;
+                  {patronSurname}
+                </p>
+                <button type="button" className="pen-icon-btn">
+                  <img src="/images/pen.png" className="pen-icon-medium" />
+                </button>
+              </div>
             </div>
             <div className="card-info">
               <p>Проекти:</p>
@@ -98,10 +203,14 @@ class ProfileCard extends PureComponent {
     );
   }
 }
+const mapStateToProps = state => ({
+  profile: selectorMembersProfile(state),
+});
+
 const mapDispatchToProps = dispatch => ({
   actions: {
-    modal: bindActionCreators(modalActions, dispatch),
+    members: bindActionCreators(membersActions, dispatch),
   },
 });
-const ProfileCardWrapped = connect(null, mapDispatchToProps)(ProfileCard);
+const ProfileCardWrapped = connect(mapStateToProps, mapDispatchToProps)(ProfileCard);
 export { ProfileCardWrapped as ProfileCard };
