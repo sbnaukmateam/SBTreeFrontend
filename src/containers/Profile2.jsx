@@ -12,9 +12,18 @@ import {
 
 import { ProfileCard, ProfileSidebar, ProfileInfoColumn } from '../components';
 import { Layout } from './Layout';
-import { formatProfileS2C, formatDegree, formatPosition } from '../util/format';
+import {
+  formatProfileS2C, formatDegree, formatPosition,
+} from '../util/format';
 
 class Profile extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.handleRemoveContact = this.handleRemoveContact.bind(this);
+    this.handleRemovePosition = this.handleRemovePosition.bind(this);
+    this.handleRemoveDegree = this.handleRemoveDegree.bind(this);
+  }
+
   componentDidMount() {
     this.fetchProfile();
   }
@@ -28,10 +37,41 @@ class Profile extends PureComponent {
   }
 
   fetchProfile() {
-    const { id, actions } = this.props;
+    const { id, actions: { members } } = this.props;
     if (id) {
-      actions.members.nedbGetMember(id);
+      members.nedbGetMember(id);
     }
+  }
+
+  handleRemoveContact(indexToRemove) {
+    const {
+      profile, actions: { members },
+    } = this.props;
+    const { id } = profile;
+    const { contacts: prevContacts } = formatProfileS2C(profile);
+    const contacts = prevContacts.filter((contact, index) => indexToRemove !== index);
+    const phones = (contacts || []).filter(({ type }) => type === 'phone').map(({ item }) => item);
+    const emails = (contacts || []).filter(({ type }) => type === 'email').map(({ item }) => item);
+    const profiles = (contacts || []).filter(({ type }) => type === 'profile').map(({ item }) => item);
+    members.updateMember(id, { phones, emails, profiles });
+  }
+
+  handleRemovePosition(indexToRemove) {
+    const {
+      profile, actions: { members },
+    } = this.props;
+    const { id, positions: prevPositions } = profile;
+    const positions = prevPositions.filter((position, index) => indexToRemove !== index);
+    members.updateMember(id, { positions });
+  }
+
+  handleRemoveDegree(indexToRemove) {
+    const {
+      profile, actions: { members },
+    } = this.props;
+    const { id, degrees: prevDegrees } = profile;
+    const degrees = prevDegrees.filter((degree, index) => indexToRemove !== index);
+    members.updateMember(id, { degrees });
   }
 
   render() {
@@ -49,9 +89,9 @@ class Profile extends PureComponent {
               <div className="l-col">
                 <ProfileCard {...formattedProfile} patron={patron} />
                 <div className="edit-info-wrapper">
-                  <ProfileInfoColumn onAdd={modal.openAddContactModal} items={contacts} title="Контакти:" makeAnchors />
-                  <ProfileInfoColumn onAdd={modal.openAddPositionModal} items={positions} title="Посади в СБ:" formatter={formatPosition} />
-                  <ProfileInfoColumn onAdd={modal.openAddDegreeModal} items={degrees} title="Навчання:" formatter={formatDegree} />
+                  <ProfileInfoColumn onRemove={this.handleRemoveContact} onAdd={modal.openAddContactModal} items={contacts} title="Контакти:" makeAnchors />
+                  <ProfileInfoColumn onRemove={this.handleRemovePosition} onAdd={modal.openAddPositionModal} items={positions} title="Посади в СБ:" formatter={formatPosition} />
+                  <ProfileInfoColumn onRemove={this.handleRemoveDegree} onAdd={modal.openAddDegreeModal} items={degrees} title="Навчання:" formatter={formatDegree} />
                 </div>
               </div>
               <ProfileSidebar />
