@@ -101,6 +101,7 @@ class ProfileSidebar extends PureComponent {
           {status === 'OLD_MEMBER' && <Button onClick={this.setCurrentMember}>ВІДНОВИТИ</Button>}
           {status === 'NEW_MEMBER' && <Button onClick={this.setCurrentMember}>ВИСВЯТИТИ</Button>}
           {status === 'CURRENT_MEMBER' && <Button onClick={this.setNewMember}>РОЗВИСВЯТИТИ</Button>}
+          {!status && <Button onClick={this.setNewMember}>ІНІЦІАЛІЗУВАТИ</Button>}
           {!admin && <Button onClick={this.setAdmin}>ЗРОБИТИ АДМІНОМ</Button>}
           {admin && <Button onClick={this.unsetAdmin}>ВИДАЛИТИ З АДМІНІВ</Button>}
           {!active && <Button onClick={this.setActive}>АКТИВУВАТИ</Button>}
