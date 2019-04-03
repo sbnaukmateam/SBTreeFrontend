@@ -25,14 +25,10 @@ class ModalAddPosition extends PureComponent {
     const { id, positions: prevPositions } = profile || {};
     const positions = prevPositions || [];
     members.updateMember(id, {
-      ...profile,
       positions: [...positions, {
         years: [year],
         name,
       }],
-    });
-    members.updateMember(id, {
-      position: { year, name },
     });
   }
 

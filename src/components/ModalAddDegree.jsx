@@ -30,7 +30,6 @@ class ModalAddDegree extends PureComponent {
     const { id, degrees: prevDegrees } = profile || {};
     const degrees = prevDegrees || [];
     members.updateMember(id, {
-      ...profile,
       degrees: [...degrees, {
         year,
         faculty,

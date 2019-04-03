@@ -10,6 +10,7 @@ import { FormField } from './FormField';
 import { selectorMembersProfile } from '../selectors';
 
 const { required } = validate;
+const CONTACT_TYPES = ['profiles', 'emails', 'phones'];
 
 class ModalAddContact extends PureComponent {
   constructor(props) {
@@ -20,10 +21,15 @@ class ModalAddContact extends PureComponent {
   handleSubmit(event) {
     event.preventDefault();
     const {
-      actions: { members }, contact, profile: { id },
+      actions: { members }, contact, type, profile,
     } = this.props;
+    if (!CONTACT_TYPES.includes(type)) {
+      return;
+    }
+    const { id } = profile || {};
+    const contacts = [...(profile[type] || []), contact];
     members.updateMember(id, {
-      contact,
+      [type]: contacts,
     });
   }
 
@@ -32,13 +38,20 @@ class ModalAddContact extends PureComponent {
     return (
       <form className="form" onSubmit={this.handleSubmit}>
         <span className="form-title">Додати контакт</span>
-        <Field component={FormField} className="input" label="Контакт" autoComplete="off" type="text" name="name" validate={[required]} />
+        <Field component="select" className="input" label="Контакт" autoComplete="off" name="type" validate={[required]}>
+          <option default value="">Оберіть тип контакту</option>
+          <option default value="phones">Телефон</option>
+          <option default value="emails">Email</option>
+          <option default value="profiles">Профайл</option>
+        </Field>
+        <Field component={FormField} className="input" label="Контакт" autoComplete="off" type="text" name="contact" validate={[required]} />
         <button className="form-btn" type="submit" disabled={submitting || pristine || invalid}>ДОДАТИ</button>
       </form>
     );
   }
 }
 ModalAddContact.propTypes = {
+  type: PropTypes.string,
   contact: PropTypes.string,
   actions: PropTypes.object.isRequired,
   submitting: PropTypes.bool.isRequired,
@@ -48,11 +61,13 @@ ModalAddContact.propTypes = {
 };
 ModalAddContact.defaultProps = {
   contact: null,
+  type: null,
 };
 const selector = formValueSelector('AddContactForm');
 
 const mapStateToProps = state => ({
   contact: selector(state, 'contact'),
+  type: selector(state, 'type'),
   profile: selectorMembersProfile(state),
 });
 
