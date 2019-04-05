@@ -17,6 +17,7 @@ class PasswordChangeForm extends PureComponent {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleSubmit() {
 
   }

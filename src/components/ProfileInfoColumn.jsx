@@ -81,7 +81,7 @@ class ProfileInfoColumn extends PureComponent {
               if (!awIcon) awIcon = analyzeContact(item);
 
               return (
-                <div key={item} className="edit-info-point" title={isString ? item : undefined}>
+                <div key={isString ? item : item.year} className="edit-info-point" title={isString ? item : undefined}>
                   <div>
                     <i className={`${awIcon} fa-2x`} />
                     {wrappedItem}
