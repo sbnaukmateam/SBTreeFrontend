@@ -13,7 +13,7 @@ import {
 import { ProfileCard, ProfileSidebar, ProfileInfoColumn } from '../components';
 import { Layout } from './Layout';
 import {
-  formatProfileS2C, formatDegree, formatPosition,
+  formatProfileS2C, formatPosition,
 } from '../util/format';
 
 class Profile extends PureComponent {
@@ -89,9 +89,9 @@ class Profile extends PureComponent {
               <div className="l-col">
                 <ProfileCard {...formattedProfile} patron={patron} />
                 <div className="edit-info-wrapper">
-                  <ProfileInfoColumn onRemove={this.handleRemoveContact} onAdd={modal.openAddContactModal} items={contacts} title="Контакти:" makeAnchors />
-                  <ProfileInfoColumn onRemove={this.handleRemovePosition} onAdd={modal.openAddPositionModal} items={positions} title="Посади в СБ:" formatter={formatPosition} />
-                  <ProfileInfoColumn onRemove={this.handleRemoveDegree} onAdd={modal.openAddDegreeModal} items={degrees} title="Навчання:" formatter={formatDegree} />
+                  <ProfileInfoColumn onRemove={this.handleRemoveContact} onAdd={modal.openAddContactModal} items={contacts} type="contacts" title="Контакти:" />
+                  <ProfileInfoColumn onRemove={this.handleRemovePosition} onAdd={modal.openAddPositionModal} items={positions} type="positions" title="Посади в СБ:" formatter={formatPosition} />
+                  <ProfileInfoColumn onRemove={this.handleRemoveDegree} onAdd={modal.openAddDegreeModal} items={degrees} type="degrees" title="Навчання:" />
                 </div>
               </div>
               <ProfileSidebar />

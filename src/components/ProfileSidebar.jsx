@@ -2,9 +2,10 @@ import React, { PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+import PropTypes from 'prop-types';
 import { membersActions } from '../actions';
 import {
-  selectorMembersProfile, selectorMembersPatron, selectorMessage,
+  selectorMembersProfile,
 } from '../selectors';
 import { PasswordChangeForm } from './PasswordChangeForm';
 import { Button } from './Button';
@@ -90,7 +91,7 @@ class ProfileSidebar extends PureComponent {
   }
 
   render() {
-    const { profile: { status, admin, active }} = this.props;
+    const { profile: { status, admin, active } } = this.props;
     return (
       <div className="r-col">
         <PasswordChangeForm />
@@ -111,7 +112,10 @@ class ProfileSidebar extends PureComponent {
     );
   }
 }
-
+ProfileSidebar.propTypes = ({
+  actions: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
+});
 const mapStateToProps = createSelector(
   [selectorMembersProfile],
   profile => ({ profile }),

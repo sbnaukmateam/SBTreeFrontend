@@ -1,16 +1,23 @@
-/* eslint-disable react/prop-types */
 import React, { PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { membersActions } from '../actions';
 import { selectorMembersProfile } from '../selectors';
+import { DATE_FORMAT } from '../util';
 
-
-// TODO move format to utils
-const DATE_FORMAT = 'YYYY-MM-DD';
-
-const formatDate = date => moment.utc(date).format(DATE_FORMAT);
+const formatDate = (value) => {
+  if (!value) {
+    return null;
+  }
+  const momentValue = moment(value);
+  if (!momentValue.isValid()) {
+    return null;
+  }
+  return momentValue.format(DATE_FORMAT);
+};
 
 class ProfileCard extends PureComponent {
   constructor() {
@@ -18,12 +25,17 @@ class ProfileCard extends PureComponent {
     this.state = ({
       editName: false,
       editNickName: false,
+      editBirth: false,
+      birth: null,
     });
     this.updateAvatar = this.updateAvatar.bind(this);
     this.saveName = this.saveName.bind(this);
     this.saveNickName = this.saveNickName.bind(this);
     this.toggleNameEditor = this.toggleNameEditor.bind(this);
     this.toggleNickNameEditor = this.toggleNickNameEditor.bind(this);
+    this.handleChangeBirth = this.handleChangeBirth.bind(this);
+    this.openBirthPicker = this.openBirthPicker.bind(this);
+
     this.newAvatar = null;
   }
 
@@ -42,6 +54,12 @@ class ProfileCard extends PureComponent {
     }
   }
 
+  openBirthPicker() {
+    this.setState({
+      editBirth: true,
+    });
+  }
+
   toggleNickNameEditor() {
     this.setState(prevState => ({
       editNickName: !prevState.editNickName,
@@ -54,6 +72,23 @@ class ProfileCard extends PureComponent {
     } else {
       document.addEventListener('keydown', this.saveNickName);
     }
+  }
+
+  handleChangeBirth(date) {
+    this.updateBirthday(date);
+    this.setState({
+      birth: date,
+      editBirth: false,
+    });
+  }
+
+  updateBirthday(date) {
+    const {
+      actions: { members }, profile: { id },
+    } = this.props;
+    members.updateMember(id, {
+      birthday: formatDate(date),
+    });
   }
 
   saveName(event) {
@@ -108,13 +143,14 @@ class ProfileCard extends PureComponent {
   render() {
     // TODO add projects
     // TODO add different icons to interests
-    // TODO add props validation
 
     const {
       avatar, name, surname, nickName,
       birthday, patron, interests,
     } = this.props;
-    const { editName, editNickName } = this.state;
+    const {
+      editName, editNickName, editBirth, birth,
+    } = this.state;
     const birthdayFormatted = birthday && formatDate(birthday);
     const interestsShort = (interests || []).slice(0, 3);
     const { name: patronName, surname: patronSurname } = patron || {};
@@ -130,8 +166,8 @@ class ProfileCard extends PureComponent {
           </div>
           <img src="/images/l-ico.png" className="profile-ico-l" />
         </div>
-        <div className="d-flex flex-column justify-content-between">
-          <div>
+        <div className="profile-info">
+          <div className="name-wrapper">
             <div className="name-box">
               {editName
                 ? <input className="card-name" type="text" id="nameEditor" defaultValue={`${name} ${surname}`} />
@@ -163,10 +199,27 @@ class ProfileCard extends PureComponent {
             <div className="card-info">
               <p>Дата народження:</p>
               <div className="name-box">
-                <p>{birthdayFormatted}</p>
-                <button type="button" className="pen-icon-btn">
-                  <img src="/images/pen.png" className="pen-icon-medium" />
-                </button>
+                {editBirth
+                  ? (
+                    <DatePicker className="input datepicker"
+                      placeholderText="Дата народження"
+                      selected={birth}
+                      onChange={this.handleChangeBirth}
+                      isClearable
+                      showMonthDropdown
+                      showYearDropdown
+                  />
+                  )
+                  : (
+                    <React.Fragment>
+                      <p>{birthdayFormatted}</p>
+                      <button type="button" className="pen-icon-btn" onClick={this.openBirthPicker}>
+                        <img src="/images/pen.png" className="pen-icon-medium" />
+                      </button>
+                    </React.Fragment>
+                  )
+                }
+
               </div>
             </div>
             <div className="card-info">
@@ -204,6 +257,24 @@ class ProfileCard extends PureComponent {
     );
   }
 }
+ProfileCard.propTypes = ({
+  actions: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
+  avatar: PropTypes.string,
+  surname: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  nickName: PropTypes.string,
+  patron: PropTypes.object,
+  birthday: PropTypes.string,
+  interests: PropTypes.array,
+});
+ProfileCard.defaultProps = ({
+  patron: null,
+  birthday: null,
+  interests: null,
+  nickName: null,
+  avatar: null,
+});
 const mapStateToProps = state => ({
   profile: selectorMembersProfile(state),
 });

@@ -54,13 +54,14 @@ Card.propTypes = {
   name: PropTypes.string.isRequired,
   comment: PropTypes.string,
   faculty: PropTypes.string,
-  year: PropTypes.string.isRequired,
+  year: PropTypes.any,
   id: PropTypes.string.isRequired,
 };
 Card.defaultProps = {
   faculty: '',
   img: '',
   comment: '',
+  year: '',
 };
 
 export { Card };

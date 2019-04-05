@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import { DATE_FORMAT } from '../util';
 
 import 'react-datepicker/dist/react-datepicker.css';
-
-const DATE_FORMAT = 'YYYY-MM-DD';
 
 const formatDate = (value) => {
   if (!value) {
