@@ -72,7 +72,8 @@ button:hover {
 .card-container {
     display: flex;
     flex-direction: column;
-    max-width: 310px;
+    max-width: 350px;
+
     border: 2px solid #317199;
     border-radius: 4px;
     height: 300px;
@@ -85,31 +86,30 @@ button:hover {
     margin-top: 8px;
 }
 
-.card-flex-element {
-}
 
 .card-member-info {
     color: #317199;
 
 }
 
-.card-container2 p {
-    margin-bottom: 0;
-}
-
-.card-container2 {
+.card-member-info {
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
-    align-self: center;
+    justify-content: space-between;
 }
 
-.card-flex-element2 {
-    text-align: center;
+.card-member-info p {
+    margin: 0;
+    padding-top: 8px;
 }
+
+
+
 
 hr {
     background: #fff no-repeat scroll center;
-    width: 10em;
+    width: 100%;
     color: black;
     margin: 5px 0;
     border-top: 2px solid rgba(0, 0, 0, .1);
@@ -119,26 +119,31 @@ hr {
     margin-top: 5px;
 }
 
+.card-links > img {
+    margin: 0 2px;
+    width: 28px;
+}
+
 .card-profile-icons-box {
     position: relative;
 }
 
-.cart-item-wrapper {
+.card-item-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .card-leaf {
-    width: 30px;
+    width: 38px;
     position: absolute;
-    bottom: 5px;
-    left: 30px;
+    bottom: 0px;
+    left: 15px;
 }
 
 .card-members-photo {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
 }
 
 .contacts-search-wrapper {
@@ -208,7 +213,7 @@ hr {
     width: 100%;
 }
 
-.react-datepicker-wrapper .input{
+.react-datepicker-wrapper .input {
     margin: 0;
 }
 
@@ -694,12 +699,15 @@ input {
     border-radius: 5px;
     text-align: center;
 }
-.profile p, .profile a, .profile h3, .profile input{
+
+.profile p, .profile a, .profile h3, .profile input {
     color: #317199;
 }
-.profile p{
+
+.profile p {
     margin: 0;
 }
+
 .profile > div {
     padding: 40px;
     background-color: #e1ecf3;
@@ -725,11 +733,13 @@ input {
     display: flex;
     background-color: #fff;
 }
-.profile-info{
+
+.profile-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
 .profile-card > div {
     width: 50%;
     padding: 10px;
@@ -779,9 +789,11 @@ input {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
-.name-wrapper{
+
+.name-wrapper {
     margin-top: 15px;
 }
+
 .name-box {
     display: flex;
     justify-content: center;
@@ -796,16 +808,18 @@ input {
     padding: 0;
     border: 1px solid #317199;
 }
-.profile-ico-r:hover{
+
+.profile-ico-r:hover {
     transform: scale(1.1);
 }
-.profile-ico-r img, .profile-ico-r label{
+
+.profile-ico-r img, .profile-ico-r label {
     width: 100%;
     height: 100%;
 }
 
 .profile-card .profile-ico-r input.update-photo {
-    display:none;
+    display: none;
 }
 
 .profile-ico-l {
@@ -872,10 +886,12 @@ input {
 .profile input {
     border: 1px solid #317199;
 }
-.pass-change-box input{
+
+.pass-change-box input {
     margin-top: 8px;
     width: 100%;
 }
+
 .profile input[placeholder] {
     color: #88b4d0;
 }
@@ -942,7 +958,8 @@ input {
     display: flex;
     align-items: center;
 }
-.edit-info-point > div > div{
+
+.edit-info-point > div > div {
     width: calc(100% - 30px);
 }
 
@@ -950,14 +967,17 @@ input {
     height: 30px;
     margin: 0;
 }
-.edit-info-point > .point-btn > img{
+
+.edit-info-point > .point-btn > img {
     height: 20px;
 }
-.point-btn{
+
+.point-btn {
     position: absolute;
     right: 0;
     top: 5px;
 }
+
 .edit-info-point a, .edit-info-point p {
     margin: 0 0 0 10px;
     -ms-text-overflow: ellipsis;
@@ -1016,8 +1036,8 @@ input {
 }
 
 
-.flex-element {
-    margin: 0 10px;
+.card-main-icon-link {
+    width: 50%;
 }
 
 .logo-wrapper {
@@ -1458,6 +1478,15 @@ input[name="quicksearch"] {
 }
 
 @media screen and (min-width: 512px) {
+
+    .contacts-section_content-wrapper_search-control {
+        width: 34%;
+    }
+
+    .carts-wrapper {
+        width: 66%;
+
+    }
     .carts-box {
         padding: 10px 20px;
     }
@@ -1496,7 +1525,12 @@ input[name="quicksearch"] {
     .logo-wrapper {
         width: 50%;
     }
-
+    .card-container{
+        min-width: 270px;
+    }
+    .card-member-info{
+        width:50%;
+    }
     .flex-container4 {
         display: flex;
         flex-direction: row;
