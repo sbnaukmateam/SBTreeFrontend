@@ -59,7 +59,7 @@ export const Members = [{
   positions: [{ years: [2011], name: 'голова' }],
   interests: ['football', 'reading'],
   projects: ['id1', 'id2'],
-  status: 'BRATCHYK',
+  status: 'CURRENT_MEMBER',
 }, {
   id: '2',
   name: 'Петро',
@@ -83,7 +83,7 @@ export const Members = [{
   positions: [{ years: [2011], name: 'qwerty' }],
   interests: ['football', 'reading'],
   projects: ['id1', 'id2'],
-  status: 'POSHANOVANYJ',
+  status: 'OLD_MEMBER',
 },
 {
   id: '3',
@@ -108,7 +108,7 @@ export const Members = [{
   positions: [{ years: [2011], name: 'qwerty' }],
   interests: ['football', 'reading'],
   projects: ['id1', 'id2'],
-  status: 'POSHANOVANYJ',
+  status: 'OLD_MEMBER',
 },
 ];
 export const Roles = [{

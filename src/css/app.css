@@ -21,6 +21,7 @@ h2 {
 body {
     margin: 0;
 }
+
 button:hover {
     outline: none;
 
@@ -207,6 +208,9 @@ hr {
     width: 100%;
 }
 
+.react-datepicker-wrapper .input{
+    margin: 0;
+}
 
 .contacts-search-wrapper_filters {
     margin-top: 20px;
@@ -453,6 +457,11 @@ input {
 
 }
 
+
+.profile-icon-link {
+    margin-right: 20px;
+}
+
 .profile-icon-link {
     margin-right: 20px;
 }
@@ -683,10 +692,14 @@ input {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    color: #317199;
     text-align: center;
 }
-
+.profile p, .profile a, .profile h3, .profile input{
+    color: #317199;
+}
+.profile p{
+    margin: 0;
+}
 .profile > div {
     padding: 40px;
     background-color: #e1ecf3;
@@ -712,7 +725,11 @@ input {
     display: flex;
     background-color: #fff;
 }
-
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .profile-card > div {
     width: 50%;
     padding: 10px;
@@ -720,7 +737,6 @@ input {
 }
 
 .card-info-box {
-    min-height: 65%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
@@ -728,7 +744,7 @@ input {
 
 .card-info {
     background-color: #e1ecf3;
-    padding: 10px 5px;
+    padding: 20px 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -763,11 +779,15 @@ input {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
-
+.name-wrapper{
+    margin-top: 15px;
+}
 .name-box {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .profile-ico-r {
@@ -775,6 +795,9 @@ input {
     height: 30%;
     padding: 0;
     border: 1px solid #317199;
+}
+.profile-ico-r:hover{
+    transform: scale(1.1);
 }
 .profile-ico-r img, .profile-ico-r label{
     width: 100%;
@@ -820,10 +843,9 @@ input {
 
 .edit-info-wrapper {
     padding-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     background-color: #e1ecf3;
-    grid-gap: 10px;
     width: 100%;
 }
 
@@ -837,6 +859,7 @@ input {
     border: 1px solid #317199;
     background-color: #fff;
     padding: 30px 10px 10px 10px;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -848,10 +871,11 @@ input {
 
 .profile input {
     border: 1px solid #317199;
+}
+.pass-change-box input{
     margin-top: 8px;
     width: 100%;
 }
-
 .profile input[placeholder] {
     color: #88b4d0;
 }
@@ -903,31 +927,37 @@ input {
 
 .edit-info-point {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     margin-bottom: 10px;
-    max-width: 100%;
+    color: #317199;
+    text-align: left;
+    position: relative;
 }
 
 .edit-info-point > div {
-    display: flex;
-    max-width: calc(100% - 50px);
-    justify-content: start;
-    align-items: center;
+    width: calc(100% - 50px);
     text-align: start;
     font-size: calc(0.6vw + 5px);
+    display: flex;
+    align-items: center;
+}
+.edit-info-point > div > div{
+    width: calc(100% - 30px);
 }
 
-.edit-info-point > button {
-    margin: 1px;
-    padding: 1px;
-}
-
-.edit-info-point img {
+.edit-info-point > div > img {
     height: 30px;
-    margin-right: 5px;
+    margin: 0;
 }
-
+.edit-info-point > .point-btn > img{
+    height: 20px;
+}
+.point-btn{
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
 .edit-info-point a, .edit-info-point p {
     margin: 0 0 0 10px;
     -ms-text-overflow: ellipsis;
@@ -1157,7 +1187,6 @@ input[name="quicksearch"] {
     width: 35px;
     height: 35px;
     padding: 1px;
-
 }
 
 .show-more-btn:hover {
@@ -1331,7 +1360,7 @@ input[name="quicksearch"] {
 
 
 .form {
-    width: 100%;
+    /* width: 100%; */
     padding: 30px 55px;
     display: flex;
     flex-direction: column;

@@ -25,12 +25,17 @@ class ModalAddDegree extends PureComponent {
       faculty,
       program,
       speciality,
-      profile: { id },
+      profile,
     } = this.props;
+    const { id, degrees: prevDegrees } = profile || {};
+    const degrees = prevDegrees || [];
     members.updateMember(id, {
-      degree: {
-        year, speciality, program, faculty,
-      },
+      degrees: [...degrees, {
+        year,
+        faculty,
+        program,
+        speciality,
+      }],
     });
   }
 
@@ -39,7 +44,7 @@ class ModalAddDegree extends PureComponent {
     return (
       <form className="form" onSubmit={this.handleSubmit}>
         <span className="form-title">Додати навчання</span>
-        <Field component={FormField} className="input" label="Рік закінчення" autoComplete="off" type="text" name="year" validate={[required, isYear]} />
+        <Field component={FormField} className="input" label="Рік вступу" autoComplete="off" type="text" name="year" validate={[required, isYear]} />
         <Field component={FormField} className="input" label="Факультет" autoComplete="off" type="text" name="faculty" validate={[required]} />
         <Field component={FormField} className="input" label="Спеціальність" autoComplete="off" type="text" name="speciality" validate={[required]} />
         <Field component={FormField} className="input" label="Програма" autoComplete="off" type="text" name="program" validate={[required]} />

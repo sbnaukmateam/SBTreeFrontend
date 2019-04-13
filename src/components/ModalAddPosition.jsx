@@ -20,10 +20,15 @@ class ModalAddPosition extends PureComponent {
   handleSubmit(event) {
     event.preventDefault();
     const {
-      actions: { members }, name, year, profile: { id },
+      actions: { members }, name, year, profile,
     } = this.props;
+    const { id, positions: prevPositions } = profile || {};
+    const positions = prevPositions || [];
     members.updateMember(id, {
-      position: { year, name },
+      positions: [...positions, {
+        years: [year],
+        name,
+      }],
     });
   }
 
@@ -52,7 +57,7 @@ ModalAddPosition.defaultProps = {
   name: null,
   year: null,
 };
-const selector = formValueSelector('AddContactForm');
+const selector = formValueSelector('AddPositionForm');
 
 const mapStateToProps = state => ({
   name: selector(state, 'name'),
@@ -67,6 +72,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const WrappedModalAddPosition = modalWrapper('addPosition')(connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'AddContactForm' })(ModalAddPosition)));
+const WrappedModalAddPosition = modalWrapper('addPosition')(connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'AddPositionForm' })(ModalAddPosition)));
 
 export { WrappedModalAddPosition as ModalAddPosition };

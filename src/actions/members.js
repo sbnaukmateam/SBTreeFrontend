@@ -33,7 +33,7 @@ const nedbGetMember = id => async (dispatch) => {
 const updateMember = (id, update) => async (dispatch, getState) => {
   dispatch({ type: actionTypes.NEDB_UPDATE_MEMBER_START });
   try {
-    const profile = await api.changeInfoMock(id, update);
+    const profile = await api.updateMember(id, update);
     await db.members.updateAsync({ id }, profile);
     const prevProfileId = selectorMembersId(getState()) || {};
     if (prevProfileId === id) {

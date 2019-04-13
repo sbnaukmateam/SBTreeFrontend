@@ -48,8 +48,8 @@ export const formatProfileC2S = (profile) => {
     ...rest, phones, emails, profiles, degrees, positions,
   };
 };
-export const formatDegree = ({
-  faculty, year, speciality, program,
-}) => `${faculty} - ${year} (${speciality}, ${program})`;
 
-export const formatPosition = ({ years, name }) => `${name} - ${years.join(', ')}`;
+
+export const DATE_FORMAT = 'YYYY-MM-DD';
+
+export const formatPosition = ({ years, name }) => `${name} - ${(years || []).join(', ')}`;
