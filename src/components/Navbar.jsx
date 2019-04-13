@@ -38,32 +38,26 @@ class Navbar extends PureComponent {
     const navStyle = `navbar${transparent && !scroll ? ' transparent' : ''}`;
     return (
       <div className={navStyle} style={style}>
-        <div className="col-12 col-xxl-10 navbar_box">
-          <div className="col-3">
-            <img src="/images/logo.png" className="admin-menu_logo-img mr-2" />
-            <Link to="/">
-              <b>СПУДЕЙСЬКЕ БРАТСТВО</b>
-            </Link>
-          </div>
-          <div className="col-6 d-flex justify-content-around">
-            <Link to="/about">
+        <div className="navbar_box">
+          <img src="/images/logo.png" className="admin-menu_logo-img" />
+          <Link to="/">
+            <b>СПУДЕЙСЬКЕ БРАТСТВО</b>
+          </Link>
+          <Link to="/about">
               ПРО НАС
-            </Link>
-            {/* TODO: Uncomment after projects will be finished */}
-            {/* <Link to="/projects">
+          </Link>
+          {/* TODO: Uncomment after projects will be finished */}
+          {/* <Link to="/projects">
               ПРОЕКТИ
             </Link> */}
-            <Link to="/contacts">
+          <Link to="/contacts">
               КОНТАКТИ
-            </Link>
-            {/* TODO: Uncomment after tree will be finished */}
-            {/* <Link to="/">
+          </Link>
+          {/* TODO: Uncomment after tree will be finished */}
+          {/* <Link to="/">
               ДЕРЕВО
             </Link> */}
-          </div>
-          <div className="col-3 d-flex justify-content-center">
-            {loggedIn ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
-          </div>
+          {loggedIn ? <NavAuth /> : <NavNoAuth login={modal.openLoginModal} signUp={modal.openSignUpModal} />}
         </div>
       </div>
     );
