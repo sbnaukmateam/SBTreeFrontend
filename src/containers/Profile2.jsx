@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { profileActions, membersActions } from '../actions';
+import { profileActions, membersActions, modalActions } from '../actions';
 
 import {
   selectorMembersProfile, selectorMembersPatron, selectorMessage,
@@ -35,7 +35,9 @@ class Profile extends PureComponent {
   }
 
   render() {
-    const { profile, patron, message } = this.props;
+    const {
+      profile, patron, message, actions: { modal },
+    } = this.props;
     const formattedProfile = formatProfileS2C(profile);
     const { contacts, positions, degrees } = formattedProfile;
     return (
@@ -47,9 +49,9 @@ class Profile extends PureComponent {
               <div className="l-col">
                 <ProfileCard {...formattedProfile} patron={patron} />
                 <div className="edit-info-wrapper">
-                  <ProfileInfoColumn items={contacts} title="Контакти:" makeAnchors />
-                  <ProfileInfoColumn items={positions} title="Посади в СБ:" formatter={formatPosition} />
-                  <ProfileInfoColumn items={degrees} title="Навчання:" formatter={formatDegree} />
+                  <ProfileInfoColumn onAdd={modal.openAddContactModal} items={contacts} title="Контакти:" makeAnchors />
+                  <ProfileInfoColumn onAdd={modal.openAddPositionModal} items={positions} title="Посади в СБ:" formatter={formatPosition} />
+                  <ProfileInfoColumn onAdd={modal.openAddDegreeModal} items={degrees} title="Навчання:" formatter={formatDegree} />
                 </div>
               </div>
               <ProfileSidebar />
@@ -86,6 +88,7 @@ const mapDispatchToProps = dispatch => ({
   actions: {
     profile: bindActionCreators(profileActions, dispatch),
     members: bindActionCreators(membersActions, dispatch),
+    modal: bindActionCreators(modalActions, dispatch),
   },
 });
 

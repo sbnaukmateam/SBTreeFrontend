@@ -17,8 +17,13 @@ h2 {
     color: #28639b;
 }
 
+
 body {
     margin: 0;
+
+button:hover {
+    outline: none;
+
 }
 
 #root {
@@ -195,6 +200,11 @@ hr {
 
 .datepicker {
     text-align: center;
+}
+
+
+.react-datepicker-wrapper, .react-datepicker__input-container {
+    width: 100%;
 }
 
 
@@ -754,9 +764,25 @@ input {
     border-radius: 50%;
 }
 
+.name-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile-ico-r {
     right: 10px;
+    height: 30%;
+    padding: 0;
     border: 1px solid #317199;
+}
+.profile-ico-r img, .profile-ico-r label{
+    width: 100%;
+    height: 100%;
+}
+
+.profile-card .profile-ico-r input.update-photo {
+    display:none;
 }
 
 .profile-ico-l {
@@ -764,7 +790,8 @@ input {
 }
 
 .card-name, .card-nickname {
-    width: 90%;
+    margin: 0;
+    /*width: 90%;*/
 }
 
 .card-nickname {
@@ -773,6 +800,22 @@ input {
 
 .card-name {
     font-size: calc(2vw);
+}
+
+.pen-icon-btn {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.pen-icon-big {
+    height: 1.3em;
+    margin-left: 6px;
+}
+
+.pen-icon-medium {
+    height: 1.1em;
+    margin-left: 4px;
 }
 
 .edit-info-wrapper {
@@ -1111,8 +1154,8 @@ input[name="quicksearch"] {
     background-color: #003470;
     border-radius: 50%;
     border: 4px solid #003470;
-    width: 15px;
-    height: 15px;
+    width: 35px;
+    height: 35px;
     padding: 1px;
 
 }

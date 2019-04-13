@@ -48,7 +48,6 @@ export const formatProfileC2S = (profile) => {
     ...rest, phones, emails, profiles, degrees, positions,
   };
 };
-
 export const formatDegree = ({
   faculty, year, speciality, program,
 }) => `${faculty} - ${year} (${speciality}, ${program})`;
