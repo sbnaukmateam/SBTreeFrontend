@@ -17,12 +17,14 @@ h2 {
     color: #28639b;
 }
 
+
 body {
     margin: 0;
 }
 
 button:hover {
     outline: none;
+
 }
 
 #root {
@@ -201,12 +203,15 @@ hr {
     text-align: center;
 }
 
+
 .react-datepicker-wrapper, .react-datepicker__input-container {
     width: 100%;
 }
+
 .react-datepicker-wrapper .input{
     margin: 0;
 }
+
 .contacts-search-wrapper_filters {
     margin-top: 20px;
 
@@ -450,6 +455,11 @@ input {
     color: white;
     font-size: 15px;
 
+}
+
+
+.profile-icon-link {
+    margin-right: 20px;
 }
 
 .profile-icon-link {
