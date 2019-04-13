@@ -9,8 +9,6 @@ import {
   MyContainer, NotFound, About, /* Projects, */ ProfileContainer, Admin, App,
 } from './containers';
 
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/app.css';
 
 
