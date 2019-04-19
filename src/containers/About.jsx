@@ -72,7 +72,7 @@ class About extends PureComponent {
                 </p>
               </div>
               <div className="train-logo-wrapper">
-                <img src="/images/train.jpg" className="paravoz" />
+                <img src="/images/train.jpg" className="photo-near-train" />
 
                 <button type="button" href="#" id="read-more">
 ЧИТАТИ ДАЛІ &nbsp;
