@@ -17,8 +17,14 @@ h2 {
     color: #28639b;
 }
 
+
 body {
     margin: 0;
+}
+
+button:hover {
+    outline: none;
+
 }
 
 #root {
@@ -66,7 +72,8 @@ body {
 .card-container {
     display: flex;
     flex-direction: column;
-    max-width: 310px;
+    max-width: 280px;
+
     border: 2px solid #317199;
     border-radius: 4px;
     height: 300px;
@@ -79,31 +86,28 @@ body {
     margin-top: 8px;
 }
 
-.card-flex-element {
-}
 
 .card-member-info {
     color: #317199;
 
 }
 
-.card-container2 p {
-    margin-bottom: 0;
-}
-
-.card-container2 {
+.card-member-info {
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
-    align-self: center;
+    justify-content: space-between;
 }
 
-.card-flex-element2 {
-    text-align: center;
+.card-member-info p {
+    margin: 0;
+    padding-top: 8px;
 }
+
 
 hr {
     background: #fff no-repeat scroll center;
-    width: 10em;
+    width: 100%;
     color: black;
     margin: 5px 0;
     border-top: 2px solid rgba(0, 0, 0, .1);
@@ -113,26 +117,31 @@ hr {
     margin-top: 5px;
 }
 
+.card-links > img {
+    margin: 0 2px;
+    width: 24px;
+}
+
 .card-profile-icons-box {
     position: relative;
 }
 
-.cart-item-wrapper {
+.card-item-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .card-leaf {
-    width: 30px;
+    width: 38px;
     position: absolute;
-    bottom: 5px;
-    left: 30px;
+    bottom: 0px;
+    left: 15px;
 }
 
 .card-members-photo {
-    width: 100px;
-    height: 100px;
+    width: 135px;
+    height: 135px;
 }
 
 .contacts-search-wrapper {
@@ -197,6 +206,14 @@ hr {
     text-align: center;
 }
 
+
+.react-datepicker-wrapper, .react-datepicker__input-container {
+    width: 100%;
+}
+
+.react-datepicker-wrapper .input {
+    margin: 0;
+}
 
 .contacts-search-wrapper_filters {
     margin-top: 20px;
@@ -443,6 +460,11 @@ input {
 
 }
 
+
+.profile-icon-link {
+    margin-right: 20px;
+}
+
 .profile-icon-link {
     margin-right: 20px;
 }
@@ -495,7 +517,7 @@ input {
 }
 
 .logo-footer {
-    height: 120px;
+    height: 80px;
 }
 
 .footer * {
@@ -505,7 +527,7 @@ input {
 }
 
 .second-section {
-    margin-top: 40px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -514,19 +536,21 @@ input {
 .footer-icon {
     height: 20px;
     margin-right: 15px;
-    margin-top: 20px;
 }
 
 .footer-title {
-    text-align: left;
-    margin-left: 20px;
-    margin-top: 50px;
+    text-align: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.footer-title-sb {
+    padding-left: 20px;
 }
 
 .footer-name {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
     text-align: right;
 }
 
@@ -673,8 +697,15 @@ input {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    color: #317199;
     text-align: center;
+}
+
+.profile p, .profile a, .profile h3, .profile input {
+    color: #317199;
+}
+
+.profile p {
+    margin: 0;
 }
 
 .profile > div {
@@ -703,6 +734,12 @@ input {
     background-color: #fff;
 }
 
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .profile-card > div {
     width: 50%;
     padding: 10px;
@@ -710,7 +747,6 @@ input {
 }
 
 .card-info-box {
-    min-height: 65%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
@@ -718,7 +754,7 @@ input {
 
 .card-info {
     background-color: #e1ecf3;
-    padding: 10px 5px;
+    padding: 20px 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -754,9 +790,36 @@ input {
     border-radius: 50%;
 }
 
+.name-wrapper {
+    margin-top: 15px;
+}
+
+.name-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
 .profile-ico-r {
     right: 10px;
+    height: 30%;
+    padding: 0;
     border: 1px solid #317199;
+}
+
+.profile-ico-r:hover {
+    transform: scale(1.1);
+}
+
+.profile-ico-r img, .profile-ico-r label {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-card .profile-ico-r input.update-photo {
+    display: none;
 }
 
 .profile-ico-l {
@@ -764,7 +827,8 @@ input {
 }
 
 .card-name, .card-nickname {
-    width: 90%;
+    margin: 0;
+    /*width: 90%;*/
 }
 
 .card-nickname {
@@ -775,12 +839,27 @@ input {
     font-size: calc(2vw);
 }
 
+.pen-icon-btn {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.pen-icon-big {
+    height: 1.3em;
+    margin-left: 6px;
+}
+
+.pen-icon-medium {
+    height: 1.1em;
+    margin-left: 4px;
+}
+
 .edit-info-wrapper {
     padding-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     background-color: #e1ecf3;
-    grid-gap: 10px;
     width: 100%;
 }
 
@@ -794,6 +873,7 @@ input {
     border: 1px solid #317199;
     background-color: #fff;
     padding: 30px 10px 10px 10px;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -805,6 +885,9 @@ input {
 
 .profile input {
     border: 1px solid #317199;
+}
+
+.pass-change-box input {
     margin-top: 8px;
     width: 100%;
 }
@@ -860,29 +943,39 @@ input {
 
 .edit-info-point {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     margin-bottom: 10px;
-    max-width: 100%;
+    color: #317199;
+    text-align: left;
+    position: relative;
 }
 
 .edit-info-point > div {
-    display: flex;
-    max-width: calc(100% - 50px);
-    justify-content: start;
-    align-items: center;
+    width: calc(100% - 50px);
     text-align: start;
     font-size: calc(0.6vw + 5px);
+    display: flex;
+    align-items: center;
 }
 
-.edit-info-point > button {
-    margin: 1px;
-    padding: 1px;
+.edit-info-point > div > div {
+    width: calc(100% - 30px);
 }
 
-.edit-info-point img {
+.edit-info-point > div > img {
     height: 30px;
-    margin-right: 5px;
+    margin: 0;
+}
+
+.edit-info-point > .point-btn > img {
+    height: 20px;
+}
+
+.point-btn {
+    position: absolute;
+    right: 0;
+    top: 5px;
 }
 
 .edit-info-point a, .edit-info-point p {
@@ -925,9 +1018,9 @@ input {
 
 .about-main-wrapper {
     margin: 0;
-    padding: 60px;
+    padding: 30px 10px;
     background-image: url("/images/main-bg.png");
-    background-size: cover;
+    background-size: 1000px;
 }
 
 .first-section {
@@ -936,6 +1029,9 @@ input {
     flex-direction: column;
 }
 
+.first-section-logo {
+    width: 300px;
+}
 
 .heading-wrapper {
     top: -2%;
@@ -943,8 +1039,8 @@ input {
 }
 
 
-.flex-element {
-    margin: 0 10px;
+.card-main-icon-link {
+    width: 50%;
 }
 
 .logo-wrapper {
@@ -973,9 +1069,8 @@ input {
     outline: none;
     color: black;
     text-decoration: none;
-    padding: 1vw;
-    margin-top: 120px;
-    margin-left: 10px;
+    padding: 10px;
+    margin-top: 90px;
     padding: 1vw 3vw 1vw 3vw;
     transition: 0.3s;
     white-space: nowrap;
@@ -983,6 +1078,7 @@ input {
 
 #join-button:hover {
     background-color: #28639b;
+    color: white;
 }
 
 .flex-container2 {
@@ -1099,10 +1195,17 @@ input {
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+    font-size: 20px;
+}
+
+.search-input-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 input[name="quicksearch"] {
-    margin-top: 8px;
+    width: 80%;
 }
 
 .my-mt-1 {
@@ -1113,10 +1216,9 @@ input[name="quicksearch"] {
     background-color: #003470;
     border-radius: 50%;
     border: 4px solid #003470;
-    width: 15px;
-    height: 15px;
+    width: 25px;
+    height: 25px;
     padding: 1px;
-
 }
 
 .show-more-btn:hover {
@@ -1288,9 +1390,12 @@ input[name="quicksearch"] {
     margin: 10px;
 }
 
+.btn-close:hover {
+    font-weight: 600;
+}
 
 .form {
-    width: 100%;
+    /* width: 100%; */
     padding: 30px 55px;
     display: flex;
     flex-direction: column;
@@ -1334,9 +1439,14 @@ input[name="quicksearch"] {
 }
 
 .about-sb-sec2 {
+<<<<<<< HEAD
     margin-left: auto;
     text-align:left;
     width: 100%;
+=======
+    margin-top: 0;
+    text-align: left;
+>>>>>>> ff2ec2b425b96acc43b51c7087611ebad854d4d8
 }
 
 .second-section-element {
@@ -1347,6 +1457,7 @@ input[name="quicksearch"] {
     width: 100%;
     display: flex;
     flex-direction: column;
+
 
 }
 
@@ -1406,6 +1517,16 @@ input[name="quicksearch"] {
 }
 
 @media screen and (min-width: 512px) {
+
+    .contacts-section_content-wrapper_search-control {
+        width: 34%;
+    }
+
+    .carts-wrapper {
+        width: 66%;
+
+    }
+
     .carts-box {
         padding: 10px 20px;
     }
@@ -1438,10 +1559,26 @@ input[name="quicksearch"] {
     .contacts-search-wrapper_filters_two-in-row-box {
         flex-direction: row;
     }
+
 }
 
 @media screen and (min-width: 768px) {
+    .card-links > img {
+        width: 27px;
+    }
+
     .logo-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+    }
+
+    .card-container {
+        min-width: 270px;
+    }
+
+    .card-member-info {
         width: 50%;
     }
 
@@ -1456,11 +1593,12 @@ input[name="quicksearch"] {
     }
 
     .second-section-element {
-        width: 37%;
+        width: 40%;
     }
 
     .train-logo-wrapper {
-        width: 56%;
+
+        width: 55%;
     }
 
     .footer {
@@ -1481,17 +1619,14 @@ input[name="quicksearch"] {
 
     .magnifier-ico {
 
-        width: 45px;
-        height: 45px;
+        width: 35px;
+        height: 35px;
     }
 
     .carts-box {
         padding: 10px 20px;
     }
 
-    .carts-box {
-        grid-template-columns: 1fr 1fr;
-    }
 
     .contacts-section_content-wrapper {
         width: 100%;
@@ -1512,10 +1647,18 @@ input[name="quicksearch"] {
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 984px) {
+    .about-main-wrapper {
+        padding: 60px;
+
+    }
     .carts-box {
         grid-template-columns: 1fr 1fr;
     }
+}
+
+@media screen and (min-width: 1024px) {
+
 
     .contacts-section_content-wrapper {
         width: 95%;
@@ -1549,9 +1692,6 @@ input[name="quicksearch"] {
         padding: 10px 30px;
     }
 
-    .carts-box {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
 
     .contacts-section_content-wrapper {
         width: 89%;
@@ -1569,7 +1709,13 @@ input[name="quicksearch"] {
 
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1600px) {
+    .carts-box {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 2100px) {
     .carts-box {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }

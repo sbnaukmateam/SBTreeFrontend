@@ -60,7 +60,7 @@ export const createQuery = (values) => {
     query.push({ 'degrees.programId': program });
   }
   if (entranceYear) {
-    query.push({ 'degrees.year': entranceYear });
+    query.push({ 'degrees.year': +entranceYear });
   }
   return { $and: query };
 };

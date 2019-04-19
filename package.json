@@ -63,7 +63,8 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.4",
     "webpack-cli": "^3.2.3",
-    "whatwg-fetch": "^3.0.0"
+    "whatwg-fetch": "^3.0.0",
+    "url-parse": "latest"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

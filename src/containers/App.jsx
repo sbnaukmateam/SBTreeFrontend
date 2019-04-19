@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
-  ModalSignUp, ModalLogin, ModalForgotPass, ModalChangePass,
+  ModalSignUp, ModalLogin, ModalForgotPass, ModalChangePass, ModalAddContact,
+  ModalAddPosition, ModalAddDegree, ModalChangeAva,
 } from '../components';
 import {
   authActions, modalActions, resetActions, membersActions, projectsActions,
@@ -39,6 +40,10 @@ class App extends PureComponent {
         <ModalForgotPass />
         <ModalChangePass />
         <ModalAddMember />
+        <ModalAddContact />
+        <ModalAddPosition />
+        <ModalAddDegree />
+        <ModalChangeAva />
       </React.Fragment>
     );
   }

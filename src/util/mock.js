@@ -56,10 +56,10 @@ export const Members = [{
   phones: ['0991234567'],
   profiles: ['gitlab.com'],
   emails: ['vasyaIvan@gmail.com'],
-  positions: [{ years: [2011, 2012], name: 'голова' }],
+  positions: [{ years: [2011], name: 'голова' }],
   interests: ['football', 'reading'],
   projects: ['id1', 'id2'],
-  status: 'BRATCHYK',
+  status: 'CURRENT_MEMBER',
 }, {
   id: '2',
   name: 'Петро',
@@ -80,10 +80,10 @@ export const Members = [{
   phones: ['0501234567'],
   profiles: ['github.com'],
   emails: ['petyaSidor@gmail.com'],
-  positions: [{ years: [2011, 2012], name: 'qwerty' }],
+  positions: [{ years: [2011], name: 'qwerty' }],
   interests: ['football', 'reading'],
   projects: ['id1', 'id2'],
-  status: 'POSHANOVANYJ',
+  status: 'OLD_MEMBER',
 },
 {
   id: '3',
@@ -105,10 +105,10 @@ export const Members = [{
   phones: ['0501234567'],
   profiles: ['github.com'],
   emails: ['petyaSidor@gmail.com'],
-  positions: [{ years: [2011, 2012], name: 'qwerty' }],
+  positions: [{ years: [2011], name: 'qwerty' }],
   interests: ['football', 'reading'],
   projects: ['id1', 'id2'],
-  status: 'POSHANOVANYJ',
+  status: 'OLD_MEMBER',
 },
 ];
 export const Roles = [{
