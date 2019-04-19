@@ -105,8 +105,6 @@ button:hover {
 }
 
 
-
-
 hr {
     background: #fff no-repeat scroll center;
     width: 100%;
@@ -1190,6 +1188,7 @@ input {
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+    font-size: 20px;
 }
 
 input[name="quicksearch"] {
@@ -1487,6 +1486,7 @@ input[name="quicksearch"] {
         width: 66%;
 
     }
+
     .carts-box {
         padding: 10px 20px;
     }
@@ -1525,12 +1525,15 @@ input[name="quicksearch"] {
     .logo-wrapper {
         width: 50%;
     }
-    .card-container{
+
+    .card-container {
         min-width: 270px;
     }
-    .card-member-info{
-        width:50%;
+
+    .card-member-info {
+        width: 50%;
     }
+
     .flex-container4 {
         display: flex;
         flex-direction: row;
