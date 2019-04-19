@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import PropTypes from 'prop-types';
+import { modalWrapper } from '../hoc';
 import { membersActions, modalActions } from '../actions';
 import { validate } from '../util';
-import { modalWrapper } from '../hoc';
 import { FormField } from './FormField';
 import { selectorMembersProfile } from '../selectors';
 
