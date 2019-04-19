@@ -17,7 +17,6 @@ h2 {
     color: #28639b;
 }
 
-
 body {
     margin: 0;
 }
@@ -47,7 +46,6 @@ button:hover {
     background-color: white;
     display: flex;
     flex-direction: row;
-
 
 }
 
@@ -149,7 +147,6 @@ hr {
     padding: 0 10%;
 }
 
-
 .contacts-search-wrapper_search-line-box {
     display: flex;
     justify-content: space-between;
@@ -203,12 +200,11 @@ hr {
     text-align: center;
 }
 
-
 .react-datepicker-wrapper, .react-datepicker__input-container {
     width: 100%;
 }
 
-.react-datepicker-wrapper .input{
+.react-datepicker-wrapper .input {
     margin: 0;
 }
 
@@ -383,7 +379,6 @@ input {
     height: 45px;
 }
 
-
 @media screen and (min-width: 1400px ) {
     .col-xxl-10 {
         -ms-flex: 0 0 83.333333%;
@@ -457,7 +452,6 @@ input {
 
 }
 
-
 .profile-icon-link {
     margin-right: 20px;
 }
@@ -472,7 +466,6 @@ input {
     padding-left: 8px;
     padding-right: 8px;
 }
-
 
 .navbar a:hover, .navbar button:hover {
     color: white;
@@ -671,7 +664,6 @@ input {
     margin: 0 auto;
 }
 
-
 .proj-slider-img:hover + .proj-slider-btn-box, .proj-slider-btn-box:hover {
     display: flex;
 }
@@ -684,6 +676,7 @@ input {
     display: none;
 }
 
+/*----------PROFILE---------*/
 .profile {
     background-color: #88b4d0;
 }
@@ -694,12 +687,15 @@ input {
     border-radius: 5px;
     text-align: center;
 }
-.profile p, .profile a, .profile h3, .profile input{
+
+.profile p, .profile a, .profile h3, .profile input {
     color: #317199;
 }
-.profile p{
+
+.profile p {
     margin: 0;
 }
+
 .profile > div {
     padding: 40px;
     background-color: #e1ecf3;
@@ -725,11 +721,13 @@ input {
     display: flex;
     background-color: #fff;
 }
-.profile-info{
+
+.profile-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
 .profile-card > div {
     width: 50%;
     padding: 10px;
@@ -779,9 +777,11 @@ input {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
-.name-wrapper{
+
+.name-wrapper {
     margin-top: 15px;
 }
+
 .name-box {
     display: flex;
     justify-content: center;
@@ -794,18 +794,24 @@ input {
     right: 10px;
     height: 30%;
     padding: 0;
-    border: 1px solid #317199;
 }
-.profile-ico-r:hover{
+
+.profile-ico-r:hover {
     transform: scale(1.1);
 }
-.profile-ico-r img, .profile-ico-r label{
+.profile-ico-r img{
+    border: 1px solid #317199;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.profile-ico-r img, .profile-ico-r label {
     width: 100%;
     height: 100%;
 }
 
 .profile-card .profile-ico-r input.update-photo {
-    display:none;
+    display: none;
 }
 
 .profile-ico-l {
@@ -814,7 +820,6 @@ input {
 
 .card-name, .card-nickname {
     margin: 0;
-    /*width: 90%;*/
 }
 
 .card-nickname {
@@ -872,10 +877,12 @@ input {
 .profile input {
     border: 1px solid #317199;
 }
-.pass-change-box input{
+
+.pass-change-box input {
     margin-top: 8px;
     width: 100%;
 }
+
 .profile input[placeholder] {
     color: #88b4d0;
 }
@@ -942,7 +949,8 @@ input {
     display: flex;
     align-items: center;
 }
-.edit-info-point > div > div{
+
+.edit-info-point > div > div {
     width: calc(100% - 30px);
 }
 
@@ -950,14 +958,17 @@ input {
     height: 30px;
     margin: 0;
 }
-.edit-info-point > .point-btn > img{
+
+.edit-info-point > .point-btn > img {
     height: 20px;
 }
-.point-btn{
+
+.point-btn {
     position: absolute;
     right: 0;
     top: 5px;
 }
+
 .edit-info-point a, .edit-info-point p {
     margin: 0 0 0 10px;
     -ms-text-overflow: ellipsis;
@@ -996,6 +1007,65 @@ input {
     margin-bottom: 15px;
 }
 
+@media screen and (max-width: 500px) {
+    .profile > div {
+        padding: 0;
+        display: block;
+    }
+    .profile-card{
+        display: block;
+    }
+    .l-col{
+        padding: 5px;
+        width: auto;
+        margin: 0;
+}
+    .profile-ico-l, .profile-ico-r{
+    }
+    .profile-ico-r{
+        height: auto;
+        margin-bottom: -3px;
+    }
+    .r-col {
+        width: auto;
+        padding: 5px;
+    }
+    .r-col input, .r-col button{
+        height: 40px;
+        margin-top: 12px;
+    }
+    .edit-info-wrapper {
+        display: block;
+        padding: 0;
+        width: auto;
+    }
+
+    .edit-info {
+        margin-top: 15px;
+        width: auto;
+        padding: 0;
+    }
+    .edit-info > div{
+        padding: 10px;
+    }
+    .edit-info-point{
+        height: 24px;
+    }
+    .edit-info-point>div{
+        height: 24px;
+    }
+    .edit-info-point button{
+        top: 0;
+    }
+    .add-btn{
+        position: inherit;
+    }
+    .edit-info-point > div > div{
+        display: flex;
+    }
+}
+
+/*-----------*/
 .about-main-wrapper {
     margin: 0;
     padding: 60px;
@@ -1009,12 +1079,10 @@ input {
     flex-direction: column;
 }
 
-
 .heading-wrapper {
     top: -2%;
     flex-grow: 2;
 }
-
 
 .flex-element {
     margin: 0 10px;
@@ -1062,7 +1130,6 @@ input {
     position: relative;
     margin: 0 4% 0 6%;
 }
-
 
 #read-more {
     background-color: Transparent;
@@ -1225,7 +1292,6 @@ input[name="quicksearch"] {
     padding: 0 15%;
     margin: 0 0 0 6%;
 
-
 }
 
 .find-icons {
@@ -1262,7 +1328,7 @@ input[name="quicksearch"] {
     width: 100%;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
     .flex-container1 {
         display: flex;
         flex-direction: column;
@@ -1303,7 +1369,6 @@ input[name="quicksearch"] {
         margin-top: 50px;
         text-align: center;
     }
-
 
     #map {
         width: 75%;
@@ -1357,7 +1422,6 @@ input[name="quicksearch"] {
     height: 40px;
     margin: 10px;
 }
-
 
 .form {
     /* width: 100%; */
@@ -1453,11 +1517,7 @@ input[name="quicksearch"] {
     margin-bottom: 0;
 }
 
-@media screen and (min-width: 320px) {
-
-}
-
-@media screen and (min-width: 512px) {
+@media screen and (min-width: 500px) {
     .carts-box {
         padding: 10px 20px;
     }
@@ -1485,7 +1545,6 @@ input[name="quicksearch"] {
         margin-left: 3px;
         margin-right: 0px;
     }
-
 
     .contacts-search-wrapper_filters_two-in-row-box {
         flex-direction: row;
