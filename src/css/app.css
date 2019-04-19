@@ -70,7 +70,8 @@ button:hover {
 .card-container {
     display: flex;
     flex-direction: column;
-    max-width: 310px;
+    max-width: 280px;
+
     border: 2px solid #317199;
     border-radius: 4px;
     height: 300px;
@@ -83,31 +84,28 @@ button:hover {
     margin-top: 8px;
 }
 
-.card-flex-element {
-}
 
 .card-member-info {
     color: #317199;
 
 }
 
-.card-container2 p {
-    margin-bottom: 0;
-}
-
-.card-container2 {
+.card-member-info {
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
-    align-self: center;
+    justify-content: space-between;
 }
 
-.card-flex-element2 {
-    text-align: center;
+.card-member-info p {
+    margin: 0;
+    padding-top: 8px;
 }
+
 
 hr {
     background: #fff no-repeat scroll center;
-    width: 10em;
+    width: 100%;
     color: black;
     margin: 5px 0;
     border-top: 2px solid rgba(0, 0, 0, .1);
@@ -117,26 +115,31 @@ hr {
     margin-top: 5px;
 }
 
+.card-links > img {
+    margin: 0 2px;
+    width: 24px;
+}
+
 .card-profile-icons-box {
     position: relative;
 }
 
-.cart-item-wrapper {
+.card-item-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .card-leaf {
-    width: 30px;
+    width: 38px;
     position: absolute;
-    bottom: 5px;
-    left: 30px;
+    bottom: 0px;
+    left: 15px;
 }
 
 .card-members-photo {
-    width: 100px;
-    height: 100px;
+    width: 135px;
+    height: 135px;
 }
 
 .contacts-search-wrapper {
@@ -507,7 +510,7 @@ input {
 }
 
 .logo-footer {
-    height: 120px;
+    height: 80px;
 }
 
 .footer * {
@@ -526,19 +529,20 @@ input {
 .footer-icon {
     height: 20px;
     margin-right: 15px;
-    margin-top: 20px;
 }
 
 .footer-title {
-    text-align: left;
-    margin-left: 20px;
-    margin-top: 50px;
+    text-align: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.footer-title-sb{
+    padding-left:20px;
 }
 
 .footer-name {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
     text-align: right;
 }
 
@@ -805,6 +809,7 @@ input {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+
 .profile-ico-r img, .profile-ico-r label {
     width: 100%;
     height: 100%;
@@ -1085,7 +1090,10 @@ input {
 }
 
 .flex-element {
-    margin: 0 10px;
+            margin: 0 10px;
+        }
+.card-main-icon-link {
+    width: 50%;
 }
 
 .logo-wrapper {
@@ -1237,10 +1245,15 @@ input {
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+    font-size: 20px;
 }
-
+.search-input-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 input[name="quicksearch"] {
-    margin-top: 8px;
+    width:80%;
 }
 
 .my-mt-1 {
@@ -1251,8 +1264,8 @@ input[name="quicksearch"] {
     background-color: #003470;
     border-radius: 50%;
     border: 4px solid #003470;
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     padding: 1px;
 }
 
@@ -1423,6 +1436,13 @@ input[name="quicksearch"] {
     margin: 10px;
 }
 
+<<<<<<< HEAD
+=======
+.btn-close:hover {
+    font-weight: 600;
+}
+
+>>>>>>> 7e7b81812420be1bea3729c37855300da048fc68
 .form {
     /* width: 100%; */
     padding: 30px 55px;
@@ -1517,7 +1537,22 @@ input[name="quicksearch"] {
     margin-bottom: 0;
 }
 
-@media screen and (min-width: 500px) {
+
+@media screen and (min-width: 320px) {
+
+}
+
+@media screen and (min-width: 512px) {
+
+    .contacts-section_content-wrapper_search-control {
+        width: 34%;
+    }
+
+    .carts-wrapper {
+        width: 66%;
+
+    }
+
     .carts-box {
         padding: 10px 20px;
     }
@@ -1549,10 +1584,23 @@ input[name="quicksearch"] {
     .contacts-search-wrapper_filters_two-in-row-box {
         flex-direction: row;
     }
+
 }
 
 @media screen and (min-width: 768px) {
+    .card-links > img {
+        width: 27px;
+    }
+
     .logo-wrapper {
+        width: 50%;
+    }
+
+    .card-container {
+        min-width: 270px;
+    }
+
+    .card-member-info {
         width: 50%;
     }
 
@@ -1592,17 +1640,14 @@ input[name="quicksearch"] {
 
     .magnifier-ico {
 
-        width: 45px;
-        height: 45px;
+        width: 35px;
+        height: 35px;
     }
 
     .carts-box {
         padding: 10px 20px;
     }
 
-    .carts-box {
-        grid-template-columns: 1fr 1fr;
-    }
 
     .contacts-section_content-wrapper {
         width: 100%;
@@ -1618,10 +1663,14 @@ input[name="quicksearch"] {
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 984px) {
     .carts-box {
         grid-template-columns: 1fr 1fr;
     }
+}
+
+@media screen and (min-width: 1024px) {
+
 
     .contacts-section_content-wrapper {
         width: 95%;
@@ -1643,9 +1692,6 @@ input[name="quicksearch"] {
         padding: 10px 30px;
     }
 
-    .carts-box {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
 
     .contacts-section_content-wrapper {
         width: 89%;
@@ -1663,7 +1709,13 @@ input[name="quicksearch"] {
 
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1600px) {
+    .carts-box {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 2100px) {
     .carts-box {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }

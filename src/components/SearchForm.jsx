@@ -28,7 +28,7 @@ class SearchForm extends PureComponent {
             <div className=" accounts-admin_control_search-icon-box">
               <img src="/images/magnifier.png" className="magnifier-ico" />
             </div>
-            <div>
+            <div className="search-input-box">
               <Field component="input" type="text" name="quicksearch"
                 className="accounts-admin_control_search-input"
                 placeholder="Пошук" />
