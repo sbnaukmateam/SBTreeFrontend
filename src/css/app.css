@@ -527,7 +527,7 @@ input {
 }
 
 .second-section {
-    margin-top: 40px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -543,8 +543,9 @@ input {
     margin-right: 20px;
     margin-top: 20px;
 }
-.footer-title-sb{
-    padding-left:20px;
+
+.footer-title-sb {
+    padding-left: 20px;
 }
 
 .footer-name {
@@ -1017,9 +1018,9 @@ input {
 
 .about-main-wrapper {
     margin: 0;
-    padding: 60px;
+    padding: 30px 10px;
     background-image: url("/images/main-bg.png");
-    background-size: cover;
+    background-size: 1000px;
 }
 
 .first-section {
@@ -1028,6 +1029,9 @@ input {
     flex-direction: column;
 }
 
+.first-section-logo {
+    width: 300px;
+}
 
 .heading-wrapper {
     top: -2%;
@@ -1063,9 +1067,8 @@ input {
     outline: none;
     color: black;
     text-decoration: none;
-    padding: 1vw;
-    margin-top: 120px;
-    margin-left: 10px;
+    padding: 10px;
+    margin-top: 90px;
     padding: 1vw 3vw 1vw 3vw;
     transition: 0.3s;
     white-space: nowrap;
@@ -1073,6 +1076,7 @@ input {
 
 #join-button:hover {
     background-color: #28639b;
+    color: white;
 }
 
 .flex-container2 {
@@ -1191,13 +1195,15 @@ input {
     transition: all 0.5s;
     font-size: 20px;
 }
-.search-input-box{
+
+.search-input-box {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 input[name="quicksearch"] {
-    width:80%;
+    width: 80%;
 }
 
 .my-mt-1 {
@@ -1432,6 +1438,7 @@ input[name="quicksearch"] {
 
 .about-sb-sec2 {
     margin-top: 0;
+    text-align: left;
 }
 
 .second-section-element {
@@ -1442,6 +1449,7 @@ input[name="quicksearch"] {
     width: 100%;
     display: flex;
     flex-direction: column;
+
 
 }
 
@@ -1536,6 +1544,9 @@ input[name="quicksearch"] {
     }
 
     .logo-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 50%;
     }
 
@@ -1558,11 +1569,12 @@ input[name="quicksearch"] {
     }
 
     .second-section-element {
-        width: 37%;
+        width: 40%;
     }
 
     .train-logo-wrapper {
-        width: 56%;
+
+        width: 55%;
     }
 
     .footer {
@@ -1607,6 +1619,10 @@ input[name="quicksearch"] {
 }
 
 @media screen and (min-width: 984px) {
+    .about-main-wrapper {
+        padding: 60px;
+
+    }
     .carts-box {
         grid-template-columns: 1fr 1fr;
     }
