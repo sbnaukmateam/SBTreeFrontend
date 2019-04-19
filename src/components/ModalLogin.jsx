@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { authActions, modalActions } from '../actions';
 import { validate } from '../util';
 import { modalWrapper } from '../hoc';
-import { FormField } from '.';
+import { FormField } from ".";
 
 class ModalLogin extends PureComponent {
   constructor(props) {

@@ -6,7 +6,7 @@ export const Footer = () => (
     <div className="footer">
       <div className="footer-logo-icons-box">
         <img src="/images/logo-big.png" className="logo-footer mr-4" />
-        <div className="d-flex flex-column justify-content-between align-items-start">
+        <div className="footer-title-sb">
           <p>СПУДЕЙСЬКЕ БРАТСТВО НАУКМА</p>
           <div>
             {
@@ -19,7 +19,7 @@ export const Footer = () => (
 
       </div>
       <div className="footer-emblem-box">
-        <img src="/images/mohyla-emblem.png" className="logo-footer" />
+
         <div>
           <div className="footer-title">
 НАЦІОНАЛЬНИЙ УНІВЕСИТЕТ
@@ -27,6 +27,7 @@ export const Footer = () => (
 "КИЄВО_МОГИЛЯНСЬКА АКАДЕМІЯ"
           </div>
         </div>
+        <img src="/images/mohyla-emblem.png" className="logo-footer" />
 
       </div>
 
