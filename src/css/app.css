@@ -1055,7 +1055,7 @@ input {
 }
 
 .about-sb {
-    
+
     margin-right: auto;
     width: 6em
 }
@@ -1439,14 +1439,8 @@ input[name="quicksearch"] {
 }
 
 .about-sb-sec2 {
-<<<<<<< HEAD
-    margin-left: auto;
-    text-align:left;
-    width: 100%;
-=======
     margin-top: 0;
     text-align: left;
->>>>>>> ff2ec2b425b96acc43b51c7087611ebad854d4d8
 }
 
 .second-section-element {
@@ -1513,7 +1507,7 @@ input[name="quicksearch"] {
         width: 100%;
         text-align: left;
     }
-    
+
 }
 
 @media screen and (min-width: 512px) {
