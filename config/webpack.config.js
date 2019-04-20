@@ -2,6 +2,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const isProd = process.env.NODE_ENV === 'production';
 const port = parseInt(process.env.PORT, 10) || 3000;
@@ -48,6 +49,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
+    new BundleAnalyzerPlugin(),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',

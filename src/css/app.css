@@ -3,7 +3,9 @@
 * {
     font-family: 'Lato', sans-serif;
 }
-
+*:hover{
+    outline: none;
+}
 a {
     text-decoration: none;
 }
@@ -828,11 +830,11 @@ input {
 }
 
 .card-nickname {
-    font-size: calc(1vw + 5px);
+    font-size: 16px;
 }
 
 .card-name {
-    font-size: calc(2vw);
+    font-size: 20px;
 }
 
 .pen-icon-btn {
@@ -980,6 +982,7 @@ input {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    text-align: left;
 }
 
 .edit-info-point a {
@@ -1012,63 +1015,6 @@ input {
     margin-bottom: 15px;
 }
 
-@media screen and (max-width: 500px) {
-    .profile > div {
-        padding: 0;
-        display: block;
-    }
-    .profile-card{
-        display: block;
-    }
-    .l-col{
-        padding: 5px;
-        width: auto;
-        margin: 0;
-}
-    .profile-ico-l, .profile-ico-r{
-    }
-    .profile-ico-r{
-        height: auto;
-        margin-bottom: -3px;
-    }
-    .r-col {
-        width: auto;
-        padding: 5px;
-    }
-    .r-col input, .r-col button{
-        height: 40px;
-        margin-top: 12px;
-    }
-    .edit-info-wrapper {
-        display: block;
-        padding: 0;
-        width: auto;
-    }
-
-    .edit-info {
-        margin-top: 15px;
-        width: auto;
-        padding: 0;
-    }
-    .edit-info > div{
-        padding: 10px;
-    }
-    .edit-info-point{
-        height: 24px;
-    }
-    .edit-info-point>div{
-        height: 24px;
-    }
-    .edit-info-point button{
-        top: 0;
-    }
-    .add-btn{
-        position: inherit;
-    }
-    .edit-info-point > div > div{
-        display: flex;
-    }
-}
 
 /*-----------*/
 .about-main-wrapper {
@@ -1423,6 +1369,13 @@ input[name="quicksearch"] {
     border-radius: 5px;
 }
 
+@media screen and (max-width: 500px) {
+    .modal-wrapper{
+        width: 80%;
+        left: 10%;
+        top: 10%;
+    }
+}
 .btn-close {
     border: none;
     position: absolute;
@@ -1436,15 +1389,10 @@ input[name="quicksearch"] {
     margin: 10px;
 }
 
-<<<<<<< HEAD
-=======
 .btn-close:hover {
     font-weight: 600;
 }
-
->>>>>>> 7e7b81812420be1bea3729c37855300da048fc68
 .form {
-    /* width: 100%; */
     padding: 30px 55px;
     display: flex;
     flex-direction: column;
@@ -1537,6 +1485,65 @@ input[name="quicksearch"] {
     margin-bottom: 0;
 }
 
+
+#page-wrap {
+    text-align: center;
+    overflow: auto;
+}
+.bm-item {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #28639b;
+    transition: color 0.2s;
+}
+.bm-item:hover {
+    color: white;
+}
+.bm-burger-button {
+    position: relative;
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+    top: 25px;
+    left: 15px;
+    display: none;
+    z-index: auto !important;
+}
+.bm-burger-bars {
+    background: #FFFFFF;
+    height: 17% !important;
+}
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+    margin-top: 70px;
+}
+.bm-cross {
+    background: #28639b;
+}
+.bm-menu {
+    background-color: #003470;
+    font-size: 14px;
+    margin-top: 70px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 100vh !important;
+}
+.bm-morph-shape {
+    fill: #28639b;
+}
+.bm-item-list a {
+     color: #fff;
+ }
+.bm-item-list a:hover {
+    color: #fff;
+}
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/*---------------media----------------*/
 
 @media screen and (min-width: 320px) {
 
@@ -1727,3 +1734,92 @@ input[name="quicksearch"] {
     }
 }
 
+@media screen and (max-width: 900px) {
+    .profile > div {
+        padding: 0;
+        display: block;
+    }
+    .profile-card{
+        display: block;
+        width: 50%;
+        margin-left: 25%;
+    }
+    .profile-card > div{
+        width: auto;
+    }
+    .l-col{
+        padding: 5px;
+        width: auto;
+        margin: 0;
+    }
+    .profile-ico-l, .profile-ico-r{
+    }
+    .profile-ico-r{
+        height: auto;
+        margin-bottom: -3px;
+    }
+    .r-col {
+        width: auto;
+        padding: 5px;
+    }
+    .r-col input, .r-col button{
+        height: 40px;
+        margin-top: 12px;
+        font-size: 12px;
+    }
+    .edit-info-wrapper {
+        display: block;
+        padding: 0;
+        width: auto;
+    }
+    .card-info p{
+        font-size: 12px;
+    }
+    .edit-info {
+        margin-top: 15px;
+        width: auto;
+        padding: 0;
+    }
+    .edit-info > div{
+        padding: 10px;
+    }
+    .edit-info-point{
+        min-height: 24px;
+    }
+    .edit-info-point a, .edit-info-point p{
+        font-size: 14px;
+    }
+    .edit-info-point>div{
+        min-height: 24px;
+    }
+    .edit-info-point button{
+        top: 0;
+    }
+    .add-btn{
+        position: inherit;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .profile-card > div{
+        width: auto;
+    }
+    .bm-burger-button{
+        display: block;
+    }
+    .profile-card{
+        width: auto;
+        margin: 0;
+    }
+    .navbar{
+        display: grid;
+        grid-template-columns: 40px auto;
+    }
+    .navbar_box{
+        margin: 0;
+    }
+    .navbar_box > a{
+        display: none;
+    }
+}

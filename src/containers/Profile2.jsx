@@ -83,7 +83,7 @@ class Profile extends PureComponent {
     return (
       <Layout>
         {profile && (
-          <section className="profile">
+          <section id="page-wr" className="profile">
             { message && <p>{message}</p>}
             <div>
               <div className="l-col">

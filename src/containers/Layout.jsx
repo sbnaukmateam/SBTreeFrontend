@@ -7,7 +7,7 @@ class Layout extends PureComponent {
   render() {
     const { children, transparent } = this.props;
     return (
-      <StickyContainer>
+      <StickyContainer id="app">
         <Sticky>
           {({
             style,
