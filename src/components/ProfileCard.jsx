@@ -130,19 +130,19 @@ class ProfileCard extends PureComponent {
     const r = new FileReader();
     r.onloadend = () => {
       this.newAvatar = r.result;
+
+      const {
+        actions: { members }, profile: { id },
+      } = this.props;
+      members.updateMember(id, {
+        avatar: this.newAvatar,
+      });
     };
     r.readAsDataURL(avatar);
-    const {
-      actions: { members }, profile: { id },
-    } = this.props;
-    members.updateMember(id, {
-      avatar: this.newAvatar,
-    });
   }
 
   render() {
     // TODO add projects
-    // TODO add different icons to interests
 
     const {
       avatar, name, surname, nickName,

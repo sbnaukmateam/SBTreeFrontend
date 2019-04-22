@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectorLoggedIn } from '../selectors';
 import { modalActions } from '../actions';
-import { NavNoAuth, NavAuth } from '.';
+import { NavNoAuth, NavAuth, Sidebar } from '.';
 
 class Navbar extends PureComponent {
   constructor() {
@@ -38,7 +38,8 @@ class Navbar extends PureComponent {
     const navStyle = `navbar${transparent && !scroll ? ' transparent' : ''}`;
     return (
       <div className={navStyle} style={style}>
-        <div className="navbar_box">
+        <Sidebar pageWrapId="page-wr" outerContainerId="app" />
+        <div id="Navbar" className="navbar_box">
           <img src="/images/logo.png" className="admin-menu_logo-img" />
           <Link to="/">
             <b>СПУДЕЙСЬКЕ БРАТСТВО</b>

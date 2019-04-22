@@ -22,4 +22,5 @@ export * from './ModalAddContact';
 export * from './ModalAddPosition';
 export * from './ModalAddDegree';
 export * from './ModalChangeAva';
+export * from './Sidebar';
 export * from './FormFileField';

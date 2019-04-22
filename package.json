@@ -45,6 +45,7 @@
     "prop-types": "^15.7.2",
     "querystring": "^0.2.0",
     "react": "^16.8.2",
+    "react-burger-menu": "^2.6.8",
     "react-datepicker": "^2.2.0",
     "react-dom": "^16.8.2",
     "react-onclickoutside": "^6.8.0",
@@ -61,10 +62,10 @@
     "rimraf": "^2.6.3",
     "slick-carousel": "^1.8.1",
     "style-loader": "^0.23.1",
+    "url-parse": "latest",
     "webpack": "^4.29.4",
     "webpack-cli": "^3.2.3",
-    "whatwg-fetch": "^3.0.0",
-    "url-parse": "latest"
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
