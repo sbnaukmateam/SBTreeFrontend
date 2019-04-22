@@ -522,7 +522,7 @@ input {
 }
 
 .second-section {
-    margin-top: 40px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -537,9 +537,15 @@ input {
     text-align: right;
     margin-right: 20px;
     margin-top: 20px;
+    font-size: 15px;
 }
-.footer-title-sb{
-    padding-left:20px;
+
+.footer-title-sb {
+    padding-left: 20px;
+}
+
+.footer-title-sb p {
+    font-size: 15px;
 }
 
 .footer-name {
@@ -564,20 +570,22 @@ input {
 }
 
 .main-page_content {
-    padding: 60px;
+    padding: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
 .main-page_text {
-    width: 60%;
+    width: 100%;
 }
 
 .title-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 35%;
+    width: 100%;
+    justify-content: center;
 }
 
 .main-page * {
@@ -593,16 +601,20 @@ input {
 }
 
 .logo-main {
-    width: 80%;
+    width: 200px;
 }
 
 .main-about-link, .main-proj-link, .proj-slider-btn {
     color: #317199;
-    margin-top: 50px;
+    margin-top: 40px;
     border: 1px solid #317199;
     padding: 10px 25px 10px 25px;
     font-size: 12px;
 
+
+}
+.slick-slide .proj-slider-btn{
+    background: rgba(0,0,0,.3);
 }
 
 .main-about-link {
@@ -1019,15 +1031,20 @@ input {
 /*-----------*/
 .about-main-wrapper {
     margin: 0;
-    padding: 60px;
+    padding: 30px 10px;
     background-image: url("/images/main-bg.png");
-    background-size: cover;
+    background-size: 1000px;
 }
 
 .first-section {
     text-align: left;
     display: flex;
     flex-direction: column;
+}
+
+
+.first-section-logo {
+    width: 300px;
 }
 
 .heading-wrapper {
@@ -1066,9 +1083,8 @@ input {
     outline: none;
     color: black;
     text-decoration: none;
-    padding: 1vw;
-    margin-top: 120px;
-    margin-left: 10px;
+    padding: 10px;
+    margin-top: 90px;
     padding: 1vw 3vw 1vw 3vw;
     transition: 0.3s;
     white-space: nowrap;
@@ -1076,6 +1092,7 @@ input {
 
 #join-button:hover {
     background-color: #28639b;
+    color: white;
 }
 
 .flex-container2 {
@@ -1193,13 +1210,15 @@ input {
     transition: all 0.5s;
     font-size: 20px;
 }
-.search-input-box{
+
+.search-input-box {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 input[name="quicksearch"] {
-    width:80%;
+    width: 80%;
 }
 
 .my-mt-1 {
@@ -1437,6 +1456,7 @@ input[name="quicksearch"] {
 
 .about-sb-sec2 {
     margin-top: 0;
+    text-align: left;
 }
 
 .second-section-element {
@@ -1447,6 +1467,7 @@ input[name="quicksearch"] {
     width: 100%;
     display: flex;
     flex-direction: column;
+
 
 }
 
@@ -1595,11 +1616,35 @@ input[name="quicksearch"] {
 }
 
 @media screen and (min-width: 768px) {
+    .logo-main {
+        width: 300px;
+    }
+
+    .main-page_content {
+        flex-direction: row;
+    }
+
+    .main-page_text {
+        width: 60%;
+    }
+
+    .title-box {
+        width: 35%;
+    }
+
+
+    .main-page_content {
+        padding: 50px;
+    }
+
     .card-links > img {
         width: 27px;
     }
 
     .logo-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 50%;
     }
 
@@ -1622,11 +1667,12 @@ input[name="quicksearch"] {
     }
 
     .second-section-element {
-        width: 37%;
+        width: 40%;
     }
 
     .train-logo-wrapper {
-        width: 56%;
+
+        width: 55%;
     }
 
     .footer {
@@ -1671,8 +1717,18 @@ input[name="quicksearch"] {
 }
 
 @media screen and (min-width: 984px) {
+    .about-main-wrapper {
+        padding: 60px;
+
+    }
+
     .carts-box {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .main-about-link {
+        color: #317199;
+        margin-top: 80px;
     }
 }
 
