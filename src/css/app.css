@@ -1071,7 +1071,9 @@ input {
 }
 
 .about-sb {
-    width: 100%;
+
+    margin-right: auto;
+    width: 6em
 }
 
 #join-button {
@@ -1139,7 +1141,7 @@ input {
     font-size: 2.5vw;
 }
 
-.paravoz {
+.photo-near-train {
     width: 100%;
     display: inline-block;
 }
@@ -1162,22 +1164,22 @@ input {
 }
 
 .circle-ava {
-    width: 200px;
+    width: 150px;
 }
 
 .under-heading {
     text-align: center;
-    width: 80%;
+    width: 60%;
 }
 
 #org-history {
     color: #28639b;
     font-size: 2.5vw;
-    margin-left: 9.5%;
+    /* margin-left: 9.5%; */
 }
 
 .org-history-desc {
-    display: inline-block;
+    /* display: inline-block; */
     position: relative;
     width: 50%;
     text-align: left;
@@ -1267,15 +1269,15 @@ input[name="quicksearch"] {
     display: flex;
     flex-direction: column;
     position: relative;
-    padding: 0 15%;
-    margin: 0 0 0 6%;
+    /* padding: 0 15%; */
+    /* margin: 0 0 0 6%; */
 
 }
 
 .find-icons {
     display: flex;
     justify-content: space-between;
-    padding: 0 10%;
+    padding: 0 4%;
     max-width: 150px;
 }
 
@@ -1285,7 +1287,7 @@ input[name="quicksearch"] {
 
 .address {
     margin: 0;
-    font-size: 14px;
+    font-size: 19px;
     position: relative;
     text-align: left;
 }
@@ -1568,6 +1570,22 @@ input[name="quicksearch"] {
 
 @media screen and (min-width: 320px) {
 
+        .under-heading {
+        text-align: center;
+        width: 100%;
+    }
+
+    .about-sb {
+        width: 100%;
+    }
+
+    .org-history-desc {
+        /* display: inline-block; */
+        position: relative;
+        width: 100%;
+        text-align: left;
+    }
+
 }
 
 @media screen and (min-width: 512px) {
@@ -1714,6 +1732,11 @@ input[name="quicksearch"] {
         width: 70%;
 
     }
+
+    .under-heading {
+        text-align: center;
+        width: 100%;
+    }
 }
 
 @media screen and (min-width: 984px) {
@@ -1746,6 +1769,18 @@ input[name="quicksearch"] {
     .carts-wrapper {
         width: 72%;
 
+    }
+
+    .under-heading {
+        text-align: center;
+        width: 100%;
+    }
+
+    .org-history-desc {
+        /* display: inline-block; */
+        position: relative;
+        width: 50%;
+        text-align: left;
     }
 
 }
