@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { selectorProjectsList } from '../selectors';
 import { Project } from '../components';
-import { Layout } from '.';
+import { Layout } from './Layout';
 
 class Projects extends PureComponent {
   render() {

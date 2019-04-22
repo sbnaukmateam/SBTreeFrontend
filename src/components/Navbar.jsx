@@ -5,7 +5,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectorLoggedIn } from '../selectors';
 import { modalActions } from '../actions';
-import { NavNoAuth, NavAuth, Sidebar } from '.';
+import { NavNoAuth } from './NavNoAuth';
+import { NavAuth } from './NavAuth';
+import { Sidebar } from './Sidebar';
 
 class Navbar extends PureComponent {
   constructor() {

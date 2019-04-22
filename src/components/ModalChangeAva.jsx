@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { membersActions, modalActions } from '../actions';
 import { modalWrapper } from '../hoc';
 import { selectorMembersProfile } from '../selectors';
-import { FormFileField } from '.';
+import { FormFileField } from './FormFileField';
 
 class ModalChangeAva extends PureComponent {
   constructor(props) {

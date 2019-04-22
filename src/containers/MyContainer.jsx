@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Layout } from '.';
+import { Layout } from './Layout';
 import { MainSlider } from '../components';
 
 class MyContainer extends PureComponent {

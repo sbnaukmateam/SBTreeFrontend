@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { authActions } from '../actions';
 import { validate } from '../util';
 import { modalWrapper } from '../hoc';
-import { FormField } from '.';
+import { FormField } from './FormField';
 
 const {
   required, email, oneNumber, oneUpperChar, minLength, passwordConfirmation,

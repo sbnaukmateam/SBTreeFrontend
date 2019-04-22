@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Layout } from '.';
+import { Layout } from './Layout';
 
 class About extends PureComponent {
   render() {

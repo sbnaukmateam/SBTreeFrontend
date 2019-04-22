@@ -1,9 +1,14 @@
 language: node_js
 node_js:
-  - "8.15.0"
-
+- 8.15.0
 script:
-  - npm run lint
-
+- npm run lint
+deploy:
+  provider: gae
+  keyfile: sbnaukma-b949b0f52c7d.json
+  project: sbnaukma
 notifications:
   slack: sbteam-workspace:vN5MU2uVkGH03b8jtz6JzCJ0
+before_install:
+- openssl aes-256-cbc -K $encrypted_23672130aec4_key -iv $encrypted_23672130aec4_iv
+  -in sbnaukma-0ba0433a169e.json.enc -out sbnaukma-0ba0433a169e.json -d

@@ -24,3 +24,4 @@ export * from './ModalAddDegree';
 export * from './ModalChangeAva';
 export * from './Sidebar';
 export * from './FormFileField';
+export * from './AddMemberButton';

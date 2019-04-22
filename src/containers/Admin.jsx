@@ -4,13 +4,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reset } from 'redux-form';
-import { SearchForm, Card } from '../components';
+import { SearchForm, Card, AddMemberButton } from '../components';
 import {
   selectorMembersList, selectorRole,
 } from '../selectors';
-import { Layout } from '.';
+import { Layout } from './Layout';
 import { privateRoute } from '../hoc';
-import { AddMemberButton } from '../components/AddMemberButton';
 
 class AdminSearch extends PureComponent {
   constructor(props) {

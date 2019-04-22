@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { selectorModalResult, selectorModalData } from '../selectors';
-import { ModalContainer } from '../components';
+import { ModalContainer } from '../components/ModalContainer';
 
 const basicModalWrapper = modalKey => (WrappedComponent) => {
   const ModalWrapper = (props) => {

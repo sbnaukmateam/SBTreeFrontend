@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectorLoggedIn } from '../selectors';
 import { modalActions } from '../actions';
-import { NavNoAuth, NavAuth } from '.';
+import { NavNoAuth } from './NavNoAuth';
+import { NavAuth } from './NavAuth';
 
 class Hamburger extends PureComponent {
   constructor() {
