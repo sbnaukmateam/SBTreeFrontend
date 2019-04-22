@@ -5,7 +5,7 @@ script:
 - npm run lint
 deploy:
   provider: gae
-  keyfile: sbnaukma-b949b0f52c7d.json
+  keyfile: sbnaukma-0ba0433a169e.json
   project: sbnaukma
 notifications:
   slack: sbteam-workspace:vN5MU2uVkGH03b8jtz6JzCJ0
