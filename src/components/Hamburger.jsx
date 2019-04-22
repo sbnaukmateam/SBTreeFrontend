@@ -5,9 +5,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectorLoggedIn } from '../selectors';
 import { modalActions } from '../actions';
-import { NavNoAuth, NavAuth, Sidebar } from '.';
+import { NavNoAuth, NavAuth } from '.';
 
-class Navbar extends PureComponent {
+class Hamburger extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -38,21 +38,20 @@ class Navbar extends PureComponent {
     const navStyle = `navbar${transparent && !scroll ? ' transparent' : ''}`;
     return (
       <div className={navStyle} style={style}>
-        <Sidebar pageWrapId="page-wr" outerContainerId="app" />
-        <div id="Navbar" className="navbar_box">
+        <div className="navbar_box">
           <img src="/images/logo.png" className="admin-menu_logo-img" />
           <Link to="/">
             <b>СПУДЕЙСЬКЕ БРАТСТВО</b>
           </Link>
           <Link to="/about">
-              ПРО НАС
+                        ПРО НАС
           </Link>
           {/* TODO: Uncomment after projects will be finished */}
           {/* <Link to="/projects">
               ПРОЕКТИ
             </Link> */}
           <Link to="/contacts">
-              КОНТАКТИ
+                        КОНТАКТИ
           </Link>
           {/* TODO: Uncomment after tree will be finished */}
           {/* <Link to="/">
@@ -65,14 +64,14 @@ class Navbar extends PureComponent {
   }
 }
 
-Navbar.contextTypes = { router: PropTypes.object };
-Navbar.propTypes = {
+Hamburger.contextTypes = { router: PropTypes.object };
+Hamburger.propTypes = {
   loggedIn: PropTypes.bool,
   style: PropTypes.object.isRequired,
   transparent: PropTypes.bool,
   actions: PropTypes.object.isRequired,
 };
-Navbar.defaultProps = {
+Hamburger.defaultProps = {
   loggedIn: false,
   transparent: null,
 };
@@ -85,6 +84,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const NavbarWrapped = connect(mapStateToProps, mapDispatchToProps)(Navbar);
+const HamburgerWrapped = connect(mapStateToProps, mapDispatchToProps)(Hamburger);
 
-export { NavbarWrapped as Navbar };
+export { HamburgerWrapped as Hamburger };
