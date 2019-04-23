@@ -8,6 +8,7 @@ deploy:
   provider: gae
   keyfile: sbnaukma2-ce87eab4bc3e.json
   project: sbnaukma2
+  skip_cleanup: true
 notifications:
   slack: sbteam-workspace:vN5MU2uVkGH03b8jtz6JzCJ0
 before_install:
