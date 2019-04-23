@@ -1,3 +1,4 @@
+const { EnvironmentPlugin } = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -47,6 +48,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new EnvironmentPlugin(['NODE_ENV', 'API_URL']),
     new Dotenv(),
     new HtmlWebPackPlugin({
       template: './src/index.html',
