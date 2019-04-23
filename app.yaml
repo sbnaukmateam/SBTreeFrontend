@@ -5,6 +5,7 @@ skip_files:
  - ^node_modules$
  - ^src$
  - ^static$
+ - ^.git$
 handlers:
 - url: /images/(.*)$
   static_files: dist/images/\1
