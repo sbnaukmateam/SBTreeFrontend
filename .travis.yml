@@ -12,5 +12,3 @@ notifications:
 before_install:
 - openssl aes-256-cbc -K $encrypted_23672130aec4_key -iv $encrypted_23672130aec4_iv
   -in sbnaukma2-ce87eab4bc3e.json.enc -out sbnaukma2-ce87eab4bc3e.json -d
-- openssl aes-256-cbc -K $encrypted_23672130aec4_key -iv $encrypted_23672130aec4_iv
-  -in sbnaukma-0ba0433a169e.json.enc -out sbnaukma-0ba0433a169e.json -d
