@@ -3,7 +3,7 @@ node_js:
 - 8.15.0
 script:
 - npm run lint
-- npm run build
+- NODE_ENV=production npm run build
 deploy:
   provider: gae
   keyfile: sbnaukma2-ce87eab4bc3e.json
