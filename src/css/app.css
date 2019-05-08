@@ -10,10 +10,6 @@ a {
     text-decoration: none;
 }
 
-p {
-    font-size: 18px;
-}
-
 h2 {
     font-family: 'Lato', sans-serif;
     color: #28639b;
@@ -754,7 +750,7 @@ input {
 
 .card-info-box {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
     grid-gap: 10px;
 }
 
@@ -766,11 +762,14 @@ input {
     justify-content: center;
 }
 
-.card-info > div > img {
+.card-info > div > img, .card-info > div > .hidden-btn {
     max-width: 20%;
     margin: 2px;
 }
-
+.card-info > div > .hidden-btn > img{
+    width: 100%;
+    height: 100%;
+}
 .card-info > p {
     margin: 0 0 5px;
 }
@@ -799,15 +798,34 @@ input {
 .name-wrapper {
     margin-top: 15px;
 }
-
+.hidden-btn{
+    outline: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.members-select{
+    width: 100%;
+    font-size: 12px;
+}
 .name-box {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
     margin-top: 10px;
+    font-size: 12px;
+    min-height: 20px;
 }
-
+.name-box input, .name-box select{
+    height: 20px;
+    font-size: 13px;
+    margin: 0;
+}
+.multi-select{
+    margin-top: 20px;
+}
 .profile-ico-r {
     right: 10px;
     height: 30%;
@@ -883,7 +901,7 @@ input {
     border: 1px solid #317199;
     background-color: #fff;
     padding: 30px 10px 10px 10px;
-    width: 30%;
+    width: 29%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -47,7 +47,38 @@ export const FACULTIES = [
     specialities: [],
   },
 ];
-
+export const INTERESTS = [
+  {
+    value: 'photo',
+    label: 'Фото',
+    img: '/images/interests/camera.png',
+  },
+  {
+    value: 'cinema',
+    label: 'Кіно',
+    img: '/images/interests/cinema.png',
+  },
+  {
+    value: 'listenMusic',
+    label: 'Слухати музику',
+    img: '/images/interests/music.png',
+  },
+  {
+    value: 'playMusic',
+    label: 'Музика',
+    img: '/images/interests/guitar.png',
+  },
+  {
+    value: 'books',
+    label: 'Книги',
+    img: '/images/interests/book.png',
+  },
+  {
+    value: 'travel',
+    label: 'Подорожі',
+    img: '/images/interests/hiking.png',
+  },
+];
 export const PROGRAMS = [
   { name: 'Бакалавр', value: '1' },
   { name: 'Магістр', value: '2' },
