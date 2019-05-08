@@ -235,7 +235,7 @@ class ProfileCard extends PureComponent {
 
   render() {
     // TODO add projects
-
+    // TODO apply styles to <Select>
     const {
       avatar, name, surname, nickName,
       birthday, patron, interests,
