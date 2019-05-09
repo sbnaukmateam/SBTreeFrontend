@@ -48,8 +48,8 @@ module.exports = {
     ],
   },
   plugins: [
-    new EnvironmentPlugin(['NODE_ENV', 'API_URL']),
     new Dotenv(),
+    new EnvironmentPlugin(['NODE_ENV', 'API_URL']),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',
